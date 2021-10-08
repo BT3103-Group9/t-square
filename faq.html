@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>T Square</title>
+
+  <meta charset="UTF-8">  
+  <!-- jQuery -->
+  <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script>
+ $(document).ready(function() {
+ 
+    $('.faq_question').click(function() {
+ 
+        if ($(this).parent().is('.open')){
+            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
+            $(this).closest('.faq').removeClass('open');
+ 
+            }else{
+                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
+                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
+                $(this).closest('.faq').addClass('open');
+            }
+    });
+});
+</script>
+  
+<!-- CSS -->
+<style>
+body {
+  background-image: url('bg1.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.title{
+        position: relative;
+        text-align: center;
+        color: white;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        background-color: black;
+        width: 100%;
+        height: 100px;
+    }
+
+    .subtitle{
+        position: relative;
+        text-align: center;
+        color: black;
+        font-size: 30px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+
+    #logo {
+        position: absolute;
+        top: 25px;
+        left: 70px;
+        width: 65px;
+        height: 60px;
+        filter: invert(98%) sepia(100%) saturate(0%) hue-rotate(315deg) brightness(102%) contrast(103%);
+    }
+
+    .titleOfDiv{
+        position: absolute;
+        top: 25px;
+        left: 50px;
+        font-size: 50px;
+    }
+
+    .signIn {
+        text-decoration: underline;
+        position: absolute;
+        top: 20px;
+        right: 150px;
+        font-size: 20px;
+    }
+
+    #signUp {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        position: absolute;
+        top: 32px;
+        right: 50px;
+        font-size: 20px;
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+        padding: 5px 10px;
+    }
+
+    .about {
+        position: absolute;
+        top: 15px;
+        left: 420px;
+        font-size: 30px;
+        color: whitesmoke;
+    }
+
+    .quote{
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        font-size: 50px;
+    }
+
+
+    .contact {
+        position: absolute;
+        top: 15px;
+        left: 580px;
+        font-size: 30px;
+        color: whitesmoke;
+    }
+
+
+    /*FAQS*/
+    .faq_question {
+        position: relative;
+        top:150px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        cursor: pointer;
+        margin: auto;
+        font-size: 28px;
+        font-weight: bold;
+        width: 50%;
+        border: 3px solid white;
+        padding: 20px;
+        color: whitesmoke;
+    }
+    
+    .faq_answer_container {
+        position: relative;
+        top:150px;
+        margin: auto;
+        width: 50%;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height: 0px;
+        text-align: justify;
+        overflow: hidden;
+        font-size: 25px;
+        color: black;
+    }
+</style>
+  
+</head>
+  <body>
+    <div class="title">
+        <img id="logo" src="./images/transform-text.svg" alt="">
+        <h1 class="titleOfDiv" style="margin: 0px 100px 0px 100px">T Square</h1>
+        <h2 class="about">About Us</h2>
+        <h2 class="contact">Contact Support</h2>
+        <h3 class="signIn">Sign In</h3>
+        <h1 class="quote">Frequently Asked Questions</h1>
+        <button id="signUp" type="button"> Sign Up </button> <br><br> 
+    </div>
+
+   <!-- HTML -->
+   <div class="faq_container">
+    <div class="faq">
+       <div class="faq_question">[Account Security] How do I delete my T Square account?</div>
+       <div class="faq_answer_container">
+           <div class="faq_answer">Account deletion is permanent and irreversible. After successful deletion, you will not be able to login and view your account history. Please be informed that T Square reserves the right to reject future account creation requests from you.<br><br>
+           You can proceed to delete your T Square account by following these steps:<br><br>
+           1. Go to Profile Settings.<br><br>
+           2. Tap on Request Account Deletion and Proceed.<br><br>
+           3. Key in the verification code and tap Continue.<br><br>
+           4. Enter your reason for account deletion, tick the Terms and Conditions checkbox, and tap on Submit. <br><br>
+           5. Tap on Confirm.<br></div>
+       </div>       
+     </div>
+  </div>
+
+
+   <div class="faq_container">
+    <div class="faq">
+    <div class="faq_question">[Account Security] How do I change/update my email account?</div>
+            <div class="faq_answer_container">
+            <div class="faq_answer">You can change your email account by following these steps:<br><br>
+                1. Go to Settings.<br><br>
+                2. Click Profile.<br><br>
+                3. Click "Change email".<br><br>
+                4. Enter your password for verification.<br><br>
+                5. Enter your new email account.<br><br>
+                6. Tap on Continue to complete the process<br></div>
+            </div>   
+        </div>
+    </div>     
+
+    <div class="faq_container">
+    <div class="faq">
+    <div class="faq_question">[My Account] Why did I not receive my verification email? </div>
+            <div class="faq_answer_container">
+            <div class="faq_answer">If you do not receive the email, please check your spam and junk mail. In the event that no email can be found, you can request another verification email from your profile page setting or drop us an email at <b>help@TSquare.com</b></div>
+            </div>  
+        </div>
+    </div>      
+
+    <div class="faq_container">
+    <div class="faq">
+    <div class="faq_question">How do I contact the Support Team?</div>
+            <div class="faq_answer_container">
+            <div class="faq_answer">Solving problems is a Core Value here at T Square! We want all our users to get the help they need quickly and efficiently. Do drop us an email at <b>help@TSquare.com</b> and our customer service will get back to as soon as possible</div>
+            </div>        
+     </div>
+  </div>
+ </body>
+</html>

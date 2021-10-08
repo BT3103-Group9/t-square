@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>T Square</title>
+</head>
+
+<body>
+    <div class="title">
+        <img id = "bg" src = "./images/team.jpg" alt="">
+        <img id="logo" src="./images/transform-text.svg" alt="">
+        <h1 class="titleOfDiv" style="margin: 0px 100px 0px 100px">T Square</h1>
+        <h2 class="about">About Us</h2>
+        <h2 class="contact">Contact Support</h2>
+        <h3 class="signIn">Sign In</h3>
+        <h1 class="quote">Where We Match You with Your Perfect Tutor</h1>
+        <button id="signUp" type="button"> Sign Up </button> <br><br>
+        <input type="text" id="search" placeholder="&#xF002;  What would you like to learn today?">
+        <div id="cont1">
+            <h2>More than 300,000 Tutors</h2>
+        </div>
+        <div id="cont2">
+            <h2>Over 200 Subjects Available</h2>
+        </div>
+        <div id="cont3">
+            <h2>0% Agency Commission Fees</h2>
+        </div>
+    </div>
+
+
+    <div class="subtitle">
+        <h1>Subjects Offered</h1><br>
+        <div id="first"><h3 class="subject">Academics</h3></div>
+        <div id="second"><h3 class="subject">Performing Arts</h3></div>
+        <div id="third"><h3 class="subject">Sports</h3></div>
+        <div id="fourth"><h3 class="subject">Culinary</h3></div>
+        <div id="fifth"><h3 class="subject">Programming</h3></div>
+        <div id="sixth"><h3 class="subject">Others</h3></div>
+
+    </div>
+
+
+</body>
+
+<style>
+    .title{
+        background-color: black;
+        position: relative;
+        text-align: center;
+        color: white;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .subtitle{
+        position: relative;
+        text-align: center;
+        color: black;
+        font-size: 30px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    #bg {
+        width:100%;
+        filter: brightness(50%);
+    }
+
+    #logo {
+        position: absolute;
+        top: 25px;
+        left: 70px;
+        width: 65px;
+        height: 60px;
+        filter: invert(98%) sepia(100%) saturate(0%) hue-rotate(315deg) brightness(102%) contrast(103%);
+    }
+
+    .titleOfDiv{
+        position: absolute;
+        top: 25px;
+        left: 50px;
+        font-size: 50px;
+    }
+
+    .signIn {
+        text-decoration: underline;
+        position: absolute;
+        top: 20px;
+        right: 150px;
+        font-size: 20px;
+    }
+
+    #signUp {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        position: absolute;
+        top: 32px;
+        right: 50px;
+        font-size: 20px;
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+        padding: 5px 10px;
+    }
+
+    .about {
+        position: absolute;
+        top: 15px;
+        left: 420px;
+        font-size: 30px;
+        color: whitesmoke;
+    }
+
+    .contact {
+        position: absolute;
+        top: 15px;
+        left: 580px;
+        font-size: 30px;
+        color: whitesmoke;
+    }
+
+    .quote{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        font-size: 60px;
+    }
+
+    #search {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        width: 700px;
+        padding: 25px 60px;
+        font-size: 30px;
+        font-family: Arial, FontAwesome;
+
+    }
+
+    #cont1 {
+        position: absolute;
+        top: 80%;
+        width: 33.3%;
+        height: 200px;
+        background-color: whitesmoke;
+        float: left;
+        color: hsl(174, 16%, 45%);
+        font-size: 20px;
+        border: 5px solid rgb(201, 199, 199);
+        text-align: center;
+
+    }
+
+    #cont2 {
+        position: absolute;
+        top: 80%;
+        left: 33%;
+        width: 33.3%;
+        height: 200px;
+        background-color: whitesmoke;
+        color: rgb(96, 133, 129);
+        font-size: 20px;
+        border: 5px solid rgb(201, 199, 199);
+        text-align: center;
+    }
+
+    #cont3 {
+        position: absolute;
+        top: 80%;
+        width: 33.3%;
+        left: 66%;
+        height: 200px;
+        background-color: whitesmoke;
+        float: left;
+        color: rgb(96, 133, 129);
+        font-size: 20px;
+        border: 5px solid rgb(201, 199, 199);
+        text-align: center;
+
+    }
+    
+    #first, #second, #third, #fourth, #fifth, #sixth {
+        width: 260px;
+        height: 260px;
+        background-color: darkslategrey;
+        float: left;
+        color: black;
+        font-size: 20px;
+        border: 9px solid white;
+        text-align: center;
+    }
+
+
+    #first {
+        background:url(./images/acads.jpg) 50% 50% no-repeat;
+    }
+
+    #second {
+        background:url(./images/performingarts.jpg) 50% 50% no-repeat;
+    }
+
+    #third {
+        background:url(./images/sports.jpg) 50% 50% no-repeat;
+    }
+
+    #fourth {
+        background:url(./images/chef.jpg) 50% 50% no-repeat;
+    }
+
+    #fifth {
+        background:url(./images/programming.jpg) 50% 50% no-repeat;
+    }
+
+    #sixth {
+        background:url(./images/others.jpg) 50% 50% no-repeat;
+    }
+
+    .subject{
+        position:absolute;
+        text-decoration: underline;
+        top: 100px;
+    }
+
+</style>
+
+</html>

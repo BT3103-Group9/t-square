@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/login.css"> </link>
+    <script src= "./js/login.js" defer> </script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+		<h3>Log In Demo</h3>
+		<button type='button' class="btn btn-success" data-toggle="modal" data-target="#popUpWindow">Open Log In Window</button>
+        
+        <div class="modal fade " id="popUpWindow">
+        	<div class="modal-dialog" >
+        		<div class="modal-content">
+
+					<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button> -->
+
+					<!-- body -->
+            		<div class="container" id="container">
+            			<div class="form-container sign-up-container">
+							<form action="#">
+								<h1>Create Account</h1> <br>
+								<span>Use your email for registration</span>
+								<input type="email" placeholder="Email" />
+								<input type="password" placeholder="Password" />
+								<button id="cheryl">Sign Up</button>
+							</form>
+						</div>
+                		<div class="form-container sign-in-container">
+							<form action="#">
+								<h1>Log in</h1>
+								<input type="email" placeholder="Email" />
+								<input type="password" placeholder="Password" />
+								<a href="#">Forgot your password?</a>
+								<button>Log In</button>
+							</form>
+						</div>
+                		<div class="overlay-container">
+							<div class="overlay">
+								<div class="overlay-panel overlay-left">
+									<h1>Welcome Back!</h1> <br>
+									<button class="ghost" id="signIn">Log In</button>
+								</div>
+								<div class="overlay-panel overlay-right">
+									<h1>Hello there!</h1>
+									<p>Enter your personal details and start your learning journey with us today</p>
+									<button class="ghost" id="signUp">Sign Up</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+        
+    </div>
+
+    <style>
+    	#popUpWindow{
+        	background:transparent; 
+        }
+          
+    </style>
+    
+    
+</body>
+</html>
