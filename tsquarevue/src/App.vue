@@ -15,6 +15,7 @@ export default {
 </script>
 
 <style>
+/* @import'~bootstrap/dist/css/bootstrap.css'; */
 
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;

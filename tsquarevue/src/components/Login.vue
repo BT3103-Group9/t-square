@@ -1,15 +1,15 @@
 <template>
-  <div style="text-align:center;">    
-        <h1  id = "mainHead">T SQUARE</h1>
-        <div id= "firebaseui-auth-container"></div>
-        <div id="About">
-            T Square is a web app ... <br>
-            Start your learning journey with us today
-        </div>
+	<div class="container">
+		<div style="text-align:center;">    
+		<h1  id = "mainHead">T SQUARE</h1>
+		<div id= "firebaseui-auth-container"></div>
+		</div>
+		<Footer/>
 	</div>
 </template>
 
 <script>
+import Footer from './Footer.vue'
 import firebase from '../uifire.js'
 import 'firebase/compat/auth';
 import * as firebaseui from 'firebaseui'
@@ -18,6 +18,10 @@ import 'firebaseui/dist/firebaseui.css'
 export default {
 
     name: "Login",
+	
+	components: {
+		Footer,
+	},
 
     mounted() {
         var ui = firebaseui.auth.AuthUI.getInstance();
@@ -44,6 +48,8 @@ export default {
 
 
 
+
+
 <style scoped>
 
 #firebaseui-auth-container{
@@ -51,19 +57,16 @@ export default {
 	margin-bottom: 50px;;
 }
 
-#pagecontent{
+/* #pagecontent{
     height: 100px;
     font-size: larger;
     font-weight: bolder;
     text-align: center;
-    /* font-style: italic; */
     
 }
 
 #mainHead{
     text-align: center;
-    /* font-size: 50px; */
-    /* height: 100px; */
     text-shadow: 2px 2px grey;
 
 }
@@ -78,5 +81,5 @@ export default {
 h5{
     text-align: center;
     background-color:rgb(194, 202, 188) ;
-}
+} */
 </style>
