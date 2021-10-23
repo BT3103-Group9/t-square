@@ -1,22 +1,21 @@
 <template>
 	<NavBar/>
-	<img id ="" src="https://www.streamscheme.com/wp-content/uploads/2020/04/pepega.png" alt="">
-	<Footer/>
+	<img id ="bg" src="https://www.streamscheme.com/wp-content/uploads/2020/04/pepega.png" alt="">
+    <Footer/>
 </template>
 
 <script>
-
 
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 	export default {
-		name: "Home",
+		name: "Messages",
 
 		components: {
 			NavBar,
-			Footer
+            Footer
 		},
 
 		data() {

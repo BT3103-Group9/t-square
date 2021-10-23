@@ -13,11 +13,9 @@ export default {
   name: 'Logout',
 
   data() {
-  return {
-      user:false,    
-      
-            
-  }
+    return {
+        user:false,               
+    }
   },
 
   mounted() {
@@ -42,7 +40,7 @@ export default {
 
 </script>
 
-style <style scoped>
+<style scoped>
 #btn{
     text-align: center;
     margin: auto;
