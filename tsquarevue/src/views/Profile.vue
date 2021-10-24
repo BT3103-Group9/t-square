@@ -1,6 +1,11 @@
 <template>
 	<NavBar/>
-	<img id ="bg" src="https://www.streamscheme.com/wp-content/uploads/2020/04/pepega.png" alt="">
+	<div v-if="hasProfile" style="margin-top: 10%">
+		<ProfileDisplay/>
+	</div>
+	<div v-else style="margin-top: 10%">
+		<h4>It seems like you have no tutor profile yet. <br> <a href="/createprofile">Click here to create your tutor profile now!</a></h4>
+	</div>
     <Footer/>
 </template>
 
@@ -8,30 +13,47 @@
 
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import ProfileDisplay from '../components/ProfileDisplay.vue'
+import firebaseApp from '../firebase.js';
+import { getFirestore, doc, getDoc } from "firebase/firestore"
+import { getAuth } from "firebase/auth";
 
-	export default {
-		name: "Profile",
+const db = getFirestore(firebaseApp);
 
-		components: {
-			NavBar,
-            Footer
-		},
+export default {
+	name: "Profile",
 
-		data() {
-			return {
-				user: false,
-				// refreshComp: 0
+	components: {
+		NavBar,
+		Footer,
+		ProfileDisplay
+	},
+
+	data() {
+		return {
+			user: false,
+			hasProfile: false
+		}
+	},
+
+	mounted() {
+		const auth = getAuth(); 
+		this.fbuser = auth.currentUser.email;
+		this.checkProfile(this.fbuser);
+	},
+
+	methods: {
+		async checkProfile(user) {
+			let docs = await getDoc(doc(db, "profiles", user))
+
+			if (docs.exists()) {
+				this.hasProfile = true;
+			} else {
+				console.log("No such document!");
 			}
-		},
-
-		mounted() {
-			const auth = getAuth()
-			onAuthStateChanged(auth, user => {
-				this.user = user;
-			})
 		}
 	}
+}
 
 	
 </script>

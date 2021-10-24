@@ -1,13 +1,24 @@
 <template>
-    <div id ="logged" v-if="user" > 
-      	<div id="nav">
-			<router-link to="/home">Home</router-link> |
-			<router-link to="/about">About</router-link> |
-			<router-link to="/messages">Messages</router-link>  |    
-			<router-link to="/profile"  >Profile</router-link>  
-			<Logout/>
-      	</div>
-    </div>
+<header id="topBackground" v-if="user">
+	<div id="firstContainer"> 
+		<router-link id="navHome" to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link> 
+		<p id="navLink"><Logout/></p>
+		<p id="navLink"> | </p>
+		<router-link id="navLink" to="/about">About Us</router-link> 
+		<p id="navLink"> | </p>
+		<router-link id="navLink" to="/messages">Messages</router-link>
+		<p id="navLink"> | </p>
+		<router-link id="navLink" to="/profile">Tutor Profile</router-link>
+		
+	</div>
+
+	<div style="max-width: 100%; margin: 20px; text-align: center;">
+		<div id="input-icons">
+			<i class="fa fa-search icon"></i>
+			<input id="search" type="text" name="q" placeholder="What do you like to learn today?">
+		</div>
+	</div>
+</header>
 </template>
 
 <script>
@@ -39,26 +50,10 @@ export default {
 </script>
 
 <style scoped>
-
-#app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-}
-
-#nav {
-	padding: 30px;
-	text-align: center;
-}
-
-#nav a {
-	font-weight: bold;
-	color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-	color: #42b983;
-}
+@import "https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap";
+@import 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css';
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+@import "./css/demo.css";
+@import "./css/style.css";
 </style>

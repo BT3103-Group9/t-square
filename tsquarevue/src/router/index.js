@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Messages from '../views/Messages.vue'
 import Profile from '../views/Profile.vue'
+import CreateProfile from '../components/CreateProfile.vue'
 
 const routes = [
 	{
@@ -30,6 +31,11 @@ const routes = [
 		path: '/profile',
 		name: 'profile',
 		component: Profile
+	},
+	{
+		path: '/createprofile',
+		name: 'createprofile',
+		component: CreateProfile
 	},
 	// {
 	// 	path: '/:catchAll(.*)',
