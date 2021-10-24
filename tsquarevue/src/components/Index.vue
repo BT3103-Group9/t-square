@@ -1,0 +1,300 @@
+<template>
+<NavBar/>
+    <div class="title"></div>
+        <div id="topBackground">
+            <div id="firstContainer">
+                <a href="index.html"><img id="brandlogo" src="./images/transform-text.svg" alt=""></a> 
+                <a id="signUpLogin" href="">About Us</a> <!--change href after about page is set up-->
+                <p id="signUpLogin"> | </p>
+                <a id="signUpLogin" href="loginsignup.html">Sign Up</a>
+                <p id="signUpLogin"> | </p>
+                <a id="signUpLogin" href="loginsignup.html">Login</a> 
+            </div>
+        </div>
+        <img id = "bg" src = "./images/team.jpg" alt="">
+        <h1 class="titleOfDiv" style="margin: 0px 100px 0px 100px">T Square</h1>
+        <h1 class="quote">Where We Match You with Your Perfect Tutor</h1>
+
+        <input type="text" id="search" placeholder="&#xF002;  What would you like to learn today?">
+        <div id="cont1">
+            <h2>More than 300,000 Tutors</h2>
+            <img id = "tutor" src = "./images/tutor.png" alt="tutor">
+        </div>
+        <div id="cont2">
+            <h2>Over 200 Subjects Available</h2>
+            <img id = "tutor" src = "./images/education-app.png" alt="edu">
+        </div>
+        <div id="cont3">
+            <h2>0% Agency Commission Fees</h2>
+            <img id = "fee" src = "./images/cash-payment.png" alt="fee">
+        </div>
+    </div>
+
+
+    <div class="subtitle">
+        <h1>Subjects We Offer</h1><br>
+        <div id="first"><h3 class="subject">Academics</h3></div>
+        <div id="second"><h3 class="subject">Performing Arts</h3></div>
+        <div id="third"><h3 class="subject">Sports</h3></div>
+        <div id="fourth"><h3 class="subject">Culinary</h3></div>
+        <div id="fifth"><h3 class="subject">Programming</h3></div>
+        <div id="sixth"><h3 class="subject">Others</h3></div>
+
+    </div>
+    <Footer/>
+</template>
+
+<script>
+import firebaseApp from '@/firebase.js';
+import { getFirestore } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import NavBar from './NavBar.vue'
+import Footer from './Footer.vue'
+
+const db = getFirestore(firebaseApp);
+
+export default {
+    name: "Index",
+	
+	components: {
+        NavBar,
+		Footer
+	},
+
+    mounted() {
+        const auth = getAuth()
+        onAuthStateChanged(auth, user => {
+            this.user = user;
+        })
+	},
+
+    data() {
+        
+
+    }
+}
+
+<style scoped>
+#topBackground {
+    background-color: #000000;
+    height: 10%;
+    overflow: hidden;
+}
+
+#brandlogo {
+    max-width: 50px;
+    max-height: 50px;
+    filter: invert(98%) sepia(100%) saturate(0%) hue-rotate(315deg) brightness(102%) contrast(103%);
+}
+
+#tutor {
+    max-width: 50%;
+    max-height: 60%;
+}
+
+#fee {
+    max-width: 60%;
+    max-height: 65%;
+}
+
+#firstContainer {
+    height: 10px;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-left: 2%;
+}
+
+#signUpLogin {
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    padding-top: 1%;
+}
+
+.title {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.subtitle {
+    position: relative;
+    background-color: white;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#bg {
+    width: 100%;
+    height: 25%;
+    filter: brightness(50%);
+}
+
+.titleOfDiv {
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    font-size: 40px;
+    color: white;
+}
+
+#signUp {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: absolute;
+    top: 32px;
+    right: 50px;
+    font-size: 20px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 10px;
+}
+
+.about {
+    position: absolute;
+    top: 15px;
+    left: 420px;
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+.contact {
+    position: absolute;
+    top: 15px;
+    left: 580px;
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+.quote {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: white;
+}
+
+#search {
+    border-radius: 50px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 700px;
+    padding: 25px 60px;
+    font-size: 30px;
+    font-family: Arial, FontAwesome;
+
+}
+
+#cont1 {
+    position: absolute;
+    top: 100%;
+    width: 33.2%;
+    height: 350px;
+    background-color: rgb(198, 245, 245);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    float: left;
+    color: black;
+    font-size: 20px;
+    border: 5px solid white;
+    text-align: center;
+
+}
+
+#cont2 {
+    position: absolute;
+    top: 100%;
+    left: 33.2%;
+    width: 33.2%;
+    height: 350px;
+    background-color: lightgrey;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: black;
+    font-size: 20px;
+    border: 5px solid white;
+    text-align: center;
+}
+
+#cont3 {
+    position: absolute;
+    top: 100%;
+    width: 33.2%;
+    left: 66%;
+    height: 350px;
+    background-color: lightblue;
+    float: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: black;
+    font-size: 20px;
+    border: 5px solid white;
+    text-align: center;
+
+}
+
+#first,
+#second,
+#third,
+#fourth,
+#fifth,
+#sixth {
+    width: 16.5%;
+    height: 260px;
+    background-color: darkslategrey;
+    float: left;
+    color: black;
+    font-size: 20px;
+    border: solid white;
+    text-align: center;
+}
+
+
+#first {
+    background: url(./images/acads.jpg) 50% 50% no-repeat;
+}
+
+#second {
+    background: url(./images/performingarts.jpg) 50% 50% no-repeat;
+}
+
+#third {
+    background: url(./images/sports.jpg) 50% 50% no-repeat;
+}
+
+#fourth {
+    background: url(./images/chef.jpg) 50% 50% no-repeat;
+}
+
+#fifth {
+    background: url(./images/programming.jpg) 50% 50% no-repeat;
+}
+
+#sixth {
+    background: url(./images/others.jpg) 50% 50% no-repeat;
+}
+
+.subject {
+    position: absolute;
+    text-decoration: underline;
+    top: 100px;
+}
+
+</style>
+
+
+
+
+
