@@ -3,7 +3,6 @@
     overflow: hidden;
     position: absolute;
     width: 100%;
-    top: 0%;
 }
 
 #firstContainer {
@@ -167,11 +166,4 @@ td {
 #createEditHeader {
     text-align: center;
     margin-top: 10%;
-}
-
-#profileBtn {
-    background-color: #000000;
-    color: #ffffff;
-    margin: 1%;
-    border-radius: 5px;
 }

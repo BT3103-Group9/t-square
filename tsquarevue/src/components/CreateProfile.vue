@@ -146,6 +146,7 @@ export default {
                         yearActive: this.yearActive
                     })
                     console.log(docRef)
+                    this.$router.push({ name: "profile" })
                     this.firstName = this.lastName = this.mobile = this.address = this.unitNum = this.postalCode = this.area = this.email = this.rate = this.yearsExperience = this.bio = this.school = this.degree = this.courseOfStudy = this.company = this.role = this.yearActive = ""
                     this.$emit("added")
                 }
