@@ -4,7 +4,7 @@
         <div class="container">
             <div class="masthead-heading text-uppercase">Welcome to T Square</div>
             <div class="masthead-subheading ">Where We Match You with Your Perfect Tutor</div>
-			<input type="text" class="form-control form-input search rounded-pill text-center col-6 mx-auto" placeholder="What do you like to learn today?"/>
+			<input type="text" class="form-control form-input search rounded-pill text-center col-6 mx-auto" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
 			<a class="btn btn-dark btn-xl mt-2 rounded-pill" href="#">Search</a>
         </div>
     </header>
@@ -170,6 +170,7 @@
 			</div>
 		</div>
 	</section>
+	<BackToTop/>
 	<Footer/>
 
 </template>
@@ -177,13 +178,15 @@
 <script>
 import NavBarHome from "../components/NavBarHome.vue";
 import Footer from "../components/Footer.vue";
+import BackToTop from "../components/BackToTop.vue";
 
 export default {
 	name: "Home",
 
 	components: {
 		NavBarHome,
-		Footer
+		Footer,
+		BackToTop
 	},
 };
 </script>
