@@ -33,6 +33,48 @@
 		<div id="sixth"><h3 class="subject">Others</h3></div>
 	</div>
 	<Footer/>
+  <NavBarHome />
+  <div class="title">
+    <img id="bg" src="../assets/team.jpg" alt="" />
+    <h1 class="titleOfDiv">T Square</h1>
+    <h1 class="quote">Where We Match You with Your Perfect Tutor</h1>
+    <div id="searchbar">
+      <i class="fa fa-search icon" id="input-icons"></i>
+      <input
+        id="search"
+        type="text"
+        placeholder="What do you like to learn today?"
+      />
+
+    </div>
+    <div id="cont1">
+      <h2>More than 300,000 Tutors</h2>
+      <img id="tutor" src="../assets/tutor.png" alt="tutor" />
+    </div>
+    <div id="cont2">
+      <h2>Over 200 Subjects Available</h2>
+      <img id="tutor" src="../assets/education-app.png" alt="edu" />
+    </div>
+    <div id="cont3">
+      <h2>0% Agency Commission Fees</h2>
+      <img id="fee" src="../assets/cash-payment.png" alt="fee" />
+    </div>
+  </div>
+
+  <div class="subtitle">
+    <h1>Subjects We Offer</h1>
+    <br />
+    <div id="first">
+      <h3 class="subject">Academics</h3>
+      <!-- <router-link id="navLink" to="/acadsresults">Academics</router-link>  add in when hv filtered results-->
+    </div>
+    <div id="second"><h3 class="subject">Performing Arts</h3></div>
+    <div id="third"><h3 class="subject">Sports</h3></div>
+    <div id="fourth"><h3 class="subject">Culinary</h3></div>
+    <div id="fifth"><h3 class="subject">Programming</h3></div>
+    <div id="sixth"><h3 class="subject">Others</h3></div>
+  </div>
+  <Footer />
 </template>
 
 <script>
