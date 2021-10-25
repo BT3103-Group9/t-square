@@ -10,7 +10,8 @@
                 <div class="card-header bg-transparent text-center">
                   <img class="profile_img" src="../assets/tutordp.png" alt="Tutor dp">
                   <h3 id="name"></h3>
-                  <a href="editprofile.html">Edit Profile</a> 
+                  <button id="profileBtn" @click="editProfile()">Edit Profile</button> <!-- Not done -->
+                  <button id="profileBtn" @click="deleteProfile()">Delete Profile</button>
                 </div>
 
                 <div class="card-body">
@@ -94,7 +95,7 @@
 <script> //ratings
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore"
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, deleteDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
@@ -114,18 +115,29 @@ export default {
 
   methods: {
 
-  async display(user){    
-    let docs = await getDoc(doc(db, "profiles", user))
-    let userInfo = docs.data()
-    document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
-    document.getElementById("subject").innerHTML = userInfo.subject;
-    document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
-    document.getElementById("education").innerHTML = "<strong>" + userInfo.school + "</strong> <br>" + userInfo.degree + " in " + userInfo.courseOfStudy;
-    document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
-    document.getElementById("bio").innerHTML = userInfo.bio;
-    document.getElementById("company").innerHTML = userInfo.company;
-    document.getElementById("role").innerHTML = userInfo.role;
-    document.getElementById("yearActive").innerHTML = userInfo.yearActive;
+    async display(user){    
+      let docs = await getDoc(doc(db, "profiles", user))
+      let userInfo = docs.data()
+      document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
+      document.getElementById("subject").innerHTML = userInfo.subject;
+      document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
+      document.getElementById("education").innerHTML = "<strong>" + userInfo.school + "</strong> <br>" + userInfo.degree + " in " + userInfo.courseOfStudy;
+      document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
+      document.getElementById("bio").innerHTML = userInfo.bio;
+      document.getElementById("company").innerHTML = userInfo.company;
+      document.getElementById("role").innerHTML = userInfo.role;
+      document.getElementById("yearActive").innerHTML = userInfo.yearActive;
+    },
+
+    async deleteProfile() {
+      if (confirm("Are you sure you want to delete your profile?")) {
+        await deleteDoc(doc(db, "profiles", this.fbuser))
+        this.$router.push({ name: "Home" })
+      } else {
+        console.log("Profile not deleted")
+      }
+      
+      
     }
   }
 }
