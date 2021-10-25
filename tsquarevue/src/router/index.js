@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login.vue'
 import Index from '../components/Index.vue'
+// import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Messages from '../views/Messages.vue'
 import Profile from '../views/Profile.vue'
