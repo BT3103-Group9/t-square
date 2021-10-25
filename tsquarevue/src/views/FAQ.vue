@@ -1,6 +1,6 @@
 <template>
 	<NavBar/>
-	<img id ="bg" src="https://www.streamscheme.com/wp-content/uploads/2020/04/pepega.png" alt="">
+	<Questions/>
     <Footer/>
 </template>
 
@@ -8,6 +8,7 @@
 
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
+import Questions from '../components/Questions.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 	export default {
@@ -15,7 +16,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 		components: {
 			NavBar,
-            Footer
+            Footer,
+			Questions
 		},
 
 		data() {
