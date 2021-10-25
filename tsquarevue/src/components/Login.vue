@@ -9,15 +9,15 @@
 
         <div class="about">
             <h1>Our Mission</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+            <p>To make learning affordable and accessible to everyone.</p>
 
             <h1>Our Motivation</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+            <p>T Square's users can play dual roles in tutoring other users and seeking tutoring services in other skills.We want to create a community of users who can learn new skills from one another. 
+	    Our primary objective is to allow users to seek tutoring services from one another at no commission rate.</p>
 
             <h1>Our Team</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
-
-        </div>
+            <p>Our team consists of dedicated members from all walks of life, who work continuously to build this platform and grow our community of users</p>
+      </div>
         
 		<Footer/>
 	</div>
