@@ -10,15 +10,16 @@ import CreateProfile from '../components/CreateProfile.vue'
 
 const routes = [
 	{
-		path: "/",
-		name: "Login",
-		component: Login
-	},
-	{
 		path: '/home',
 		name: 'Home',
 		component: Home
 	},
+	{
+		path: "/",
+		name: "Login",
+		component: Login
+	},
+
 	{
 		path: '/about',
 		name: 'about',
