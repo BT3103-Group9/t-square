@@ -4,13 +4,15 @@
     <img id="bg" src="../assets/team.jpg" alt="" />
     <h1 class="titleOfDiv">T Square</h1>
     <h1 class="quote">Where We Match You with Your Perfect Tutor</h1>
-    <div id="searchbar">
-      <i class="fa fa-search icon" id="input-icons"></i>
+    <div>
       <input
         id="search"
         type="text"
         placeholder="What do you like to learn today?"
       />
+      <button type="submit" id = "input-icons">
+        <i class="fa fa-search icon"></i>
+      </button>
     </div>
     <div id="cont1">
       <h2>More than 300,000 Tutors</h2>
@@ -29,7 +31,10 @@
   <div class="subtitle">
     <h1>Subjects We Offer</h1>
     <br />
-    <div id="first"><h3 class="subject">Academics</h3></div>
+    <div id="first">
+      <h3 class="subject">Academics</h3>
+      <!-- <router-link id="navLink" to="/acadsresults">Academics</router-link>  add in when hv filtered results-->
+    </div>
     <div id="second"><h3 class="subject">Performing Arts</h3></div>
     <div id="third"><h3 class="subject">Sports</h3></div>
     <div id="fourth"><h3 class="subject">Culinary</h3></div>
@@ -141,12 +146,51 @@ export default {
 }
 
 #input-icons {
-    top: 80%;
-    left: 30%;
-    position: absolute;
-    color: black;
-
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  top: 79%;
+  left: 30%;
+  float: right;
+  color: rgb(97, 65, 65);
+  height: 65px;
+  width: 100px;
 }
+
+#input-icons i {
+    position: absolute;
+	top: 79%;
+	margin-left: 0%;
+    position: absolute;
+}
+
+/* .search-container {
+  float: right;
+}
+
+input[type=text] {
+  padding: 6px;
+  margin-top: %;
+  font-size: 17px;
+  border: none;
+}
+
+
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 80px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+} */
+
+
 
 #cont1 {
   position: absolute;
@@ -240,8 +284,6 @@ export default {
   top: 65px;
 }
 
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css/";
-@import "https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap";
 @import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css";
 @import "https://fonts.googleapis.com/css?family=Montserrat";

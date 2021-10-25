@@ -1,9 +1,24 @@
 <template>
 	<div class="container">
 		<div style="text-align:center;">    
-		<h1  id = "mainHead">T SQUARE</h1>
-		<div id= "firebaseui-auth-container"></div>
+            <h1  id="mainHead">T SQUARE</h1>
+            <img src="../assets/transform-text.png" alt="">
+            <div id="firebaseui-auth-container"></div>
+            <i>Scroll down to find out more about us</i>
 		</div>
+
+        <div class="about">
+            <h1>Our Mission</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+
+            <h1>Our Motivation</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+
+            <h1>Our Team</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+
+        </div>
+        
 		<Footer/>
 	</div>
 </template>
@@ -33,7 +48,6 @@ export default {
 
         var uiConfig = {
             signInSuccessUrl: '/home',
-            // signInSuccessUrl: this.$router.replace("/profile"),
             signInOptions: [
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -54,15 +68,7 @@ export default {
 
 #firebaseui-auth-container{
 	margin-top: 50px;;
-	margin-bottom: 50px;;
-}
-
-/* #pagecontent{
-    height: 100px;
-    font-size: larger;
-    font-weight: bolder;
-    text-align: center;
-    
+	margin-bottom: 30px;;
 }
 
 #mainHead{
@@ -71,15 +77,12 @@ export default {
 
 }
 
-#bg{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-}
-
-h5{
-    text-align: center;
-    background-color:rgb(194, 202, 188) ;
+/* Footer {
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:300px;
 } */
+
 </style>
