@@ -4,7 +4,7 @@
 		<router-link id="navHome" to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link> 
 		<p id="navLink"><Logout/></p>
 		<p id="navLink"> | </p>
-		<router-link id="navLink" to="/about">About Us</router-link> 
+		<router-link id="navLink" to="/faq">FAQ</router-link> 
 		<p id="navLink"> | </p>
 		<router-link id="navLink" to="/messages">Messages</router-link>
 		<p id="navLink"> | </p>

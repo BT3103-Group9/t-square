@@ -11,7 +11,7 @@ import Footer from '../components/Footer.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 	export default {
-		name: "About",
+		name: "FAQ",
 
 		components: {
 			NavBar,
