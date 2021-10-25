@@ -1,5 +1,5 @@
 <template>
-<footer class="bg-light text-dark text-center text-md-start" id="footer">
+<footer class="bg-dark text-light text-center text-md-start" id="footer">
 	<div class="container"> 
 		<div class="row p-4" style="display: inline-flex">
 			<!-- First Column -->
