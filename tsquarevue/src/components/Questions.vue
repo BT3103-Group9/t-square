@@ -1,11 +1,11 @@
 <template>
-<div class="hello">
+<div class="hello" style = "position:relative; top: 100px">
     <h1>Frequently Asked Questions</h1>
 </div>
 
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionExample" style = "position:relative; top: 120px">
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
+    <h2>
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         [Account Security] How do I delete my T Square account?
       </button>
@@ -23,8 +23,8 @@
     </div>
   </div>
   
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
+  <div class="accordion-item" style = "position:relative; top: 10px">
+    <h2>
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         [Account Security] How do I change/update my email account?
       </button>
@@ -41,8 +41,8 @@
       </div>
     </div>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
+  <div class="accordion-item" style = "position:relative; top: 10px">
+    <h2>
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         [My Account] Why did I not receive my verification email?
       </button>
@@ -55,46 +55,29 @@
     </div>
   </div>
 
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
+  <div class="accordion-item" style = "position:relative; top: 10px" >
+    <h2>
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
         How do I contact the Support Team?
       </button>
     </h2>
     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-          Solving problems is a Core Value here at T Square! We want all our users to get the help they need quickly and efficiently. 
-          <br><br>
-          Do drop us an email at <b>help@TSquare.com</b> and our customer service will get back to as soon as possible
+        Solving problems is a Core Value here at T Square! We want all our users to get the help they need quickly and efficiently. 
+        <br><br>
+        Do drop us an email at <b>help@TSquare.com</b> and our customer service will get back to as soon as possible
       </div>
     </div>
   </div>
-
 </div>
 
 
 </template>
 
 <script>
-
-
-export default {
-
-
-}
+export default {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-    position: relative;
-    top: 100px;
-}
-
-.accordion-header {
-    text-align: center;
-
-}
-
-
 </style>
