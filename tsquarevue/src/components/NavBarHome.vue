@@ -1,18 +1,19 @@
 <template>
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" v-if="user">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-radius: 0px" id="mainNav" v-if="user">
 		<div class="container">
-			<router-link id="navHome" to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<router-link to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link>
+			<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu
 				<i class="fas fa-bars ms-1"></i>
-			</button>
+			</button> -->
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-					<li class="nav-item"><router-link class="nav-link" to="/home">Home</router-link></li>
-					<li class="nav-item"><router-link class="nav-link" to="/profile">Profile</router-link></li>
-					<li class="nav-item"><router-link class="nav-link" to="/chat">Messages</router-link></li>
-					<li class="nav-item"><router-link class="nav-link" to="/faq">FAQ</router-link></li>
+					<li class="nav-item"><router-link class="nav-link" to="/home" style="font-size: 12px">Home</router-link></li>
+					<li class="nav-item"><router-link class="nav-link" to="/profile" style="font-size: 12px">Profile</router-link></li>
+					<li class="nav-item"><router-link class="nav-link" to="/chat" style="font-size: 12px">Messages</router-link></li>
+					<li class="nav-item"><router-link class="nav-link" to="/faq" style="font-size: 12px">FAQ</router-link></li>
 					<li class="nav-item"><a class="nav-link"><Logout/></a></li>
 				</ul>
 			</div>
