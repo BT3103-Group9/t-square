@@ -45,4 +45,9 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
     margin-right: auto;
     width: 60%;
 }
+
+#footer{
+ position:relative;
+ top:150px;
+}
 </style>

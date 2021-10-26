@@ -67,12 +67,12 @@ export default {
     width: 60%;
 }
 
-Footer {
+/* Footer {
 	position: absolute;
 	bottom:0;
 	left:0;
 	width:100%;
 	height:300px;
-}
+} */
 
 </style>
