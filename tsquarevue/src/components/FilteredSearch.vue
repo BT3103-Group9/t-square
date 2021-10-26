@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+<NavBar/>
+<div class="container">
 <div class="row">
   <!-- BEGIN SEARCH RESULT -->
   <div class="col-md-12 text-left">
@@ -31,7 +32,7 @@
             </div>
             <!-- END FILTER BY EXPERIENCE -->
             
-            <div class="padding"></div>
+            <br>
             
             <!-- BEGIN FILTER BY RATING -->
 
@@ -64,7 +65,7 @@
             
             <!-- END FILTER BY RATING -->
             
-            <div class="padding"></div>
+            <br>
             
             <!-- BEGIN FILTER BY PRICE -->
             <div class="price">
@@ -233,12 +234,20 @@
   <!-- END SEARCH RESULT -->
 </div>
 </div>
-
+<Footer/>
 </template>
 
 <script>
+import NavBar from "../components/NavBar.vue";
+import Footer from "../components/Footer.vue";
+
 export default {
   name: 'FilteredSearch',
+
+  components: {
+		NavBar,
+		Footer,
+	},
   
   /* methods:{
 
@@ -302,6 +311,9 @@ export default {
 @import 'https://code.jquery.com/jquery-2.2.4.min.js';
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
 
+.container{
+    margin-top: 7%;
+}
 body{
     margin-top:20px;
     background:#eee;

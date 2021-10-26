@@ -1,5 +1,5 @@
 <template>
-
+<NavBar/>
 <div class="container">
 <div class="messaging">
       <div class="inbox_msg">
@@ -19,7 +19,7 @@
           <div class="inbox_chat">
             <div class="chat_list active_chat">
               <div class="chat_people">
-                <div class="chat_img"> <img src= "../images/guy1.jpg"> </div>
+                <div class="chat_img"> <img src= "../../../images/guy1.jpg"> </div>
                 <div class="chat_ib">
                   <h5>Timothy Tan <span class="chat_date">Today</span></h5>
                   <p>Which days are you available for your class?</p>
@@ -28,7 +28,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src= "../images/guy2.jpg"> </div>
+                <div class="chat_img"> <img src= "../../../images/guy2.jpg"> </div>
                 <div class="chat_ib">
                   <h5>Jerry Lim<span class="chat_date">Yesterday</span></h5>
                   <p>I am free on Saturdays and Sundays after 3pm</p>
@@ -37,7 +37,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src= "..\images\girl1.jpg"> </div>
+                <div class="chat_img"> <img src= "../../../images/girl1.jpg"> </div>
                 <div class="chat_ib">
                   <h5>Sheryl Loh<span class="chat_date">Dec 20</span></h5>
                   <p>Locations are quite flexible for me except far East</p>
@@ -55,7 +55,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../images/girl2.jpeg"> </div>
+                <div class="chat_img"> <img src="../../../images/girl2.jpeg"> </div>
                 <div class="chat_ib">
                   <h5>Angela Ng<span class="chat_date">Dec 15</span></h5>
                   <p>How many lessons are you looking each week?</p>
@@ -64,7 +64,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src= "../images/girl3.jpg"> </div>
+                <div class="chat_img"> <img src= "../../../images/girl3.jpg"> </div>
                 <div class="chat_ib">
                   <h5>Chloe Lim<span class="chat_date">Dec 15</span></h5>
                   <p>We can have classes either at your place or at mine, depending on your convenience.</p>
@@ -94,7 +94,7 @@
         <div class="mesgs">
           <div class="msg_history">
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="../images/guy1.jpg"> </div>
+              <div class="incoming_msg_img"> <img src="../../../images/guy1.jpg"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Hello, may I ask what courses are you looking at? </p>
@@ -107,7 +107,7 @@
                 <span class="time_date"> 11:30 AM    |    Dec 19</span> </div>
             </div>
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="../images/guy1.jpg"> </div>
+              <div class="incoming_msg_img"> <img src="../../../images/guy1.jpg"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Ah I see. Which year are you in?</p>
@@ -120,7 +120,7 @@
                 <span class="time_date"> 12:45 PM    |    Today</span> </div>
             </div>
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="../images/guy1.jpg"> </div>
+              <div class="incoming_msg_img"> <img src="../../../images/guy1.jpg"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Which days are you available for your class?</p>
@@ -138,11 +138,20 @@
       </div>
       </div>
       </div>
+    <Footer/>
 </template>
 
 <script>
-export default {
+import NavBar from "../components/NavBar.vue";
+import Footer from "../components/Footer.vue";
 
+export default {
+    name: 'FilteredSearch',
+
+    components: {
+        NavBar,
+        Footer,
+    },
 }
 </script>
 

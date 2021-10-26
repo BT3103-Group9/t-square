@@ -5,7 +5,7 @@
             <div class="masthead-heading text-uppercase">Welcome to T Square</div>
             <div class="masthead-subheading ">Where We Match You with Your Perfect Tutor</div>
 			<input type="text" class="form-control form-input search rounded-pill text-center col-6 mx-auto" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
-			<a class="btn btn-dark btn-xl mt-2 rounded-pill" href="#">Search</a>
+			<a class="btn btn-dark btn-xl mt-2 rounded-pill" @click="$router.push('search')">Search</a>
         </div>
     </header>
 	

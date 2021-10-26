@@ -6,6 +6,8 @@ import FAQ from '../views/FAQ.vue'
 import Messages from '../views/Messages.vue'
 import Profile from '../views/Profile.vue'
 import CreateProfile from '../components/CreateProfile.vue'
+import Search from '../components/FilteredSearch.vue'
+import Chat from '../components/Chat.vue'
 
 
 const routes = [
@@ -39,6 +41,16 @@ const routes = [
 		path: '/createprofile',
 		name: 'createprofile',
 		component: CreateProfile
+	},
+	{
+		path: '/search',
+		name: 'search',
+		component: Search
+	},
+	{
+		path: '/chat',
+		name: 'chat',
+		component: Chat
 	},
 	// {
 	// 	path: '/:catchAll(.*)',

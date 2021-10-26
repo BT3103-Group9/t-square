@@ -11,7 +11,7 @@
 				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 					<li class="nav-item"><router-link class="nav-link" to="/home">Home</router-link></li>
 					<li class="nav-item"><router-link class="nav-link" to="/profile">Profile</router-link></li>
-					<li class="nav-item"><router-link class="nav-link" to="/messages">Messages</router-link></li>
+					<li class="nav-item"><router-link class="nav-link" to="/chat">Messages</router-link></li>
 					<li class="nav-item"><router-link class="nav-link" to="/faq">FAQ</router-link></li>
 					<li class="nav-item"><a class="nav-link"><Logout/></a></li>
 				</ul>
