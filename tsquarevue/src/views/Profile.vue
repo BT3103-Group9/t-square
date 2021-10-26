@@ -1,10 +1,11 @@
 <template>
 	<NavBar/>
-	<div v-if="hasProfile" style="margin-top: 10%">
+	<div v-if="hasProfile" style="margin-top: 5%">
 		<ProfileDisplay/>
 	</div>
 	<div v-else style="margin-top: 10%">
 		<h4>It seems like you have no tutor profile yet. <br> <a href="/createprofile">Click here to create your tutor profile now!</a></h4>
+		<br>
 	</div>
     <Footer/>
 </template>

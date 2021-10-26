@@ -1,5 +1,6 @@
 <template>
-<p id = "btn" @click="signOut()" v-if="user"> Logout </p>
+<button class="btn btn-sm btn-light" @click="signOut()" v-if="user" style="position: absolute; top:28px;">Logout</button>
+<!-- <p id = "btn" @click="signOut()" v-if="user">  </p> -->
     
 </template>
 
@@ -44,5 +45,11 @@ export default {
 #btn{
     text-align: center;
     margin: auto;
+}
+
+.btn-light:hover, .btn-light:focus, .btn-light:active, .btn-light.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #cca000;
+    border-color: #7e91a1; /*set the color you want here*/
 }
 </style>

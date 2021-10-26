@@ -1,34 +1,40 @@
 <template>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<div class="container">
-		<div style="text-align:center;">    
-            <h1  id="mainHead">T SQUARE</h1>
+		<div class="mt-5 mb-5 topdiv" style="text-align:center;">    
+            <h1  id="mainHead" class="pt-5">T SQUARE</h1>
             <img src="../assets/transform-text.png" alt="">
             <div id="firebaseui-auth-container"></div>
-            <i>Scroll down to find out more about us</i>
+            <i>Scroll down to find out more about us!</i>
 		</div>
 
-        <div class="about">
+        <div class="about mt-5 fadethisdiv animate__fadeInLeft">
             <h1>Our Mission</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+            <p>To make learning affordable and accessible to everyone.</p>
 
             <h1>Our Motivation</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
+            <p>T Square's users can play dual roles in tutoring other users and seeking tutoring services in other skills. We want to create a community of users who can learn new skills from one another. Our primary objective is to allow users to seek tutoring services from one another at no commission rate.</p>
 
             <h1>Our Team</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, voluptatem placeat. Molestias neque hic fuga maxime minus dolorum cum eum doloremque voluptatibus dolorem velit, illo suscipit possimus laborum sed expedita.</p>
-
-        </div>
+            <p>Our team consists of dedicated members from all walks of life, who work continuously to build this platform and grow our community of users</p>
+      </div>
         
 		<Footer/>
+        <BackToTop/>
 	</div>
 </template>
 
 <script>
 import Footer from './Footer.vue'
+import BackToTop from './BackToTop.vue'
 import firebase from '../uifire.js'
 import 'firebase/compat/auth';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
+import 'animate.css'
+
+
+// import $ from 'jquery'
 
 export default {
 
@@ -36,6 +42,7 @@ export default {
 	
 	components: {
 		Footer,
+        BackToTop
 	},
 
     mounted() {
@@ -55,16 +62,30 @@ export default {
         };
 
         ui.start("#firebaseui-auth-container", uiConfig)
+
+        // $(window).scroll(function() {
+        //     console.log($(window).scrollTop());
+        //     var topDivHeight = $(".topdiv").height();
+        //     var viewPortSize = $(window).height();
+            
+        //     var triggerAt = 150;
+        //     var triggerHeight = (topDivHeight - viewPortSize) + triggerAt;
+
+        //     if ($(window).scrollTop() >= triggerHeight) {
+        //         $('.fadethisdiv').css('visibility', 'visible').hide().fadeIn();
+        //         $(this).off('scroll');
+        //     }
+        // });
+
     }
 
 }
 </script>
 
 
-
-
-
 <style scoped>
+
+
 
 #firebaseui-auth-container{
 	margin-top: 50px;;
@@ -85,4 +106,16 @@ export default {
 	height:300px;
 } */
 
+/* .topdiv {
+    position:relative;
+    height:100%;
+    text-align:center;
+    font-size:24px;
+}
+.fadethisdiv {
+    height:100%;
+    text-align:center;
+    font-size:24px;
+    visibility:hidden;
+} */
 </style>

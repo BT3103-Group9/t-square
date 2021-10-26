@@ -1,7 +1,7 @@
 <template>
-<footer class="bg-light text-dark text-center text-md-start" id="footer">
+<footer class="bg-dark text-light text-center text-md-start" id="footer">
 	<div class="container"> 
-		<div class="row p-4">
+		<div class="row p-4" style="display: inline-flex">
 			<!-- First Column -->
 			<div class="col-lg-3 col-md-12 mb-4 mb-md-0 ">
 				<h3>About</h3>
