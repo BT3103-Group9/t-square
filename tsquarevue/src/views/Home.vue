@@ -21,21 +21,21 @@
                         <img id="tutor" src="../assets/tutor.png" alt="tutor" />
                     </span>
                     <h4 class="my-3">More than 300,000 tutors</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Our community of tutors come with varying backgrounds and qualifications to suit every individual's learning needs.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <img id="tutor" src="../assets/education-app.png" alt="edu" />
                     </span>
                     <h4 class="my-3">More than 200 subjects</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">We have a wide range of subjects offered, including academics, cooking, photography and many more.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <img id="fee" src="../assets/cash-payment.png" alt="fee" />
                     </span>
                     <h4 class="my-3">0% Agency Commission Fees</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">We do not collect any form of fees when we connect tutors and tutees on our platform.</p>
                 </div>
             </div>
         </div>
@@ -150,21 +150,21 @@
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="../assets/1.jpg" alt="..." />
 						<h4>Parveen Anand</h4>
-						<p class="text-muted">"This is fantastic! Thanks so much guys"</p>
+						<p class="text-muted">"This platform is fantastic! No commission fees, no charges at all."</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="../assets/2.jpg" alt="..." />
 						<h4>Diana Petersen</h4>
-						<p class="text-muted">"I have always wanted to learn how to pose like a model and you guys have created the opportunity for me!"</p>
+						<p class="text-muted">"I have always needed such an app and you guys have created the opportunity for me and so many other tutors!"</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="../assets/3.jpg" alt="..." />
 						<h4>Larry Parker</h4>
-						<p class="text-muted">"Revolutionary App! This should be the way how we learn things from now on!"</p>
+						<p class="text-muted">"Revolutionary App! This should be the way how tutors and tutees should connect from now on!"</p>
 					</div>
 				</div>
 			</div>
