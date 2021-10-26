@@ -59,11 +59,20 @@ export default {
 	
 </script>
 
-<style>
+<style scoped>
 #bg { 
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
 }
+
+Footer {
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:300px;
+}
+
 </style>
