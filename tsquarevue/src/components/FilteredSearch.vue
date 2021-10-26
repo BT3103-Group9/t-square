@@ -3,12 +3,12 @@
 <div class="container">
 <div class="row">
   <!-- BEGIN SEARCH RESULT -->
-  <div class="col-md-12 text-left">
+  <div class="col-md-12">
     <div class="grid search">
       <div class="grid-body">
         <div class="row">
           <!-- BEGIN FILTERS -->
-          <div class="col-md-3">
+          <div class="col-md-3 text-left">
             <h2 class="grid-title"><i class="fa fa-filter"></i> Filters</h2>
             <hr>
             
@@ -59,7 +59,7 @@
                     <label class="form-check-label" for="flexRadioDefault2">&nbsp; &#9734;</label>
                 </div>
 
-            
+                
                 
             </div>
             
@@ -106,27 +106,34 @@
 
             </div>
             <!-- END FILTER BY PRICE -->
+            <br>
+            <button class="btn btn-primary" type="submit">Apply Filters</button>
         </div>
 
         <!-- END FILTERS -->
         <!-- BEGIN RESULT -->
-        <div class="col-md-9">
+        <div class="col-md-9 ">
+            <div class="text-left">
             <h2><i class="fa fa-file-o"></i> Result</h2>
             <hr>
             <!-- BEGIN SEARCH INPUT -->
             <div class="input-group">
               <input type="text" class="form-control" value="Acting">
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                <button class="btn btn-dark" type="button"><i class="fa fa-search"></i></button>
               </span>
             </div>
+
+            
             <!-- END SEARCH INPUT -->
             <p>Showing all results matching "Acting"</p>
             
             <div class="padding"></div>
             
             <div class="row">
+
                 <!-- BEGIN ORDER RESULT -->
+                
                 <div class="col-sm-6">
                 <div class="btn-group">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -148,6 +155,7 @@
                     <button type="button" class="btn btn-default"><i class="fa fa-th"></i></button>
                 </div>
               </div>
+              
             </div>
             
             <!-- BEGIN TABLE RESULT -->
@@ -213,21 +221,24 @@
               </tbody></table>
             </div>
             <!-- END TABLE RESULT -->
-            
+            </div>
             <!-- BEGIN PAGINATION -->
-            <ul class="pagination">
-              <li class="disabled"><a href="#">«</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
+            <div class="pagination">
+                <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+                </nav>
+                </div>
             <!-- END PAGINATION -->
           </div>
           <!-- END RESULT -->
         </div>
+       
       </div>
     </div>
   </div>
@@ -248,7 +259,7 @@ export default {
 		NavBar,
 		Footer,
 	},
-  
+
   /* methods:{
 
   async display(){    
@@ -306,13 +317,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
-@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
-@import 'https://code.jquery.com/jquery-2.2.4.min.js';
-@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+
+
+@import 'https://unpkg.com/vue/dist/vue.min.js';
+@import 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js';
 
 .container{
-    margin-top: 7%;
+    margin-top: 9%;
 }
 body{
     margin-top:20px;
@@ -378,6 +389,9 @@ body {
   margin: 100px 50px;
 }
 
+.pagination {
+    justify-content: center;
+}
 [slider] {
   position: relative;
   height: 10px;
