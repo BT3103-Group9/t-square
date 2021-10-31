@@ -160,6 +160,8 @@ export default {
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js';
 
+.container{max-width:90%; margin:auto;}
+
 #topBackground {
   background-color: #000000;
   overflow: hidden;
@@ -215,7 +217,6 @@ export default {
   padding-top: 1%;
 }
 
-.container{max-width:100%; margin:auto;}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -273,7 +274,7 @@ img{ max-width:100%;}
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 70%; overflow-y: scroll;}
+.inbox_chat { height: 60%; overflow-y: scroll;}
 
 .active_chat{ background:#ebebeb;}
 
@@ -318,10 +319,12 @@ img{ max-width:100%;}
   width:100%;
 }
 .outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+
 .sent_msg {
   float: right;
   width: 46%;
 }
+
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
@@ -345,7 +348,7 @@ img{ max-width:100%;}
   top: 11px;
   width: 33px;
 }
-.messaging { padding: 0 0 50px 0;}
+.messaging { padding: 0 0 50px 0; margin-top: 12%;}
 .msg_history {
   height: 70%;
   overflow-y: auto;

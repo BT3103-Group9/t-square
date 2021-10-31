@@ -38,7 +38,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 	
 </script>
 
-<style>
+<style scoped>
 #bg { 
     display: block;
     margin-left: auto;
