@@ -5,7 +5,10 @@
 		<div class="container">
 			<router-link to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link>
       <input type="text" class="form-control form-input search rounded-pill text-center col-6" style="font-size: 15px; margin-left: 50px; margin-right: 50px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
-			<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <div class = "btnspace">
+      <a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="$router.push('search')">Search</a>
+			</div>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu
 				<i class="fas fa-bars ms-1"></i>
 			</button> -->
@@ -80,6 +83,11 @@ export default {
 @import "./css/demo.css";
 @import "./css/style.css";
 
+.btnspace{
+  margin-left: -80px;
+  margin-top: -8px;
+  position: relative;
+}
 
 .nav {
   display: flex;
@@ -198,6 +206,9 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
+
+
+
 .navbar-brand {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
