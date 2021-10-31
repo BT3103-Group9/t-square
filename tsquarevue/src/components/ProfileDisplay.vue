@@ -136,8 +136,10 @@ export default {
       } else {
         console.log("Profile not deleted")
       }
-      
-      
+    },
+
+    editProfile() {
+      this.$router.push({ name: "editprofile" })
     }
   }
 }

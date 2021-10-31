@@ -56,7 +56,7 @@
                 <div class="col-md-12"><label class="labels">Company (Required)</label><input type="text" required="" class="form-control" placeholder="Eg. Facebook" v-model="company"></div>
                 <div class="col-md-12"><label class="labels">Role (Required)</label><input type="text" required="" class="form-control" placeholder="Eg. Software Engineer" v-model="role"></div>
                 <div class="col-md-12"><label class="labels">Active since (Required)</label><input type="text" required="" class="form-control" placeholder="Eg. 2018" v-model="yearActive"></div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" @click="savetofs()">Save Profile</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" @click="savetofs()" style="background-color: #000000">Save Profile</button></div>
             </div>
         </div>
     </div>
