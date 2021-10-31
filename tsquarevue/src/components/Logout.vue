@@ -1,5 +1,5 @@
 <template>
-<button class="btn btn-sm btn-light" @click="signOut()" v-if="user" style="position: absolute; font-size: 12px">Logout</button>
+<button class="btn btn-sm btn-light" @click="signOut()" v-if="user" style="font-size: 12px">Logout</button>
 <!-- <p id = "btn" @click="signOut()" v-if="user">  </p> -->
     
 </template>
