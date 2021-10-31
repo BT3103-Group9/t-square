@@ -153,6 +153,8 @@ export default {
                 catch(error) {
                     console.error("Error adding document: ", error);
                 }
+            } else {
+                alert("Please fill in all the required fields!")
             }
         }
     }

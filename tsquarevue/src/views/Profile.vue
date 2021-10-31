@@ -1,6 +1,6 @@
 <template>
 	<NavBar/>
-	<div v-if="hasProfile" style="margin-top: 5%">
+	<div v-if="hasProfile" style="margin-top: 100px; height: 600px">
 		<ProfileDisplay/>
 	</div>
 	<div v-else style="margin-top: 25%; height: 300px">
