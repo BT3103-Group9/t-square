@@ -4,9 +4,9 @@
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-radius: 0px" id="mainNav" v-if="user">
 		<div class="container">
 			<router-link to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link>
-      <input type="text" class="form-control form-input search rounded-pill text-center col-6" style="font-size: 15px; margin-left: 50px; margin-right: 50px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
+      <input type="text" class="form-control form-input search text-center col-6" style="font-size: 15px; margin-left: 40px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
       <div class = "btnspace">
-      <a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="$router.push('search')">Search</a>
+      <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="$router.push('search')">Search</a>
 			</div>
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu
