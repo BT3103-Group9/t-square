@@ -1,14 +1,14 @@
 <template>
-    <Questions2/>
+    <Questions/>
 </template>
 
 <script>
-import Questions2 from '../components/Questions2.vue'
+import Questions from '../components/Questions.vue'
 export default {
     name: "FAQ",
 
     components: {
-        Questions2
+        Questions
     },
 
 }
