@@ -46,8 +46,12 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
     width: 60%;
 }
 
-/* #footer{
- position:relative;
- top:150px;
-} */
+Footer {
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:300px;
+}
+
 </style>
