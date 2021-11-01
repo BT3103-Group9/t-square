@@ -17,7 +17,7 @@
 						<li>Go to Profile Settings.</li>
 						<li>Tap on Request Account Deletion and Proceed.</li>
 						<li>Key in the verification code and tap Continue.</li>
-						<li>nter your reason for account deletion, tick the Terms and Conditions checkbox, and tap on Submit.</li>
+						<li>Enter your reason for account deletion, tick the Terms and Conditions checkbox, and tap on Submit.</li>
 						<li>Tap on Confirm.</li>
 					</ol>
 				</div>
