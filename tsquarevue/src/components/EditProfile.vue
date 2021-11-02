@@ -85,7 +85,7 @@ export default {
     mounted() {
         const auth = getAuth(); 
         this.fbuser = auth.currentUser.email;
-        this.display(this.fbuser)
+        this.display()
 	},
 
     data(){
@@ -96,7 +96,7 @@ export default {
 
     methods: {
 
-        async display(user){    
+        async display(){    
             const auth = getAuth(); 
             this.fbuser = auth.currentUser.email;
             const username = String(this.fbuser).split("@")[0]
@@ -142,10 +142,12 @@ export default {
     
             const auth = getAuth(); 
             this.fbuser = auth.currentUser.email;
+            const username = String(this.fbuser).split("@")[0]
+            let docs = await getDoc(doc(db, "profiles", username))
 
             if (!(this.firstName == "" || this.lastName == "" || this.rate == "" || this.yearsExperience == "" || this.subject == "" || this.bio == "" || this.school == "" || this.degree == "" || this.courseOfStudy == "" || this.company == "" || this.role == "" || this.yearActive == "")) {
                 try {
-                    const docRef = await setDoc(doc(db, "profiles", String(this.fbuser)),{
+                    const docRef = await setDoc(doc(db, "profiles", username),{
                         firstName: this.firstName,
                         lastName: this.lastName,
                         mobile: this.mobile,
@@ -165,7 +167,7 @@ export default {
                         yearActive: this.yearActive
                     })
                     console.log(docRef)
-                    this.$router.push({ name: "profile" })
+                    this.$router.push({ name: "profile", params: { username: username } })
                     this.firstName = this.lastName = this.mobile = this.address = this.unitNum = this.postalCode = this.area = this.email = this.rate = this.yearsExperience = this.bio = this.school = this.degree = this.courseOfStudy = this.company = this.role = this.yearActive = ""
                     this.$emit("added")
                 }

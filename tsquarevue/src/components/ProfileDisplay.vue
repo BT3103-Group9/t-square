@@ -113,12 +113,12 @@ export default {
   mounted() {
     const auth = getAuth(); 
     this.fbuser = auth.currentUser.email;
-    this.display(this.fbuser)
+    this.display()
   },
 
   methods: {
 
-    async display(user) {    
+    async display() {    
       const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
       const current = getAuth().currentUser.email
