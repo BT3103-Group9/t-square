@@ -126,6 +126,20 @@
                   <p>Which days are you available for your class?</p>
                   <span class="time_date"> 11:39 PM    |    Today</span></div>
               </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>I am looking at Sat and Sun.</p>
+                <span class="time_date"> 11:45 AM    |    Today</span> </div>
+                </div>
+            
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="../../../images/guy1.jpg"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>What do you think of Sat 3pm?</p>
+                  <span class="time_date"> 11:46 PM    |    Yesterday</span></div>
+              </div>
+            </div>
             </div>
           </div>
           <div class="type_msg">
