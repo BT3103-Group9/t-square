@@ -116,8 +116,8 @@ export default {
   methods: {
 
     async display(user) {    
-      const username = String(user).split("@")[0]
-      let docs = await getDoc(doc(db, "profiles", username))
+      const username = this.$route.params.username
+			let docs = await getDoc(doc(db, "profiles", username))
       let userInfo = docs.data()
       document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
       document.getElementById("subject").innerHTML = userInfo.subject;

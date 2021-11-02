@@ -32,20 +32,19 @@ export default {
 
 	data() {
 		return {
-			user: false,
+			fbuser: "",
 			hasProfile: false
 		}
 	},
 
 	mounted() {
 		const auth = getAuth(); 
-		this.fbuser = auth.currentUser.email;
-		this.checkProfile(this.fbuser);
+		this.checkProfile();
 	},
 
 	methods: {
-		async checkProfile(user) {
-			const username = String(user).split("@")[0]
+		async checkProfile() {
+			const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
 
 			if (docs.exists()) {
