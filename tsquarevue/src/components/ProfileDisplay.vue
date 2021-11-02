@@ -21,7 +21,7 @@
                   <p id="subject"></p>
                 </div>
 
-                <div class="card-body" style="background-color: rgb(32, 29, 25);  text-align: center; color: white; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <div class="card-body" style="background-color: rgb(32, 29, 25);  text-align: center; color: white; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" v-if="!myProfile">
                   <p class="mb-0">
                     <a href="chat.html"><strong class="pr-1" style="font-size: 20px; color: white; font-family: 'Montserrat';">Message Tutor</strong></a> 
                     <span class="fa fa-comments" style="color: white"></span> 
@@ -103,7 +103,8 @@ const db = getFirestore(firebaseApp);
 export default {
   data() {
   return{
-    fbuser:""
+    fbuser:"",
+    myProfile: false
     }
   }, 
 
@@ -118,6 +119,13 @@ export default {
     async display(user) {    
       const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
+      const current = getAuth().currentUser.email
+			const currentUsername = String(current).split("@")[0]
+
+      if (username.valueOf() == currentUsername.valueOf()) {
+				this.myProfile = true;
+			}
+
       let userInfo = docs.data()
       document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
       document.getElementById("subject").innerHTML = userInfo.subject;
@@ -129,6 +137,8 @@ export default {
       document.getElementById("role").innerHTML = userInfo.role;
       document.getElementById("yearActive").innerHTML = userInfo.yearActive;
     },
+
+    
 
     async deleteProfile() {
       const username = String(this.fbuser).split("@")[0]
