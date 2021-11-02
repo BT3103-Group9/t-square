@@ -3,9 +3,12 @@
 	<div v-if="hasProfile" style="margin-top: 100px; height: 600px">
 		<ProfileDisplay/>
 	</div>
-	<div v-else style="margin-top: 25%; height: 300px">
+	<div v-else-if="myProfile" style="margin-top: 25%; height: 300px">
 		<h4>It seems like you have no tutor profile yet. <br><br> <a href="/createprofile">Click here to create your tutor profile now!</a></h4>
 		<br>
+	</div>
+	<div v-else style="margin-top: 25%; height: 300px">
+		<h4>This profile does not exist. Please try again.</h4>
 	</div>
     <Footer/>
 </template>
@@ -33,7 +36,8 @@ export default {
 	data() {
 		return {
 			fbuser: "",
-			hasProfile: false
+			hasProfile: false,
+			myProfile: false
 		}
 	},
 
@@ -46,11 +50,15 @@ export default {
 		async checkProfile() {
 			const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
+			const current = getAuth().currentUser.email
+			const currentUsername = String(current).split("@")[0]
 
 			if (docs.exists()) {
 				this.hasProfile = true;
+			} else if (username.valueOf() == currentUsername.valueOf()) {
+				this.myProfile = true;
 			} else {
-				console.log("No such document!");
+				console.log("Profile does not exist")
 			}
 		}
 	}
