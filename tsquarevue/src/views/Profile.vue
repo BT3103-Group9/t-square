@@ -45,7 +45,8 @@ export default {
 
 	methods: {
 		async checkProfile(user) {
-			let docs = await getDoc(doc(db, "profiles", user))
+			const username = String(user).split("@")[0]
+			let docs = await getDoc(doc(db, "profiles", username))
 
 			if (docs.exists()) {
 				this.hasProfile = true;

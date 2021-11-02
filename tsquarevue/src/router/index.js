@@ -35,7 +35,7 @@ const routes = [
 		component: Messages
 	},
 	{
-		path: '/profile',
+		path: '/profile/:username',
 		name: 'profile',
 		component: Profile
 	},
