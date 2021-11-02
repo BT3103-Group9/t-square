@@ -118,7 +118,7 @@
             <hr>
             <!-- BEGIN SEARCH INPUT -->
             <div class="input-group">
-              <input type="text" class="form-control" value="Acting">
+              <input type="text" class="form-control" value="querytext">
               <span class="input-group-btn">
                 <button class="btn btn-dark" type="button"><i class="fa fa-search"></i></button>
               </span>
@@ -260,9 +260,29 @@ export default {
 		Footer,
 	},
 
-  /* methods:{
+//  methods:{
 
-  async display(){    
+//   async display(){  
+//     async display(user){    
+//       let docs = await getDoc(doc(db, "profiles", user))
+//       let userInfo = docs.data()
+
+//       document.orderByChild('subject')
+//                  .startAt(queryText)
+//                  .endAt(queryText+"\uf8ff")
+//       document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
+//       document.getElementById("subject").innerHTML = userInfo.subject;
+//       document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
+//       document.getElementById("education").innerHTML = "<strong>" + userInfo.school + "</strong> <br>" + userInfo.degree + " in " + userInfo.courseOfStudy;
+//       document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
+//       document.getElementById("bio").innerHTML = userInfo.bio;
+//       document.getElementById("company").innerHTML = userInfo.company;
+//       document.getElementById("role").innerHTML = userInfo.role;
+//       document.getElementById("yearActive").innerHTML = userInfo.yearActive;
+//     },
+
+    
+  /*  
     let z = await getDocs(collection(db,'tutor-details'))   
     let ind = 1 
     var tp = 0
