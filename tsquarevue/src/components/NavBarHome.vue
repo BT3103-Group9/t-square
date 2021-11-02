@@ -2,12 +2,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-radius: 0px" id="mainNav" v-if="user">
 		<div class="container">
-			<router-link to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link>
-			<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				Menu
-				<i class="fas fa-bars ms-1"></i>
-			</button> -->
-
+			<router-link to="/home"><img src="../assets/LogoWhite.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 					<li class="nav-item"><router-link class="nav-link" to="/home" style="font-size: 12px; margin-top: 5px">Home</router-link></li>
@@ -19,18 +14,6 @@
 			</div>
 		</div>
 	</nav>
-<!-- <header id="topBackground" v-if="user">
-	<div id="firstContainer"> 
-		<router-link id="navHome" to="/home"><img id="brandlogo" src="../assets/transform-text.png" alt=""></router-link> 
-		<p id="navLink"><Logout/></p>
-		<p id="navLink"> | </p>
-		<router-link id="navLink" to="/faq">FAQ</router-link> 
-		<p id="navLink"> | </p>
-		<router-link id="navLink" to="/messages">Messages</router-link>
-		<p id="navLink"> | </p>
-		<router-link id="navLink" to="/profile">Tutor Profile</router-link>
-	</div>
-</header> -->
 </template>
 
 <script>
@@ -40,9 +23,9 @@ import Logout from './Logout.vue'
 
 export default {
     name:'NavBar',
-	components: {
-		Logout
-	},
+    components: {
+      Logout
+    },
 
     data() {
         return {
@@ -51,12 +34,12 @@ export default {
     },
 
   	mounted() {
-		const auth = getAuth();
-		onAuthStateChanged(auth, (user) => {
-		if (user) {
-			this.user = user;      
-		}
-		})
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;      
+        }
+      })
   	}, 
 }
 </script>

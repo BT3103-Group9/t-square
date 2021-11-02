@@ -2,8 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<div class="container">
 		<div class="mt-5 mb-5 topdiv" style="text-align:center;">    
-            <h1  id="mainHead" class="pt-5">T SQUARE</h1>
-            <img src="../assets/transform-text.png" alt="">
+            <img src="../assets/LogoBlack.png" alt="" style="max-height: 400px; max-width: 400px;">
             <div id="firebaseui-auth-container"></div>
             <i>Scroll down to find out more about us!</i>
 		</div>
