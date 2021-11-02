@@ -4,7 +4,6 @@
 		<div class="mt-5 mb-5 topdiv" style="text-align:center;">    
             <img src="../assets/LogoBlack.png" alt="" style="max-height: 400px; max-width: 400px;">
             <div id="firebaseui-auth-container"></div>
-            <i>Scroll down to find out more about us!</i>
 		</div>
 
         <div class="about mt-5 fadethisdiv animate__fadeInLeft">
@@ -16,11 +15,12 @@
 
             <h1>Our Team</h1>
             <p>Our team consists of dedicated members from all walks of life, who work continuously to build this platform and grow our community of users</p>
-      </div>
+        </div>
         
-		<Footer/>
+
         <BackToTop/>
 	</div>
+    <Footer/>
 </template>
 
 <script>
@@ -46,10 +46,8 @@ export default {
 
     mounted() {
         var ui = firebaseui.auth.AuthUI.getInstance();
-        console.log("first ui is", ui)
         if (!ui) {
             ui = new firebaseui.auth.AuthUI(firebase.auth()); // Initialize the FirebaseUI Widget using Firebase
-            console.log("Inside !ui is ", ui)
         }
 
         var uiConfig = {
@@ -61,21 +59,6 @@ export default {
         };
 
         ui.start("#firebaseui-auth-container", uiConfig)
-
-        // $(window).scroll(function() {
-        //     console.log($(window).scrollTop());
-        //     var topDivHeight = $(".topdiv").height();
-        //     var viewPortSize = $(window).height();
-            
-        //     var triggerAt = 150;
-        //     var triggerHeight = (topDivHeight - viewPortSize) + triggerAt;
-
-        //     if ($(window).scrollTop() >= triggerHeight) {
-        //         $('.fadethisdiv').css('visibility', 'visible').hide().fadeIn();
-        //         $(this).off('scroll');
-        //     }
-        // });
-
     }
 
 }
@@ -105,16 +88,5 @@ export default {
 	height:300px;
 } */
 
-/* .topdiv {
-    position:relative;
-    height:100%;
-    text-align:center;
-    font-size:24px;
-}
-.fadethisdiv {
-    height:100%;
-    text-align:center;
-    font-size:24px;
-    visibility:hidden;
-} */
+
 </style>

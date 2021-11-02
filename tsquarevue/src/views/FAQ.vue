@@ -1,6 +1,6 @@
 <template>
 	<NavBar/>
-	<Questions2/>
+	<Questions/>
     <Footer/>
 </template>
 
@@ -8,7 +8,7 @@
 
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
-import Questions2 from '../components/Questions2.vue'
+import Questions from '../components/Questions.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 	export default {
@@ -17,7 +17,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 		components: {
 			NavBar,
             Footer,
-			Questions2
+			Questions
 		},
 
 		data() {

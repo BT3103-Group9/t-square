@@ -6,7 +6,6 @@
 
 <script>
 
-console.log("in App")
 
 
 export default {
