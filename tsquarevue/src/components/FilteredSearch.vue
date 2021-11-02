@@ -118,7 +118,7 @@
             <hr>
             <!-- BEGIN SEARCH INPUT -->
             <div class="input-group">
-              <input type="text" class="form-control" value="querytext">
+              <input type="text" class="form-control" id="query">
               <span class="input-group-btn">
                 <button class="btn btn-dark" type="button"><i class="fa fa-search"></i></button>
               </span>
@@ -261,15 +261,13 @@ export default {
 	},
 
 //  methods:{
-
-//   async display(){  
-//     async display(user){    
+  
+//     async display(){    
 //       let docs = await getDoc(doc(db, "profiles", user))
 //       let userInfo = docs.data()
 
-//       document.orderByChild('subject')
-//                  .startAt(queryText)
-//                  .endAt(queryText+"\uf8ff")
+//       let results = userInfo.orderByChild('subject').startAt(document.getElementById("query").innerHTML).endAt(document.getElementById("query").innerHTML+"\uf8ff");
+
 //       document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
 //       document.getElementById("subject").innerHTML = userInfo.subject;
 //       document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
