@@ -97,7 +97,10 @@ export default {
     methods: {
 
         async display(user){    
-            let docs = await getDoc(doc(db, "profiles", user))
+            const auth = getAuth(); 
+            this.fbuser = auth.currentUser.email;
+            const username = String(this.fbuser).split("@")[0]
+            let docs = await getDoc(doc(db, "profiles", username))
             let userInfo = docs.data()
             document.getElementById("firstName").value = userInfo.firstName;
             document.getElementById("lastName").value = userInfo.lastName;
