@@ -10,7 +10,7 @@
                 <div class="card-header bg-transparent text-center">
                   <img class="profile_img" src="../assets/tutordp.png" alt="Tutor dp">
                   <h3 id="name"></h3>
-                  <button id="profileBtn" @click="editProfile()">Edit Profile</button> <!-- Not done -->
+                  <button id="profileBtn" @click="editProfile()">Edit Profile</button> 
                   <button id="profileBtn" @click="deleteProfile()">Delete Profile</button>
                 </div>
 
@@ -49,7 +49,7 @@
                       <th>Teaching Experience</th>
                       <td id="yearsExperience"></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <th>Ratings</th>
                       <td>
                         <span class="fa fa-star checked"></span>
@@ -58,7 +58,7 @@
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star"></span>
                       </td>
-                    </tr>
+                    </tr> -->
                   </table>
                 </div>
               </div>
@@ -115,8 +115,9 @@ export default {
 
   methods: {
 
-    async display(user){    
-      let docs = await getDoc(doc(db, "profiles", user))
+    async display(user) {    
+      const username = String(user).split("@")[0]
+      let docs = await getDoc(doc(db, "profiles", username))
       let userInfo = docs.data()
       document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
       document.getElementById("subject").innerHTML = userInfo.subject;
@@ -130,8 +131,9 @@ export default {
     },
 
     async deleteProfile() {
+      const username = String(this.fbuser).split("@")[0]
       if (confirm("Are you sure you want to delete your profile?")) {
-        await deleteDoc(doc(db, "profiles", this.fbuser))
+        await deleteDoc(doc(db, "profiles", username))
         this.$router.push({ name: "Home" })
       } else {
         console.log("Profile not deleted")

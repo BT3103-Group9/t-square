@@ -43,9 +43,12 @@
 
         <div class="col-md-6">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4>Highest Education</h4>
-                </div>
+                <!--<div class="d-flex justify-content-between align-items-center"><h4>Profile Photo</h4></div>
+                <input id="fileButton" type="file" accept="image/*">
+
+                <br><br>-->
+
+                <div class="d-flex justify-content-between align-items-center"><h4>Highest Education</h4></div>
                 <div class="col-md-12"><label class="labels">School (Required)</label><input type="text" required="" class="form-control" placeholder="Eg. National University of Singapore" v-model="school"></div>
                 <div class="col-md-12"><label class="labels">Degree Type (Required)</label><input type="text" required="" class="form-control" placeholder="Eg. Bachelor of Science" v-model="degree"></div>
                 <div class="col-md-12"><label class="labels">Course of Study (Required)</label><input type="text" required="" class="form-control" placeholder="Eg. Mathematics" v-model="courseOfStudy"></div>
@@ -69,10 +72,12 @@ import firebaseApp from '@/firebase.js';
 import { getFirestore } from "firebase/firestore"
 import { doc, setDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import NavBar from './NavBar.vue'
 import Footer from './Footer.vue'
 
 const db = getFirestore(firebaseApp);
+//const storage = getStorage(firebaseApp);
 
 export default {
     name: "Createprofile",
@@ -87,6 +92,56 @@ export default {
         onAuthStateChanged(auth, user => {
             this.user = user;
         })
+        /*const metadata = {
+            contentType: 'image/jpeg'
+        };
+        const fileButton = document.getElementById('fileButton');
+        fileButton.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const storageRef = ref(storage, 'profilePic/' + file.name);
+            const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+            // Listen for state changes, errors, and completion of the upload.
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Upload is ' + progress + '% done');
+                    switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        console.log('Upload is running');
+                        break;
+                    }
+                }, 
+                (error) => {
+                    // A full list of error codes is available at
+                    // https://firebase.google.com/docs/storage/web/handle-errors
+                    switch (error.code) {
+                    case 'storage/unauthorized':
+                        // User doesn't have permission to access the object
+                        break;
+                    case 'storage/canceled':
+                        // User canceled the upload
+                        break;
+
+                    // ...
+
+                    case 'storage/unknown':
+                        // Unknown error occurred, inspect error.serverResponse
+                        break;
+                    }
+                }, 
+                () => {
+                    // Upload completed successfully, now we can get the download URL
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    console.log('File available at', downloadURL);
+                    });
+                }
+            )
+        })*/
 	},
 
     data(){
@@ -109,11 +164,7 @@ export default {
             courseOfStudy: "",
             company: "",
             role: "",       
-            yearActive: "",
-            file: null,
-            value: null,
-            isPic: false,
-            preview: null
+            yearActive: ""        
         }
     },
 
@@ -126,7 +177,8 @@ export default {
 
             if (!(this.firstName == "" || this.lastName == "" || this.rate == "" || this.yearsExperience == "" || this.subject == "" || this.bio == "" || this.school == "" || this.degree == "" || this.courseOfStudy == "" || this.company == "" || this.role == "" || this.yearActive == "")) {
                 try {
-                    const docRef = await setDoc(doc(db, "profiles", String(this.fbuser)),{
+                    const username = String(this.fbuser).split("@")[0]
+                    const docRef = await setDoc(doc(db, "profiles", username),{
                         firstName: this.firstName,
                         lastName: this.lastName,
                         mobile: this.mobile,
@@ -146,7 +198,7 @@ export default {
                         yearActive: this.yearActive
                     })
                     console.log(docRef)
-                    this.$router.push({ name: "profile" })
+                    this.$router.push({ name: "profile", params: { username: username } })
                     this.firstName = this.lastName = this.mobile = this.address = this.unitNum = this.postalCode = this.area = this.email = this.rate = this.yearsExperience = this.bio = this.school = this.degree = this.courseOfStudy = this.company = this.role = this.yearActive = ""
                     this.$emit("added")
                 }
