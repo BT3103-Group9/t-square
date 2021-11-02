@@ -35,21 +35,21 @@ export default {
     }, 
 
     mounted() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.user = user;      
-      }
-    });
-    this.fbuser = auth.currentUser.email;
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user = user;      
+        }
+      });
     }, 
 
     methods: {
-    toProfile() {
-      const username = String(this.fbuser).split("@")[0]
-      this.$router.push({ name: "profile", params: { username: username } })
+      toProfile() {
+        this.fbuser = getAuth().currentUser.email
+        const username = String(this.fbuser).split("@")[0]
+        this.$router.push({ name: "profile", params: { username: username } })
+      }
     }
-  }
 }
 </script>
 

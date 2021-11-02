@@ -72,11 +72,11 @@ export default {
         this.user = user;      
       }
     });
-    this.fbuser = auth.currentUser.email;
   }, 
 
   methods: {
     toProfile() {
+      this.fbuser = getAuth().currentUser.email
       const username = String(this.fbuser).split("@")[0]
       this.$router.push({ name: "profile", params: { username: username } })
     }
