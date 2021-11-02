@@ -6,7 +6,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 					<li class="nav-item"><router-link class="nav-link" to="/home" style="font-size: 12px; margin-top: 5px">Home</router-link></li>
-					<li class="nav-item"><router-link id="toProfile" to="/profile" @click="toProfile()" class="nav-link" style="font-size: 12px; margin-top: 5px">Profile</router-link></li>
+					<li class="nav-item"><router-link id="toProfile" to="/home" @click="toProfile()" class="nav-link" style="font-size: 12px; margin-top: 5px">Profile</router-link></li>
 					<li class="nav-item"><router-link class="nav-link" to="/chat" style="font-size: 12px; margin-top: 5px">Messages</router-link></li>
 					<li class="nav-item"><router-link class="nav-link" to="/faq" style="font-size: 12px; margin-top: 5px">FAQ</router-link></li>
 					<li class="nav-item"><a class="nav-link"><Logout/></a></li>
@@ -28,27 +28,28 @@ export default {
     },
 
     data() {
-        return {
-            user:false,                      
+      return{
+        user:"",
+        fbuser: ""
         }
-    },
+    }, 
 
-  	mounted() {
-		const auth = getAuth();
-		onAuthStateChanged(auth, (user) => {
+    mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;      
       }
-		});
+    });
     this.fbuser = auth.currentUser.email;
-  	}, 
+    }, 
 
     methods: {
-      toProfile() {
-        const username = String(this.fbuser).split("@")[0]
-        this.$router.push({ name: "profile", params: { username: username } })
-      }
+    toProfile() {
+      const username = String(this.fbuser).split("@")[0]
+      this.$router.push({ name: "profile", params: { username: username } })
     }
+  }
 }
 </script>
 
