@@ -1,5 +1,4 @@
 <template>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<div class="container">
 		<div class="mt-5 mb-5 topdiv" style="text-align:center;">    
             <img src="../assets/LogoBlack.png" alt="" style="max-height: 400px; max-width: 400px;">
@@ -16,11 +15,9 @@
             <h1>Our Team</h1>
             <p>Our team consists of dedicated members from all walks of life, who work continuously to build this platform and grow our community of users</p>
         </div>
-        
-
         <BackToTop/>
 	</div>
-    <Footer/>
+    <!-- <Footer/> -->
 </template>
 
 <script>
@@ -66,8 +63,6 @@ export default {
 
 
 <style scoped>
-
-
 
 #firebaseui-auth-container{
 	margin-top: 50px;;

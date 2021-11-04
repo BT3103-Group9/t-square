@@ -1,19 +1,29 @@
 <template>
-    <Questions/>
+    <div class="background">
+        <img src="../assets/olia-gozha-J4kK8b9Fgj8-unsplash.jpg" alt="">
+        <Login/>
+    </div>
 </template>
 
 <script>
-import Questions from '../components/Questions.vue'
+
+import Login from '../components/Login.vue'
 export default {
-    name: "FAQ",
+    name: "Testing",
 
     components: {
-        Questions
+        Login,
+
     },
 
 }
 </script>
 
-<style>
+<style scoped>
+
+/* .background {
+    background-image: url('../assets/olia-gozha-J4kK8b9Fgj8-unsplash.jpg')
+} */
+
 
 </style>

@@ -3,7 +3,7 @@ import Login from '../components/Login.vue'
 // import Index from '../components/Index.vue'
 import Home from '../views/Home.vue'
 import FAQ from '../views/FAQ.vue'
-import Messages from '../views/Messages.vue'
+
 import Profile from '../views/Profile.vue'
 import CreateProfile from '../components/CreateProfile.vue'
 import Search from '../components/FilteredSearch.vue'
@@ -28,11 +28,6 @@ const routes = [
 		path: '/faq',
 		name: 'faq',
 		component: FAQ
-	},
-	{
-		path: '/messages',
-		name: 'messages',
-		component: Messages
 	},
 	{
 		path: '/profile/:username',
