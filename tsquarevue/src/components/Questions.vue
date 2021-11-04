@@ -6,19 +6,27 @@
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingOne">
 				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-				[Account Security] How do I delete my T Square account?
+				How do I sign up for an account?
 				</button>
 			</h2>
 			<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 				<div class="accordion-body text-left">
-					<p> Account deletion is permanent and irreversible. After successful deletion, you will not be able to login and view your account history. Please be informed that T Square reserves the right to reject future account creation requests from you. </p>
-					<p> You can proceed to delete your T Square account by following these steps:</p>
+					<p> <b> 1. Sign up via Email </b></p>
+					<p> To create an account using your email address:</p>
 					<ol>
-						<li>Go to Profile Settings.</li>
-						<li>Tap on Request Account Deletion and Proceed.</li>
-						<li>Key in the verification code and tap Continue.</li>
-						<li>Enter your reason for account deletion, tick the Terms and Conditions checkbox, and tap on Submit.</li>
-						<li>Tap on Confirm.</li>
+						<li>Select 'Sign in with email'</li>
+						<li>Enter First & Last name</li>
+						<li>Enter your choice of Password</li>
+						<li>Tap on 'Save' and you're ready!</li>
+						<li>Your T Square account will be created immediately and you’ll be logged in to your new brand new account!</li>
+					</ol>
+					<br>
+					<p> <b> 2. Sign up via Google Mail </b></p>
+					<p> To create an account using your email address:</p>
+					<ol>
+						<li>Select 'Sign in with Google'</li>
+						<li>Sign in to your existing Google account</li>
+						<li>Your T Square account will be created immediately and you’ll be logged in to your new brand new account!</li>
 					</ol>
 				</div>
 			</div>
