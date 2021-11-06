@@ -72,7 +72,10 @@
                 <h4>Budget</h4>
                 Per Session <br>
                 <div slider id="slider-distance">
-                    <div>
+                    <b-field :label="currentFilteredPrice">
+                      <b-slider v-model="filterPrice" :min="0" :max="100"></b-slider>
+                    </b-field>
+                    <!-- <div>
                         <div inverse-left style="width:70%;"></div>
                         <div inverse-right style="width:70%;"></div>
                         <div range style="left:30%;right:40%;"></div>
@@ -101,7 +104,7 @@
                     children[3].style.width=(100-value)+'%';
                     children[5].style.right=(100-value)+'%';
                     children[9].style.left=value+'%';children[13].style.left=value+'%';
-                    children[13].childNodes[1].innerHTML=this.value;" />
+                    children[13].childNodes[1].innerHTML=this.value;" /> -->
                 </div>
 
             </div>
@@ -117,10 +120,13 @@
             <h2><i class="fa fa-file-o"></i> Result</h2>
             <hr>
             <!-- BEGIN SEARCH INPUT -->
+            <!-- <b-field label="Filter">
+              <b-input placeholder="Search Product" v-model="filterName" />
+            </b-field> -->
             <div class="input-group">
               <input type="text" class="form-control" id="query">
               <span class="input-group-btn">
-                <button class="btn btn-dark" type="button"><i class="fa fa-search"></i></button>
+                <button class="btn btn-dark" type="button" onclick="return clicked()"><i class="fa fa-search"></i></button>
               </span>
             </div>
 
@@ -162,7 +168,18 @@
             <div class="table-responsive">
               <table class="table table-hover">
                 <tbody>
-                  <tr>
+                  <tr v-for = "item in display" : key = "item.mobile"  class = "row-item">
+                  <td class="number text-center"></td>
+                  <td class="image"><img src= "https://maximonline.com/wp-content/uploads/2019/12/Gal-Gadot-1.jpg" alt=""></td>
+                  <td class="product" id = "name"><strong></strong></td><br><br>
+                  <td class="product" id = "subject"></td><br>
+                  <td class ="product" id = "yearsExperience"></td>
+                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
+                  <td class="price text-right" id = "rate"></td>
+                </tr> 
+
+<!--                 
+                <tr>
                   <td class="number text-center">1</td>
                   <td class="image"><img src="https://maximonline.com/wp-content/uploads/2019/12/Gal-Gadot-1.jpg" alt=""></td>
                   <td class="product"><strong>Gal Gadot</strong><br><br>Qualification: Starred in Wonder Woman <br>Teaching Experience: 11 years</td>
@@ -217,7 +234,7 @@
                   <td class="product"><strong>Liam Hemsworth</strong><br><br>Qualification: Starred in Thor <br>Teaching Experience: 16 years</td>
                   <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
                   <td class="price text-right">$350</td>
-                </tr>
+                </tr> -->
               </tbody></table>
             </div>
             <!-- END TABLE RESULT -->
@@ -249,8 +266,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
+import BackToTop from "../components/BackToTop.vue";
+
 
 export default {
   name: 'FilteredSearch',
@@ -258,26 +278,61 @@ export default {
   components: {
 		NavBar,
 		Footer,
+    BackToTop
 	},
 
-//  methods:{
-  
-//     async display(){    
-//       let docs = await getDoc(doc(db, "profiles", user))
-//       let userInfo = docs.data()
+  // props: {
+  //   tutor: Object;
+  // }
 
-//       let results = userInfo.orderByChild('subject').startAt(document.getElementById("query").innerHTML).endAt(document.getElementById("query").innerHTML+"\uf8ff");
+  // data() {
+  //     return {
+  //       filterPrice: 50,
+  //     }
+  // } 
 
-//       document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
-//       document.getElementById("subject").innerHTML = userInfo.subject;
-//       document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
-//       document.getElementById("education").innerHTML = "<strong>" + userInfo.school + "</strong> <br>" + userInfo.degree + " in " + userInfo.courseOfStudy;
-//       document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
-//       document.getElementById("bio").innerHTML = userInfo.bio;
-//       document.getElementById("company").innerHTML = userInfo.company;
-//       document.getElementById("role").innerHTML = userInfo.role;
-//       document.getElementById("yearActive").innerHTML = userInfo.yearActive;
-//     },
+  // computed: {
+  //   currentFilteredPrice: function () {
+  //     return "Price: $" + this.filterPrice;
+  //   },
+  //   getFilteredItems: function () {
+  //     return this.getItems.filter((item) => {
+  //       const validQuantity = item.quantity > 0;
+  //       const validPrice = item.price < this.filterPrice;
+  //       const validType =
+  //         this.filterType.length === 0 || this.filterType.includes(item.type);
+  //       const validName = item.name
+  //         .toLowerCase()
+  //         .includes(this.filterName.toLowerCase());
+  //       const validCompany =
+  //         this.filterCompany.length === 0 ||
+  //         this.filterCompany.includes(item.business);
+
+  //       return (
+  //         validQuantity && validPrice && validType && validName && validCompany
+  //       );
+  //     });
+  //   },
+  //   },
+  // },
+
+  methods:{
+    async display: function(){    
+      let docs = await getDoc(doc(db, "profiles", user))
+      let userInfo = docs.data()
+
+      let results = userInfo.orderByChild('subject').startAt(document.getElementById("query").value).endAt(document.getElementById("query").value+"\uf8ff");
+      return results.filter((item) => { 
+        const validName = item.name
+          .toLowerCase()
+          .includes(this.filterName.toLowerCase());
+      })
+      document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
+      document.getElementById("subject").innerHTML = userInfo.subject;
+      document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
+      document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
+      document.getElementById("role").innerHTML = userInfo.role;
+    },
 
     
   /*  
