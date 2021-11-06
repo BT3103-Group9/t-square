@@ -168,7 +168,7 @@
             <div class="table-responsive">
               <table class="table table-hover">
                 <tbody>
-                  <tr v-for = "item in display" : key = "item.mobile"  class = "row-item">
+                  <tr v-for = "item in display" :key = "item.mobile"  class = "row-item">
                   <td class="number text-center"></td>
                   <td class="image"><img src= "https://maximonline.com/wp-content/uploads/2019/12/Gal-Gadot-1.jpg" alt=""></td>
                   <td class="product" id = "name"><strong></strong></td><br><br>
@@ -317,7 +317,7 @@ export default {
   // },
 
   methods:{
-    async display: function(){    
+    async display(){    
       let docs = await getDoc(doc(db, "profiles", user))
       let userInfo = docs.data()
 
@@ -385,7 +385,7 @@ export default {
       ind+= 1   
     }) 
   },            */
-}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
