@@ -1,43 +1,42 @@
 <template>
 	<div class="container">
-		<div class="mt-5 mb-5 topdiv" style="text-align:center;">    
-            <img src="../assets/LogoBlack.png" alt="" style="max-height: 400px; max-width: 400px;">
-            <div id="firebaseui-auth-container"></div>
+		<div class="mt-5 mb-5 topdiv" style="text-align:center; padding-top:10%;">    
+            <img src="../assets/HomePage/LogoWhite.png" style="max-height: 350px; max-width: 350px;"> 
 		</div>
+        <div id="firebaseui-auth-container" style="padding-bottom:5%;"></div>
 
-        <div class="about mt-5 fadethisdiv animate__fadeInLeft">
-            <h1>Our Mission</h1>
-            <p>To make learning affordable and accessible to everyone.</p>
+        <div class="about mt-5">
+            <div data-aos="fade-in">
+                <h1 data-aos="fade-in">Our Mission</h1>
+                <p>To make learning affordable and accessible to everyone.</p>
+            </div>
 
-            <h1>Our Motivation</h1>
-            <p>T Square's users can play dual roles in tutoring other users and seeking tutoring services in other skills. We want to create a community of users who can learn new skills from one another. Our primary objective is to allow users to seek tutoring services from one another at no commission rate.</p>
+            <div data-aos="fade-left">
+                <h1>Our Motivation</h1>
+                <p>T Square's users can play dual roles in tutoring other users and seeking tutoring services in other skills. We want to create a community of users who can learn new skills from one another. Our primary objective is to allow users to seek tutoring services from one another at no commission rate.</p>
+            </div>
 
-            <h1>Our Team</h1>
-            <p>Our team consists of dedicated members from all walks of life, who work continuously to build this platform and grow our community of users</p>
+            <div data-aos="fade-right">
+                <h1>Our Team</h1>
+                <p>Our team consists of dedicated members from all walks of life, who work continuously to build this platform and grow our community of users</p>
+            </div>
         </div>
         <BackToTop/>
 	</div>
-    <!-- <Footer/> -->
 </template>
 
 <script>
-import Footer from './Footer.vue'
 import BackToTop from './BackToTop.vue'
 import firebase from '../uifire.js'
 import 'firebase/compat/auth';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import 'animate.css'
-
-
-// import $ from 'jquery'
 
 export default {
 
     name: "Login",
 	
 	components: {
-		Footer,
         BackToTop
 	},
 

@@ -1,18 +1,15 @@
 <template>
-    <div class="background">
-        <!-- <img src="../assets/olia-gozha-J4kK8b9Fgj8-unsplash.jpg" alt=""> -->
-        <Login/>
-    </div>
+    <!-- <Mission/> -->
 </template>
 
 <script>
 
-import Login from '../components/Login.vue'
+// import Mission from '../components/Mission.vue'
 export default {
     name: "Testing",
 
     components: {
-        Login,
+        // Mission,
 
     },
 
@@ -21,9 +18,7 @@ export default {
 
 <style scoped>
 
-/* .background {
-    background-image: url('../assets/olia-gozha-J4kK8b9Fgj8-unsplash.jpg')
-} */
+
 
 
 </style>

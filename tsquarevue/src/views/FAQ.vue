@@ -1,5 +1,6 @@
 <template>
 	<NavBar/>
+	<img src="../assets/HomePage/LogoWhite.png" style="max-height: 400px; max-width: 400px; padding-top:5%"> 
 	<Questions/>
     <Footer/>
 </template>

@@ -18,21 +18,21 @@
             <div class="row text-center">
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <img id="tutor" src="../assets/tutor.png" alt="tutor" />
+                        <img id="tutor" src="../assets/HomePage/tutor.png" alt="tutor" />
                     </span>
                     <h4 class="my-3">More than 300,000 tutors</h4>
                     <p class="text-muted">Our community of tutors come with varying backgrounds and qualifications to suit every individual's learning needs.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <img id="tutor" src="../assets/education-app.png" alt="edu" />
+                        <img id="tutor" src="../assets/HomePage/education-app.png" alt="edu" />
                     </span>
                     <h4 class="my-3">More than 200 subjects</h4>
                     <p class="text-muted">We have a wide range of subjects offered, including academics, cooking, photography and many more.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <img id="fee" src="../assets/cash-payment.png" alt="fee" />
+                        <img id="fee" src="../assets/HomePage/cash-payment.png" alt="fee" />
                     </span>
                     <h4 class="my-3">0% Agency Commission Fees</h4>
                     <p class="text-muted">We do not collect any form of fees when we connect tutors and tutees on our platform.</p>
@@ -57,7 +57,7 @@
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/acads.jpg" alt="..." />
+							<img class="img-fluid" src="../assets/HomePage/acads.jpg" alt="..." />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Academics</div>
@@ -85,7 +85,7 @@
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/sports.jpg" alt="..." />
+							<img class="img-fluid" src="../assets/HomePage/sports.jpg" alt="..." />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Sports</div>
@@ -113,7 +113,7 @@
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/programming.jpg" alt="..." />
+							<img class="img-fluid" src="../assets/HomePage/programming.jpg" alt="..." />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Programming</div>
@@ -127,7 +127,7 @@
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/others.jpg" alt="..." />
+							<img class="img-fluid" src="../assets/HomePage/others.jpg" alt="..." />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Others</div>
@@ -148,21 +148,21 @@
 			<div class="row mt-5">
 				<div class="col-lg-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="../assets/1.jpg" alt="..." />
+						<img class="mx-auto rounded-circle" src="../assets/HomePage/1.jpg" alt="..." />
 						<h4>Parveen Anand</h4>
 						<p class="text-muted">"This platform is fantastic! No commission fees, no charges at all."</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="../assets/2.jpg" alt="..." />
+						<img class="mx-auto rounded-circle" src="../assets/HomePage/2.jpg" alt="..." />
 						<h4>Diana Petersen</h4>
 						<p class="text-muted">"I have always needed such an app and you guys have created the opportunity for me and so many other tutors!"</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="../assets/3.jpg" alt="..." />
+						<img class="mx-auto rounded-circle" src="../assets/HomePage/3.jpg" alt="..." />
 						<h4>Larry Parker</h4>
 						<p class="text-muted">"Revolutionary App! This should be the way how tutors and tutees should connect from now on!"</p>
 					</div>
@@ -445,138 +445,10 @@ header.masthead .masthead-heading {
     position: absolute;
 }
 
-/* .search-container {
-  float: right;
-}
-
-input[type=text] {
-  padding: 6px;
-  margin-top: %;
-  font-size: 17px;
-  border: none;
-}
-
-
-.search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 80px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.search-container button:hover {
-  background: #ccc;
-} */
-
-
-
-/* #cont1 {
-	position: absolute;
-	top: 110%;
-	width: 33.33%;
-	height: 350px;
-	background-color: rgb(198, 245, 245);
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-	float: left;
-	color: black;
-	font-size: 20px;
-	border: 5px solid white;
-	text-align: center;
-}
-
-#cont2 {
-	position: absolute;
-	top: 110%;
-	left: 33.33%;
-	width: 33.33%;
-	height: 350px;
-	background-color: lightgrey;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-	color: black;
-	font-size: 20px;
-	border: 5px solid white;
-	text-align: center;
-}
-
-#cont3 {
-	position: absolute;
-	top: 110%;
-	width: 33.33%;
-	left: 66.66%;
-	height: 350px;
-	background-color: lightblue;
-	float: left;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-	color: black;
-	font-size: 20px;
-	border: 5px solid white;
-	text-align: center;
-}
-
-#first,
-#second,
-#third,
-#fourth,
-#fifth,
-#sixth {
-	width: 16.66%;
-	height: 260px;
-	background-color: darkslategrey;
-	float: left;
-	color: black;
-	font-size: 10px;
-	border: solid white;
-	text-align: center;
-}
-
-#first {
-  	background: url(../assets/acads.jpg) 50% 50% no-repeat;
-}
-
-#second {
-  	background: url(../assets/performingarts.jpg) 50% 50% no-repeat;
-}
-
-#third {
-  	background: url(../assets/sports.jpg) 50% 50% no-repeat;
-}
-
-#fourth {
-  	background: url(../assets/chef.jpg) 50% 50% no-repeat;
-}
-
-#fifth {
-  	background: url(../assets/programming.jpg) 50% 50% no-repeat;
-}
-
-#sixth {
-  	background: url(../assets/others.jpg) 50% 50% no-repeat;
-}
-
-.subject {
-	position: absolute;
-	text-decoration: underline;
-	top: 65px;
-} */
-
 @import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css";
 @import "https://fonts.googleapis.com/css?family=Montserrat";
 
-/* Footer {
-	position: absolute;
-	bottom:0;
-	left:0;
-	width:100%;
-	height:300px;
-} */
 </style>
 
 

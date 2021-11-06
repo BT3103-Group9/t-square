@@ -2,7 +2,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-radius: 0px" id="mainNav" v-if="user">
 		<div class="container">
-			<router-link to="/home"><img src="../assets/LogoWhite.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
+			<router-link to="/home"><img src="../assets/HomePage/LogoBlack.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 					<li class="nav-item"><router-link class="nav-link" to="/home" style="font-size: 12px; margin-top: 5px">Home</router-link></li>

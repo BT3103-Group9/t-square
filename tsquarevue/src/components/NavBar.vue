@@ -3,7 +3,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-radius: 0px" id="mainNav" v-if="user">
 		<div class="container">
-			<router-link to="/home"><img  src="../assets/LogoWhite.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
+			<router-link to="/home"><img  src="../assets/HomePage/LogoBlack.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
       <input type="text" class="form-control form-input search text-center col-6" style="font-size: 15px; margin-left: 40px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
       <div class = "btnspace">
       <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="$router.push('search')">Search</a>
