@@ -1,8 +1,10 @@
 <template>
+	<NavBar/>
 	<div>
 		<div
 			class="app-container"
 			:class="{ 'app-mobile': isDevice, 'app-mobile-dark': theme === 'dark' }"
+			style="margin-top: 100px"
 		>
 			<div>
 				<button @click="resetData">Clear Data</button>
@@ -21,6 +23,15 @@
 				</option>
 			</select>
 
+			<div v-if="showOptions" class="button-theme">
+				<button class="button-light" @click="theme = 'light'">
+					Light
+				</button>
+				<button class="button-dark" @click="theme = 'dark'">
+					Dark
+				</button>
+			</div>
+
 			<chat-container
 				v-if="showChat"
 				:current-user-id="currentUserId"
@@ -34,15 +45,20 @@
 			</div> -->
 		</div>
 	</div>
+	<Footer/>
 </template>
 
 <script>
-import { roomsRef, usersRef } from '../firebase_chat.js'
-import ChatContainer from './../components/ChatContainer.vue'
+import { roomsRef, usersRef } from '../uifire.js'
+import ChatContainer from '../components/ChatContainer.vue'
+import NavBar from '../components/NavBar.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
 	components: {
-		ChatContainer
+		ChatContainer,
+		NavBar,
+		Footer
 	},
 
 	data() {
@@ -179,6 +195,18 @@ input {
 	select {
 		margin: 10px 0;
 	}
+
+	.button-theme {
+		margin: 10px 10px 0 0;
+
+		.button-github {
+			height: 23px;
+
+			img {
+				height: 23px;
+			}
+		}
+	}
 }
 
 .user-logged {
@@ -198,6 +226,60 @@ select {
 	border-radius: 4px;
 	background: #fff;
 	margin-bottom: 20px;
+}
+
+.button-theme {
+	float: right;
+	display: flex;
+	align-items: center;
+
+	.button-light {
+		background: #fff;
+		border: 1px solid #46484e;
+		color: #46484e;
+	}
+
+	.button-dark {
+		background: #1c1d21;
+		border: 1px solid #1c1d21;
+	}
+
+	button {
+		color: #fff;
+		outline: none;
+		cursor: pointer;
+		border-radius: 4px;
+		padding: 6px 12px;
+		margin-left: 10px;
+		border: none;
+		font-size: 14px;
+		transition: 0.3s;
+		vertical-align: middle;
+
+		&.button-github {
+			height: 30px;
+			background: none;
+			padding: 0;
+			margin-left: 20px;
+
+			img {
+				height: 30px;
+			}
+		}
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&:active {
+			opacity: 0.6;
+		}
+
+		@media only screen and (max-width: 768px) {
+			padding: 3px 6px;
+			font-size: 13px;
+		}
+	}
 }
 
 .version-container {

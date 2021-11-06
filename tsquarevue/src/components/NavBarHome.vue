@@ -6,7 +6,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 					<li class="nav-item"><router-link class="nav-link" to="/home" style="font-size: 12px; margin-top: 5px">Home</router-link></li>
-					<li class="nav-item"><router-link id="toProfile" to="/home" @click="toProfile()" class="nav-link" style="font-size: 12px; margin-top: 5px">Profile</router-link></li>
+					<li class="nav-item"><router-link id="toProfile" to="/home" v-on:click.native="toProfile()" class="nav-link" style="font-size: 12px; margin-top: 5px">Profile</router-link></li>
 					<li class="nav-item"><router-link class="nav-link" to="/chat" style="font-size: 12px; margin-top: 5px">Messages</router-link></li>
 					<li class="nav-item"><router-link class="nav-link" to="/faq" style="font-size: 12px; margin-top: 5px">FAQ</router-link></li>
 					<li class="nav-item"><a class="nav-link"><Logout/></a></li>

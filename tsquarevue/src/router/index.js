@@ -7,7 +7,7 @@ import FAQ from '../views/FAQ.vue'
 import Profile from '../views/Profile.vue'
 import CreateProfile from '../components/CreateProfile.vue'
 import Search from '../components/FilteredSearch.vue'
-import Chat from '../components/Chat.vue'
+import Chat from '../views/Chat.vue'
 import EditProfile from '../components/EditProfile.vue'
 import Testing from '../views/Testing.vue' 
 

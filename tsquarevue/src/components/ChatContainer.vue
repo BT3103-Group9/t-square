@@ -1,5 +1,42 @@
 <template>
 	<div class="window-container" :class="{ 'window-mobile': isDevice }">
+		<form v-if="addNewRoom" @submit.prevent="createRoom">
+			<input v-model="addRoomUsername" type="text" placeholder="Add username" />
+			<button type="submit" :disabled="disableForm || !addRoomUsername">
+				Create Room
+			</button>
+			<button class="button-cancel" @click="addNewRoom = false">
+				Cancel
+			</button>
+		</form>
+
+		<form v-if="inviteRoomId" @submit.prevent="addRoomUser">
+			<input v-model="invitedUsername" type="text" placeholder="Add username" />
+			<button type="submit" :disabled="disableForm || !invitedUsername">
+				Add User
+			</button>
+			<button class="button-cancel" @click="inviteRoomId = null">
+				Cancel
+			</button>
+		</form>
+
+		<form v-if="removeRoomId" @submit.prevent="deleteRoomUser">
+			<select v-model="removeUserId">
+				<option default value="">
+					Select User
+				</option>
+				<option v-for="user in removeUsers" :key="user._id" :value="user._id">
+					{{ user.username }}
+				</option>
+			</select>
+			<button type="submit" :disabled="disableForm || !removeUserId">
+				Remove User
+			</button>
+			<button class="button-cancel" @click="removeRoomId = null">
+				Cancel
+			</button>
+		</form>
+
 		<chat-window
 			:height="screenHeight"
 			:theme="theme"
@@ -14,7 +51,6 @@
 			:room-actions="roomActions"
 			:menu-actions="menuActions"
 			:room-message="roomMessage"
-			:templates-text="templatesText"
 			@fetch-more-rooms="fetchMoreRooms"
 			@fetch-messages="fetchMessages"
 			@send-message="sendMessage"
@@ -38,15 +74,19 @@
 
 <script>
 import {
-	firebase,
+	app,
 	roomsRef,
 	messagesRef,
 	usersRef,
 	filesRef,
 	deleteDbField
-} from '../firebase_chat.js'
-import { parseTimestamp, isSameDay } from '@/utils/dates'
-import ChatWindow from '../../../src/lib/ChatWindow.vue'
+} from '../uifire.js'
+import { parseTimestamp, isSameDay } from './utils/dates'
+import ChatWindow from './chatsrc/lib/ChatWindow.vue'
+// import ChatWindow, { Rooms } from 'vue-advanced-chat'
+// import ChatWindow from 'vue-advanced-chat'
+// import 'vue-advanced-chat/dist/vue-advanced-chat.css'
+// import ChatWindow from './../../dist/vue-advanced-chat.umd.min.js'
 
 export default {
 	components: {
@@ -92,26 +132,16 @@ export default {
 			removeUserId: '',
 			removeUsers: [],
 			roomActions: [
+				{ name: 'inviteUser', title: 'Invite User' },
+				{ name: 'removeUser', title: 'Remove User' },
 				{ name: 'deleteRoom', title: 'Delete Room' }
 			],
 			menuActions: [
+				{ name: 'inviteUser', title: 'Invite User' },
+				{ name: 'removeUser', title: 'Remove User' },
 				{ name: 'deleteRoom', title: 'Delete Room' }
 			],
-			styles: { container: { borderRadius: '4px' } },
-			templatesText: [
-				{
-					tag: 'help',
-					text: 'This is the help'
-				},
-				{
-					tag: 'action',
-					text: 'This is the action'
-				},
-				{
-					tag: 'action 2',
-					text: 'This is the second action'
-				}
-			]
+			styles: { container: { borderRadius: '4px' } }
 			// ,dbRequestCount: 0
 		}
 	},
@@ -224,7 +254,7 @@ export default {
 				const roomAvatar =
 					roomContacts.length === 1 && roomContacts[0].avatar
 						? roomContacts[0].avatar
-						: require('@/assets/logo.png')
+						: require('@/assets/HomePage/tutor.png')
 
 				formattedRooms.push({
 					...room,
@@ -337,9 +367,7 @@ export default {
 				// this.incrementDbCounter('Fetch Room Messages', messages.size)
 				if (this.selectedRoom !== room.roomId) return
 
-				if (messages.empty || messages.docs.length < this.messagesPerPage) {
-					setTimeout(() => (this.messagesLoaded = true), 0)
-				}
+				if (messages.empty) this.messagesLoaded = true
 
 				if (this.startMessages) this.endMessages = this.startMessages
 				this.startMessages = messages.docs[messages.docs.length - 1]
@@ -347,7 +375,7 @@ export default {
 				let listenerQuery = ref.orderBy('timestamp')
 
 				if (this.startMessages) {
-					listenerQuery = listenerQuery.startAt(this.startMessages)
+					listenerQuery = listenerQuery.startAfter(this.startMessages)
 				}
 				if (this.endMessages) {
 					listenerQuery = listenerQuery.endAt(this.endMessages)
@@ -618,6 +646,10 @@ export default {
 
 		menuActionHandler({ action, roomId }) {
 			switch (action.name) {
+				case 'inviteUser':
+					return this.inviteUser(roomId)
+				case 'removeUser':
+					return this.removeUser(roomId)
 				case 'deleteRoom':
 					return this.deleteRoom(roomId)
 			}
@@ -625,8 +657,8 @@ export default {
 
 		async sendMessageReaction({ reaction, remove, messageId, roomId }) {
 			const dbAction = remove
-				? firebase.firestore.FieldValue.arrayRemove(this.currentUserId)
-				: firebase.firestore.FieldValue.arrayUnion(this.currentUserId)
+				? app.firestore.FieldValue.arrayRemove(this.currentUserId)
+				: app.firestore.FieldValue.arrayUnion(this.currentUserId)
 
 			await messagesRef(roomId)
 				.doc(messageId)
@@ -649,8 +681,8 @@ export default {
 			this.typingMessageCache = message
 
 			const dbAction = message
-				? firebase.firestore.FieldValue.arrayUnion(this.currentUserId)
-				: firebase.firestore.FieldValue.arrayRemove(this.currentUserId)
+				? app.firestore.FieldValue.arrayUnion(this.currentUserId)
+				: app.firestore.FieldValue.arrayRemove(this.currentUserId)
 
 			roomsRef.doc(roomId).update({
 				typingUsers: dbAction
@@ -672,21 +704,21 @@ export default {
 		},
 
 		updateUserOnlineStatus() {
-			const userStatusRef = firebase
+			const userStatusRef = app
 				.database()
 				.ref('/status/' + this.currentUserId)
 
 			const isOfflineData = {
 				state: 'offline',
-				lastChanged: firebase.database.ServerValue.TIMESTAMP
+				lastChanged: app.database.ServerValue.TIMESTAMP
 			}
 
 			const isOnlineData = {
 				state: 'online',
-				lastChanged: firebase.database.ServerValue.TIMESTAMP
+				lastChanged: app.database.ServerValue.TIMESTAMP
 			}
 
-			firebase
+			app
 				.database()
 				.ref('.info/connected')
 				.on('value', snapshot => {
@@ -704,7 +736,7 @@ export default {
 		listenUsersOnlineStatus(rooms) {
 			rooms.map(room => {
 				room.users.map(user => {
-					const listener = firebase
+					const listener = app
 						.database()
 						.ref('/status/' + user._id)
 						.on('value', snapshot => {
@@ -749,6 +781,11 @@ export default {
 			this.fetchRooms()
 		},
 
+		inviteUser(roomId) {
+			this.resetForms()
+			this.inviteRoomId = roomId
+		},
+
 		async addRoomUser() {
 			this.disableForm = true
 
@@ -757,18 +794,24 @@ export default {
 
 			await roomsRef
 				.doc(this.inviteRoomId)
-				.update({ users: firebase.firestore.FieldValue.arrayUnion(id) })
+				.update({ users: app.firestore.FieldValue.arrayUnion(id) })
 
 			this.inviteRoomId = null
 			this.invitedUsername = ''
 			this.fetchRooms()
 		},
 
+		removeUser(roomId) {
+			this.resetForms()
+			this.removeRoomId = roomId
+			this.removeUsers = this.rooms.find(room => room.roomId === roomId).users
+		},
+
 		async deleteRoomUser() {
 			this.disableForm = true
 
 			await roomsRef.doc(this.removeRoomId).update({
-				users: firebase.firestore.FieldValue.arrayRemove(this.removeUserId)
+				users: app.firestore.FieldValue.arrayRemove(this.removeUserId)
 			})
 
 			this.removeRoomId = null
