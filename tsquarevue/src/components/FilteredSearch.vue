@@ -9,8 +9,18 @@
         <div class="row">
           <!-- BEGIN FILTERS -->
           <div class="col-md-3 text-left">
-            <h2 class="grid-title"><i class="fa fa-filter"></i> Filters</h2>
+            <h2 class="grid-title">Filters</h2>
             <hr>
+            <!-- BEGIN FILTER BY PRICE -->
+            <div class="price">
+                <h6>Budget - Per Session</h6>
+                <b-field label="Success">
+                    <b-slider type="is-success" :value="20"></b-slider>
+                </b-field>
+
+            </div>
+            <!-- END FILTER BY PRICE -->
+            <br>           
             
             <!-- BEGIN FILTER BY EXPERIENCE -->
             <div class="experience">
@@ -36,7 +46,7 @@
             
             <!-- BEGIN FILTER BY RATING -->
 
-            <div class="rating">
+            <!-- <div class="rating">
                 <h4>Rating</h4>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
@@ -58,58 +68,13 @@
                     <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
                     <label class="form-check-label" for="flexRadioDefault2">&nbsp; &#9734;</label>
                 </div>
-
-                
-                
-            </div>
+            </div> -->
             
             <!-- END FILTER BY RATING -->
             
             <br>
             
-            <!-- BEGIN FILTER BY PRICE -->
-            <div class="price">
-                <h4>Budget</h4>
-                Per Session <br>
-                <div slider id="slider-distance">
-                    <!-- <b-field :label="currentFilteredPrice">
-                      <b-slider v-model="filterPrice" :min="0" :max="100"></b-slider>
-                    </b-field> -->
-                    <div>
-                        <div inverse-left style="width:70%;"></div>
-                        <div inverse-right style="width:70%;"></div>
-                        <div range style="left:30%;right:40%;"></div>
-                        <span thumb style="left:30%;"></span>
-                        <span thumb style="left:60%;"></span>
-                        <div sign style="left:30%;">
-                            <span id="value">100</span>
-                        </div>
-                        <div sign style="left:60%;">
-                            <span id="value">250</span>
-                        </div>
-                    </div>
-                    <input type="range" tabindex="0" value="100" max="400" min="0" step="1" oninput="
-                    this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                    var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
-                    var children = this.parentNode.childNodes[1].childNodes;
-                    children[1].style.width=value+'%';
-                    children[5].style.left=value+'%';
-                    children[7].style.left=value+'%';children[11].style.left=value+'%';
-                    children[11].childNodes[1].innerHTML=this.value;" />
-                  
-                    <input type="range" tabindex="0" value="250" max="400" min="0" step="1" oninput="
-                    this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                    var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
-                    var children = this.parentNode.childNodes[1].childNodes;
-                    children[3].style.width=(100-value)+'%';
-                    children[5].style.right=(100-value)+'%';
-                    children[9].style.left=value+'%';children[13].style.left=value+'%';
-                    children[13].childNodes[1].innerHTML=this.value;" />
-                </div>
 
-            </div>
-            <!-- END FILTER BY PRICE -->
-            <br>
             <button class="btn btn-primary" type="submit">Apply Filters</button>
         </div>
 
@@ -254,6 +219,7 @@
   <!-- END SEARCH RESULT -->
 </div>
 </div>
+<BackToTop/>
 <Footer/>
 </template>
 
