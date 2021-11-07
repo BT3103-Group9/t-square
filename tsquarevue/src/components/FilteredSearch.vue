@@ -126,7 +126,7 @@
             <div class="input-group">
               <input type="text" class="form-control" id="query">
               <span class="input-group-btn">
-                <button class="btn btn-dark" type="button" onclick="return clicked()"><i class="fa fa-search"></i></button>
+                <button class="btn btn-dark" type="button" v-on:click="display()"><i class="fa fa-search"></i></button>
               </span>
             </div>
 
@@ -167,17 +167,8 @@
             <!-- BEGIN TABLE RESULT -->
             <div class="table-responsive">
               <table class="table table-hover">
-                <tbody>
-                  <tr v-for = "item in display" :key = "i">
-                  <td class="number text-center"></td>
-                  <td class="image"><img src= "https://maximonline.com/wp-content/uploads/2019/12/Gal-Gadot-1.jpg" alt=""></td>
-                  <!-- <td class="product" id = "name"><strong>{{sale.Month}}</strong></td><br><br> -->
-                  <td class="product"><strong>{{Sale.Month}}</strong><br><br>Qualification: {{Sale.Sale}}<br>Teaching Experience: {{Sale.Year}} years</td>
-                  <!-- <td class="product" id = "subject"></td><br>
-                  <td class ="product" id = "yearsExperience"></td> -->
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
-                  <td class="price text-right" id = "rate">${{Sale.Sale}}</td>
-                </tr> 
+                <tbody id="tableBody">
+                
 
 <!--                 
                 <tr>
@@ -268,10 +259,14 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { collection, query, where, getFirestore, getDocs } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import firebaseApp from '../firebase.js';
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
 
+const db = getFirestore(firebaseApp);
 
 export default {
   name: 'FilteredSearch',
@@ -316,19 +311,65 @@ export default {
   //   },
   // },
 
-  methods:{
-    async display(){    
-      let docs = await getDoc(doc(db, "profiles", user))
-      let userInfo = docs.data()
+  data() {
+  return{
+    user:"",
+    }
+  }, 
 
-      let results= userInfo.orderByChild('subject').startAt(document.getElementById("query").value).endAt(document.getElementById("query").value+"\uf8ff")
+  mounted() {
+    const auth = getAuth(); 
+    this.user = auth.currentUser.email;
+  },
+  
+  methods:{
+    async display(){  
+      document.getElementById("tableBody").innerHTML = ""
+      
+      const profilesRef = collection(db, "profiles");
+      const q = query(profilesRef, where("subject", "==", document.getElementById("query").value));
+      
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        let userInfo = doc.data()
+        var img = document.createElement("img")
+        var tr = document.createElement("tr")
+        var th = document.createElement("th")
+        var td1 = document.createElement("td")
+        var td2 = document.createElement("td")
+        var a = document.createElement("a")
+        var br = document.createElement("br")
+        
+        img.src = "https://www.w3schools.com/howto/img_avatar.png"
+        img.setAttribute("width", "100px")
+        td1.append(img)
+
+        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
+        a.href = "/profile/" + doc.id
+        a.style.fontSize = "20px"
+        th.append(a)
+        
+        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " years" + "<br>" + "Highest Education: " + userInfo.degree;
+        td2.style.fontSize = "15px"        
+
+        tr.append(td1)
+        tr.append(th)
+        tr.append(td2)
+        document.getElementById("tableBody").append(tr)
+      });
+      
+
+      // let docs = await getDoc(doc(db, "profiles", this.user))
+      // let userInfo = docs.data().ref()
+
+      // let results= userInfo.orderByChild('subject').startAt(document.getElementById("query").value).endAt(document.getElementById("query").value+"\uf8ff")
                   
-      return results.filter((item) => { 
-        const validName = item.name
-          .toLowerCase()
-          .includes(this.filterName.toLowerCase())
-          .limit(5);
-      })
+      // return results.filter((item) => { 
+      //   const validName = item.name
+      //     .toLowerCase()
+      //     .includes(this.filterName.toLowerCase())
+      //     .limit(5);
+      // })
 
       // for () {
       //   document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
@@ -337,8 +378,8 @@ export default {
       //   document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
       //   document.getElementById("role").innerHTML = userInfo.role;  
       // }
-    },
-  }}
+    }
+    }}
 
     
   /*  
