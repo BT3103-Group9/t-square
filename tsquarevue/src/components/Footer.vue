@@ -10,7 +10,7 @@
 				you have always wanted to pick up.</p>
 			
 				<p style="font-size: 12px">It is a centralised platform to
-				connect leaners and tutors</p> 
+				connect leaners and tutors.</p> 
 			</div>
 
 			<div class="col-lg-1 col-md-12 mb-4 mb-md-0 ">
@@ -20,11 +20,11 @@
 			<!-- Second Column -->
 			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 				<h3>Customer Service</h3>
-				<p style="font-size: 12px">FAQ</p> 
+				<p style="font-size: 15px"><router-link class="nav-link text-white" to="/faq">FAQ</router-link></p> 
 				<br>
 				<p style="font-size: 12px">
 					<b>Need Help:</b> <br>
-					contact@tsquare.com.sg
+					<a class="white" href="mailto:contact@tsquare.com.sg">contact@tsquare.com.sg</a>
 				</p>
 			</div>
 
@@ -94,6 +94,9 @@ export default {
 
 #igLogo {
     filter: invert(98%) sepia(100%) saturate(0%) hue-rotate(315deg) brightness(102%) contrast(103%);
+}
+a.white{
+  color:white;
 }
 
 </style>
