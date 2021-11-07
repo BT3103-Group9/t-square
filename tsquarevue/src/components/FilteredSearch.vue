@@ -132,7 +132,7 @@
 
             
             <!-- END SEARCH INPUT -->
-            <p>Showing all results matching "Acting"</p>
+            <p id = "matched">Showing all results matching "Acting"</p>
             
             <div class="padding"></div>
             
@@ -277,40 +277,6 @@ export default {
     BackToTop
 	},
 
-  // props: {
-  //   tutor: Object;
-  // }
-
-  // data() {
-  //     return records=[]
-  //     }
-  // },
-
-  // computed: {
-  //   currentFilteredPrice: function () {
-  //     return "Price: $" + this.filterPrice;
-  //   },
-  //   getFilteredItems: function () {
-  //     return this.getItems.filter((item) => {
-  //       const validQuantity = item.quantity > 0;
-  //       const validPrice = item.price < this.filterPrice;
-  //       const validType =
-  //         this.filterType.length === 0 || this.filterType.includes(item.type);
-  //       const validName = item.name
-  //         .toLowerCase()
-  //         .includes(this.filterName.toLowerCase());
-  //       const validCompany =
-  //         this.filterCompany.length === 0 ||
-  //         this.filterCompany.includes(item.business);
-
-  //       return (
-  //         validQuantity && validPrice && validType && validName && validCompany
-  //       );
-  //     });
-  //   },
-  //   },
-  // },
-
   data() {
   return{
     user:"",
@@ -327,6 +293,7 @@ export default {
       document.getElementById("tableBody").innerHTML = ""
       
       const profilesRef = collection(db, "profiles");
+
       const q = query(profilesRef, where("subject", "==", document.getElementById("query").value));
       
       const querySnapshot = await getDocs(q);
@@ -349,89 +316,18 @@ export default {
         a.style.fontSize = "20px"
         th.append(a)
         
-        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " years" + "<br>" + "Highest Education: " + userInfo.degree;
+        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
         td2.style.fontSize = "15px"        
 
         tr.append(td1)
         tr.append(th)
         tr.append(td2)
         document.getElementById("tableBody").append(tr)
+        document.getElementById("matched").innerHTML = "Showing all results matching " + document.getElementById("query").value
       });
-      
-
-      // let docs = await getDoc(doc(db, "profiles", this.user))
-      // let userInfo = docs.data().ref()
-
-      // let results= userInfo.orderByChild('subject').startAt(document.getElementById("query").value).endAt(document.getElementById("query").value+"\uf8ff")
-                  
-      // return results.filter((item) => { 
-      //   const validName = item.name
-      //     .toLowerCase()
-      //     .includes(this.filterName.toLowerCase())
-      //     .limit(5);
-      // })
-
-      // for () {
-      //   document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
-      //   document.getElementById("subject").innerHTML = userInfo.subject;
-      //   document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
-      //   document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
-      //   document.getElementById("role").innerHTML = userInfo.role;  
-      // }
     }
-    }}
-
-    
-  /*  
-    let z = await getDocs(collection(db,'tutor-details'))   
-    let ind = 1 
-    var tp = 0
-
-    z.forEach((docs) => {
-      let tutor = docs.data()
-      var table = document.getElementsByClassName("table")
-      var row = table.insertRow(ind)
-
-      var Name = (tutor.Name)
-      var Image = (tutor.Image)
-      var Qualification = (tutor.Qualification)
-      var Rating = (tutor.Rating)
-      var TeachingExperience = (tutor.TeachingExperience)
-
-      var cell1 = row.insertCell(0); var cell2 = row.insertCell(1); var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3); var cell5 = row.insertCell(4); var cell6 = row.insertCell(5);
-      var cell7 = row.insertCell(6); var cell8 = row.insertCell(7);      
-
-      cell1.innerHTML = ind; cell2.innerHTML = coin; cell3.innerHTML = ticker; cell4.innerHTML = price; 
-      cell5.innerHTML = quantity; cell6.innerHTML = 0; cell7.innerHTML = 0
-
-      cell7.className = "profits"
-     
-      var bu = document.createElement("button")
-      bu.className = "bwt"
-      bu.id = String(coin)
-      bu.innerHTML ="Delete"
-      bu.onclick =  ()=>{
-        this.deleteinstrument2(coin,user)
-      }
-      cell8.appendChild(bu) 
-
-      val(ticker)
-    //   setInterval(()=>{
-    //   val(ticker)
-    //   },2000)    
-      async function val(ticker){
-        let binance = new ccxt.binance()
-        let x = await binance.fetch_ohlcv(ticker,"5m")
-        cell6.innerHTML =  x[499][4]
-        cell7.innerHTML =  Math.round(quantity * (-parseFloat(price) + parseFloat(cell6.innerHTML)))       
-        tp = tp + parseFloat(cell7.innerHTML)
-        console.log("TP is ",tp)
-        document.getElementById("totalProfit").innerHTML = (" Total Profit is :  " + String(tp))      
-      }   
-      ind+= 1   
-    }) 
-  },            */
+  }
+}
 
 </script>
 

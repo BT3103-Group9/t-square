@@ -4,9 +4,9 @@
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-radius: 0px" id="mainNav" v-if="user">
 		<div class="container">
 			<router-link to="/home"><img  src="../assets/HomePage/LogoBlack.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
-      <input type="text" class="form-control form-input search text-center col-6" style="font-size: 15px; margin-left: 40px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
+      <input type="text" class="form-control form-input search text-center col-6" id="query" style="font-size: 15px; margin-left: 40px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
       <div class = "btnspace">
-      <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="$router.push('search')">Search</a>
+      <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="$router.push('search')" >Search</a>
 			</div>
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu
@@ -73,12 +73,50 @@ export default {
       }
     });
   }, 
-
+  
   methods: {
     toProfile() {
       this.fbuser = getAuth().currentUser.email
       const username = String(this.fbuser).split("@")[0]
       this.$router.push({ name: "profile", params: { username: username } })
+    },
+    
+
+    async display(){ 
+      const profilesRef = collection(db, "profiles");
+      const q = query(profilesRef, where("subject", "==", document.getElementById("query").value)); 
+      this.$router.push('/search'); 
+      document.getElementById("tableBody").innerHTML = ""
+      
+      
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        let userInfo = doc.data()
+        var img = document.createElement("img")
+        var tr = document.createElement("tr")
+        var th = document.createElement("th")
+        var td1 = document.createElement("td")
+        var td2 = document.createElement("td")
+        var a = document.createElement("a")
+        var br = document.createElement("br")
+        
+        img.src = "https://www.w3schools.com/howto/img_avatar.png"
+        img.setAttribute("width", "100px")
+        td1.append(img)
+
+        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
+        a.href = "/profile/" + doc.id
+        a.style.fontSize = "20px"
+        th.append(a)
+        
+        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
+        td2.style.fontSize = "15px"        
+
+        tr.append(td1)
+        tr.append(th)
+        tr.append(td2)
+        document.getElementById("tableBody").append(tr)
+      });
     }
   }
 }
