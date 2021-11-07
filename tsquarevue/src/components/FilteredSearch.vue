@@ -72,10 +72,10 @@
                 <h4>Budget</h4>
                 Per Session <br>
                 <div slider id="slider-distance">
-                    <b-field :label="currentFilteredPrice">
+                    <!-- <b-field :label="currentFilteredPrice">
                       <b-slider v-model="filterPrice" :min="0" :max="100"></b-slider>
-                    </b-field>
-                    <!-- <div>
+                    </b-field> -->
+                    <div>
                         <div inverse-left style="width:70%;"></div>
                         <div inverse-right style="width:70%;"></div>
                         <div range style="left:30%;right:40%;"></div>
@@ -104,7 +104,7 @@
                     children[3].style.width=(100-value)+'%';
                     children[5].style.right=(100-value)+'%';
                     children[9].style.left=value+'%';children[13].style.left=value+'%';
-                    children[13].childNodes[1].innerHTML=this.value;" /> -->
+                    children[13].childNodes[1].innerHTML=this.value;" />
                 </div>
 
             </div>
@@ -168,14 +168,15 @@
             <div class="table-responsive">
               <table class="table table-hover">
                 <tbody>
-                  <tr v-for = "item in display" :key = "item.mobile"  class = "row-item">
+                  <tr v-for = "item in display" :key = "i">
                   <td class="number text-center"></td>
                   <td class="image"><img src= "https://maximonline.com/wp-content/uploads/2019/12/Gal-Gadot-1.jpg" alt=""></td>
-                  <td class="product" id = "name"><strong></strong></td><br><br>
-                  <td class="product" id = "subject"></td><br>
-                  <td class ="product" id = "yearsExperience"></td>
+                  <!-- <td class="product" id = "name"><strong>{{sale.Month}}</strong></td><br><br> -->
+                  <td class="product"><strong>{{Sale.Month}}</strong><br><br>Qualification: {{Sale.Sale}}<br>Teaching Experience: {{Sale.Year}} years</td>
+                  <!-- <td class="product" id = "subject"></td><br>
+                  <td class ="product" id = "yearsExperience"></td> -->
                   <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
-                  <td class="price text-right" id = "rate"></td>
+                  <td class="price text-right" id = "rate">${{Sale.Sale}}</td>
                 </tr> 
 
 <!--                 
@@ -286,10 +287,9 @@ export default {
   // }
 
   // data() {
-  //     return {
-  //       filterPrice: 50,
+  //     return records=[]
   //     }
-  // } 
+  // },
 
   // computed: {
   //   currentFilteredPrice: function () {
@@ -321,18 +321,24 @@ export default {
       let docs = await getDoc(doc(db, "profiles", user))
       let userInfo = docs.data()
 
-      let results = userInfo.orderByChild('subject').startAt(document.getElementById("query").value).endAt(document.getElementById("query").value+"\uf8ff");
+      let results= userInfo.orderByChild('subject').startAt(document.getElementById("query").value).endAt(document.getElementById("query").value+"\uf8ff")
+                  
       return results.filter((item) => { 
         const validName = item.name
           .toLowerCase()
-          .includes(this.filterName.toLowerCase());
+          .includes(this.filterName.toLowerCase())
+          .limit(5);
       })
-      document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
-      document.getElementById("subject").innerHTML = userInfo.subject;
-      document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
-      document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
-      document.getElementById("role").innerHTML = userInfo.role;
+
+      // for () {
+      //   document.getElementById("name").innerHTML = userInfo.firstName + " " + userInfo.lastName;
+      //   document.getElementById("subject").innerHTML = userInfo.subject;
+      //   document.getElementById("rate").innerHTML = "SGD " + userInfo.rate;
+      //   document.getElementById("yearsExperience").innerHTML = userInfo.yearsExperience + " years";
+      //   document.getElementById("role").innerHTML = userInfo.role;  
+      // }
     },
+  }}
 
     
   /*  
@@ -385,7 +391,7 @@ export default {
       ind+= 1   
     }) 
   },            */
-}}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
