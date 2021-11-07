@@ -1,6 +1,9 @@
 <template>
 	<NavBar/>
-	<div v-if="hasProfile" style="margin-top: 100px; height: 600px">
+	<div v-if="isLoading" style="margin-top: 25%; height: 300px">
+		<h4>Fetching profile...</h4>
+	</div>
+	<div v-else-if="hasProfile" style="margin-top: 100px; height: 600px">
 		<ProfileDisplay/>
 	</div>
 	<div v-else-if="myProfile" style="margin-top: 25%; height: 300px">
@@ -21,6 +24,7 @@ import ProfileDisplay from '../components/ProfileDisplay.vue'
 import firebaseApp from '../firebase.js';
 import { getFirestore, doc, getDoc } from "firebase/firestore"
 import { getAuth } from "firebase/auth";
+import { FirebaseError } from '@firebase/util';
 
 const db = getFirestore(firebaseApp);
 
@@ -37,7 +41,8 @@ export default {
 		return {
 			fbuser: "",
 			hasProfile: false,
-			myProfile: false
+			myProfile: false,
+			isLoading: true
 		}
 	},
 
@@ -48,6 +53,9 @@ export default {
 
 	methods: {
 		async checkProfile() {
+			setTimeout(() => {
+				this.isLoading = false;
+			}, 1000);
 			const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
 			const current = getAuth().currentUser.email
