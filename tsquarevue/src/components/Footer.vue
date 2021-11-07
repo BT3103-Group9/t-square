@@ -4,7 +4,7 @@
 		<div class="row p-4" style="display: inline-flex">
 			<!-- First Column -->
 			<div class="col-lg-3 col-md-12 mb-4 mb-md-0 ">
-				<h3>About</h3>
+				<h4 class="headers">ABOUT</h4>
 				<p style="font-size: 12px">T Square is a web-based application that
 				aims to provide opportunities on skills that
 				you have always wanted to pick up.</p>
@@ -19,7 +19,7 @@
 
 			<!-- Second Column -->
 			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-				<h3>Customer Service</h3>
+				<h4 class="headers">CUSTOMER SERVICE</h4>
 				<p style="font-size: 15px"><router-link class="nav-link text-white" to="/faq">FAQ</router-link></p> 
 				<br>
 				<p style="font-size: 12px">
@@ -33,7 +33,7 @@
 
 			<!-- Third Column -->
 			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-				<h3>Newsletter</h3>
+				<h4 class="headers">NEWSLETTER</h4>
 				<p style="font-size: 12px">Subscribe to know the latest trending courses!</p>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
@@ -83,7 +83,7 @@ export default {
 
 
 <style>
-
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900');
 /* #footer {
 	position: absolute;
 	bottom:0;
@@ -91,6 +91,13 @@ export default {
 	width:100%;
 	height:300px;
 } */
+.container {
+	font-family: 'Raleway', sans-serif
+}
+
+.headers {
+	font-weight: 500
+}
 
 #igLogo {
     filter: invert(98%) sepia(100%) saturate(0%) hue-rotate(315deg) brightness(102%) contrast(103%);
