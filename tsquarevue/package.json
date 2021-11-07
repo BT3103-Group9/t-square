@@ -14,6 +14,7 @@
     "@popperjs/core": "^2.10.2",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
+    "balm-ui": "^9.38.0",
     "bootstrap": "^5.1.3",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
