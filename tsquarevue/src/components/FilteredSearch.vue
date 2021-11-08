@@ -9,35 +9,29 @@
           <div class="row">
             <!-- BEGIN FILTERS -->
             <div class="col-md-3 text-left">
-              <h2 class="grid-title">Filters</h2>
-              <hr>
-
+              <h2 class="grid-title">Filters</h2> <hr>
+              
               <!-- Budget --> 
-              <h5>Budget - Per Session</h5>
-              <p>{{currentFilteredPrice}}</p>
-              <ui-slider v-model="value1" :max=200 style="width:70%; margin-left:0"></ui-slider> 
-              <hr>
+              <h5>Budget - Per Hour</h5>
+              <p><b>{{currentFilteredPrice}}</b></p>
+              <ui-slider v-model="budgetHigher" :max=200 style="width:70%; margin-left:0"></ui-slider> <hr>
 
               <!-- Experience -->
               <div class="experience">
-                  <h5>Experience</h5>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault1">&nbsp; &#60; 5 years</label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">&nbsp; 5-10 years</label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">&nbsp; >10 years</label>
-                  </div>
+                <h5>Experience</h5>
+                <ui-form-field>
+                    <ui-radio v-model="experienceValue" input-id="1" value="1"></ui-radio>
+                    <label for="1" class="ml-1">&nbsp; &#60; 5 years</label>
+                </ui-form-field> <br>
+                <ui-form-field>
+                    <ui-radio v-model="experienceValue" input-id="2" value="2"></ui-radio>
+                    <label for="2" class="ml-1">5-10 years</label>
+                </ui-form-field> <br>
+                <ui-form-field>
+                    <ui-radio v-model="experienceValue" input-id="3" value="3"></ui-radio>
+                    <label for="3">&nbsp; &#62; 10 years</label>
+                </ui-form-field>
               </div>
-    
-              <!-- <br>
-              <button class="btn btn-primary" type="submit">Apply Filters</button> -->
-
             </div>
             <!-- END FILTERS -->
 
@@ -66,10 +60,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { collection, query, where, getFirestore, getDocs } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { collection, getFirestore, getDocs } from "firebase/firestore";
 import firebaseApp from '../firebase.js';
+import { getAuth } from "firebase/auth";
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
@@ -93,33 +86,34 @@ export default {
 
   data() {
     return {
-      thead: ['Name','Rate/Hr', 'Experience',],
+      experienceValue: 1,
+      thead: ['Name','Rate/ Hour', 'Experience',],
       tbody: ['firstName', 'rate', 'yearsExperience'],
-      value1: 100,
-      entryList: [], // onMount: get data from database
+      tempList: [], // onMount: get data from database
       searchTerm: this.$route.params.word, // This should be synced with your search input via v-model
-      budgetHigher: this.value1,
-      experience: 1, // Using enums: 1 = <5, 2 = 5 - 10, 3 = 10+
+      budgetHigher: 100,
     }
   },
 
   mounted() {
     const auth = getAuth(); 
-    this.user = auth.currentUser.email;
-    // this.initialSearch();
+    // this.user = auth.currentUser.email;
+    this.user = 'tempuser@gmail.com';
     this.getList()
   },
 
   computed: {
     currentFilteredPrice: function() {
-        return "Max Price $" + this.value1;
+        return "Max Price $" + this.budgetHigher;
       },
 
     shownEntryList: function() {
-      return this.entryList
-          .filter(this.searchFilter)
-          .filter(this.budgetFilter)
-          .filter(this.experienceFilter); // chain however many filters you need
+      const output = this.tempList
+        .filter(this.searchFilter)
+        .filter(this.budgetFilter)
+        .filter(this.experienceFilter); // chain however many filters you need
+
+      return output;
     },   
   },
 
@@ -129,88 +123,28 @@ export default {
       querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           // console.log(doc.id, " => ", doc.data());
-          this.entryList.push(doc.data())
+          this.tempList.push(doc.data())
       });
     },
-    searchFilter: (entry) => {
-        return entry.subject.toLowerCase().includes(this.searchTerm.toLowerCase());
+    searchFilter(entry) {
+      return entry.subject.toLowerCase().includes(this.searchTerm.toLowerCase());
     },
-    budgetFilter: (entry) => {
-        return entry.rate <= this.budgetHigher;
+    budgetFilter(entry) {
+      return entry.rate <= this.budgetHigher;
     },
-    experienceFilter: (entry) => {
-        switch (this.experience) {
-            case 1:
-                return entry.yearsExperience < 5;
-            case 2:
-                return entry.yearsExperience < 10;
-            case 3:
-            default:
-                return entry.yearsExperience >= 10;
-        }
+    experienceFilter(entry) {
+      switch (this.experienceValue) {
+        case 1:
+          return entry.yearsExperience < 5;
+        case 2:
+          return entry.yearsExperience < 10;
+        case 3:
+        default:
+          return entry.yearsExperience >= 10;
+      }
     }
   }
-
-  // data() {
-  //   return{
-  //     user:"",
-  //   }
-  // }, 
-
-
-  
-  // methods:{
-  //   async initialSearch() {
-  //     document.getElementById("tableBody").innerHTML = "" 
-  //     const profilesRef = collection(db, "profiles");
-  //     const searchQuery = this.$route.params.word
-  //     const q = query(profilesRef, where("subject", "==", searchQuery));
-  //     const querySnapshot = await getDocs(q);
-
-  //     if (querySnapshot.size == 0) {
-  //       var tr = document.createElement("tr")
-  //       var td = document.createElement("td")
-  //       td.innerHTML = "No results found. Please try again!"
-  //       tr.append(td)
-  //       document.getElementById("tableBody").append(tr)
-  //       document.getElementById("matched").innerHTML = "Showing no results matching " + searchQuery
-  //     }
-
-  //     querySnapshot.forEach((doc) => {
-  //       let userInfo = doc.data()
-  //       var img = document.createElement("img")
-  //       var tr = document.createElement("tr")
-  //       var th = document.createElement("th")
-  //       var td1 = document.createElement("td")
-  //       var td2 = document.createElement("td")
-  //       var a = document.createElement("a")
-  //       var br = document.createElement("br")
-        
-  //       img.src = "https://www.w3schools.com/howto/img_avatar.png"
-  //       img.setAttribute("width", "100px")
-  //       td1.append(img)
-
-  //       a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
-  //       a.href = "/profile/" + doc.id
-  //       a.style.fontSize = "20px"
-  //       th.append(a)
-        
-  //       td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
-  //       td2.style.fontSize = "15px"
-  //       td2.style.textAlign = "left"        
-
-  //       tr.append(td1)
-  //       tr.append(th)
-  //       tr.append(td2)
-  //       document.getElementById("tableBody").append(tr)
-  //       document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
-        
-  //       this.$router.push({ name: "search", params: { word: searchQuery } })
-  //     });
-  //   }
-  // }
 }
-
 </script>
 
 <style scoped>
