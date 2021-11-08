@@ -377,7 +377,7 @@ export default {
         document.getElementById("tableBody").append(tr)
         document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
         
-        this.$router.push({ name: "search", params: { word: searchQuery } })
+        this.$router.push({ name: "search", params: { word: searchQuery }})
       });
     }
   }
