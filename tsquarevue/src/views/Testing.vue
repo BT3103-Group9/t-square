@@ -1,32 +1,24 @@
 <template>
-    {{ sliderValue() }}
-    <ui-slider v-model="value1" id="slider" @change="sliderValue()"></ui-slider>
-    
-    <!-- <ui-slider ></ui-slider>
-    {{value}}
-    
-    <input id="slider" type="range" min="50" max="100" step="10"  value="50">
-    <output id="output"></output> -->
+    <div class="container">
+        <ui-slider v-model="value1"></ui-slider>
+        <ui-slider v-model="value2"></ui-slider>    
+    </div>
 </template>
 
 <script>
+import { configureCompant } from 'vue'
+
+
 export default {
-    data() {
-        return {
-        // value1 = 10
-        //   value: 0
-        };
+    compatConfig: {
+        COMPONENT_V_MODEL: false
     },
 
-    mounted() {
-        this.sliderValue()
-    },
-    
-    methods: {
-        sliderValue() {
-            console.log("hai")
-            return this.value1
-        }
+    data() {
+        return {
+            value1: 50,
+            value2: [30, 70]
+        };
     }
 };
 </script>
