@@ -1,6 +1,6 @@
 <template>
-<div class="container my-5 py-5" >
-	<h1 class="text-left mt-5 pt-5">General FAQ</h1>
+<div class="container my-5">
+	<h1 class="text-left">General FAQ</h1>
 	<div class="accordion" id="accordionExample">
 		<!-- Item 1-->
 		<div class="accordion-item">
@@ -78,7 +78,7 @@
 			<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
 				<div class="accordion-body text-left">
 					<p>Solving problems is a Core Value here at T Square! We want all our users to get the help they need quickly and efficiently. </p>
-					<p>Do drop us an email at <b>help@TSquare.com</b> and our customer service will get back to as soon as possible</p>
+					<p>Do drop us an email at <b>contact@tsquare.com.sg</b> and our customer service will get back to as soon as possible</p>
 				</div>
 			</div>
 		</div>
