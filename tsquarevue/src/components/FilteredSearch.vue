@@ -339,6 +339,17 @@ export default {
       const q = query(profilesRef, where("subject", "==", searchQuery));
       
       const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.size == 0) {
+        console.log("running")
+        var tr = document.createElement("tr")
+        var td = document.createElement("td")
+        td.innerHTML = "No results found. Please try again!"
+        tr.append(td)
+        document.getElementById("tableBody").append(tr)
+        document.getElementById("matched").innerHTML = "Showing no results matching " + searchQuery
+      }
+
       querySnapshot.forEach((doc) => {
         let userInfo = doc.data()
         var img = document.createElement("img")
