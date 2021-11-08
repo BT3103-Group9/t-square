@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  </div>
+</div>
 
 <BackToTop/>
 <Footer/>
@@ -98,7 +98,7 @@ export default {
   mounted() {
     const auth = getAuth(); 
     // this.user = auth.currentUser.email;
-    this.user = 'tempuser@gmail.com';
+    this.user = auth.currentUser;
     this.getList()
   },
 
@@ -133,15 +133,24 @@ export default {
       return entry.rate <= this.budgetHigher;
     },
     experienceFilter(entry) {
-      switch (this.experienceValue) {
-        case 1:
-          return entry.yearsExperience < 5;
-        case 2:
-          return entry.yearsExperience < 10;
-        case 3:
-        default:
-          return entry.yearsExperience >= 10;
+
+      if (this.experienceValue == 1) {
+        return entry.yearsExperience < 5;
+      } else if (this.experienceValue == 2) {
+        return entry.yearsExperience <= 10 && entry.yearsExperience >= 5;
+      } else {
+        return entry.yearsExperience > 10; 
       }
+      // switch (this.experienceValue) {
+      //   case 1:
+      //     console.log(1)
+      //     return entry.yearsExperience < 5;
+      //   case 2:
+      //   console.log(2)
+      //     return entry.yearsExperience <= 10 && entry.yearsExperience >= 5;
+      //   case 3:
+      //     return entry.yearsExperience > 10;
+      // }
     }
   }
 }
@@ -151,6 +160,11 @@ export default {
 @import 'https://unpkg.com/vue/dist/vue.min.js';
 @import 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js';
 
+
+Footer {
+  /* position: absolute; */
+  bottom: 0;
+}
 
 .container{
     margin-top: 9%;
