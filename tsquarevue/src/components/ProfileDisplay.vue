@@ -8,7 +8,7 @@
             <div class="col-lg-4">
               <div class="card shadow-sm">
                 <div class="card-header bg-transparent text-center">
-                  <img class="profile_img" src="../assets/tutordp.png" alt="Tutor dp">
+                  <img class="profile_img" src="../assets/HomePage/avatar.png" alt="Tutor dp">
                   <h3 id="name"></h3>
                 </div>
 
@@ -22,7 +22,6 @@
                 <div class="card-body" style="background-color: rgb(32, 29, 25);  text-align: center; color: white; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" v-if="!myProfile">
                   <p class="mb-0">
                     <a @click="messageTutor()"><strong class="pr-1" style="font-size: 20px; color: white; font-family: 'Montserrat';">Message Tutor</strong></a> 
-                    <router-link class="nav-link text-white" to="/faq" v-on:click.native="scrollToTop()">FAQ</router-link>
                     <span class="fa fa-comments" style="color: white"></span> 
                   </p>
                 </div>
