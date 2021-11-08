@@ -1,255 +1,66 @@
 <template>
 <NavBar/>
 <div class="container">
-<div class="row">
-  <!-- BEGIN SEARCH RESULT -->
-  <div class="col-md-12">
-    <div class="grid search">
-      <div class="grid-body">
-        <div class="row">
-          <!-- BEGIN FILTERS -->
-          <div class="col-md-3 text-left">
-            <h2 class="grid-title">Filters</h2>
-            <hr>
-            <!-- BEGIN FILTER BY PRICE -->
-            <div class="price">
-                <h6>Budget - Per Session</h6>
-                <div slider id="slider-distance">
-                    <!-- <b-field :label="currentFilteredPrice">
-                      <b-slider v-model="filterPrice" :min="0" :max="100"></b-slider>
-                    </b-field> -->
-                    <div>
-                        <div inverse-left style="width:70%;"></div>
-                        <div inverse-right style="width:70%;"></div>
-                        <div range style="left:30%;right:40%;"></div>
-                        <span thumb style="left:30%;"></span>
-                        <span thumb style="left:60%;"></span>
-                        <div sign style="left:30%;">
-                            <span id="value">100</span>
-                        </div>
-                        <div sign style="left:60%;">
-                            <span id="value">250</span>
-                        </div>
-                    </div>
-                    <input type="range" tabindex="0" value="100" max="400" min="0" step="1" oninput="
-                    this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                    var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
-                    var children = this.parentNode.childNodes[1].childNodes;
-                    children[1].style.width=value+'%';
-                    children[5].style.left=value+'%';
-                    children[7].style.left=value+'%';children[11].style.left=value+'%';
-                    children[11].childNodes[1].innerHTML=this.value;" />
-                  
-                    <input type="range" tabindex="0" value="250" max="400" min="0" step="1" oninput="
-                    this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                    var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
-                    var children = this.parentNode.childNodes[1].childNodes;
-                    children[3].style.width=(100-value)+'%';
-                    children[5].style.right=(100-value)+'%';
-                    children[9].style.left=value+'%';children[13].style.left=value+'%';
-                    children[13].childNodes[1].innerHTML=this.value;" />
-                </div>
+  <div class="row">
+    <!-- BEGIN SEARCH RESULT -->
+    <div class="col-md-12">
+      <div class="grid search">
+        <div class="grid-body">
+          <div class="row">
+            <!-- BEGIN FILTERS -->
+            <div class="col-md-3 text-left">
+              <h2 class="grid-title">Filters</h2>
+              <hr>
 
+              <!-- Budget --> 
+              <h5>Budget - Per Session</h5>
+              <p>{{currentFilteredPrice}}</p>
+              <ui-slider v-model="value1" :max=200 style="width:70%; margin-left:0"></ui-slider> 
+              <hr>
 
-            </div>
-            <!-- END FILTER BY PRICE -->
-            <br>           
-            
-            <!-- BEGIN FILTER BY EXPERIENCE -->
-            <div class="experience">
-                <h4>Experience</h4>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">&nbsp; &#60; 5 years</label>
+              <!-- Experience -->
+              <div class="experience">
+                  <h5>Experience</h5>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault1">&nbsp; &#60; 5 years</label>
                   </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">&nbsp; 5-10 years</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">&nbsp; >10 years</label>
-                </div>
-                
-            </div>
-            <!-- END FILTER BY EXPERIENCE -->
-            
-            <br>
-            
-            <!-- BEGIN FILTER BY RATING -->
-
-            <!-- <div class="rating">
-                <h4>Rating</h4>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">&nbsp; &#9734;&#9734;&#9734;&#9734;&#9734;</label>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">&nbsp; 5-10 years</label>
                   </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">&nbsp; &#9734;&#9734;&#9734;&#9734;</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">&nbsp; &#9734;&#9734;&#9734;</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">&nbsp; &#9734;&#9734;</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">&nbsp; &#9734;</label>
-                </div>
-            </div> -->
-            
-            <!-- END FILTER BY RATING -->
-            
-            <br>
-            
-
-            <button class="btn btn-primary" type="submit">Apply Filters</button>
-        </div>
-
-        <!-- END FILTERS -->
-        <!-- BEGIN RESULT -->
-        <div class="col-md-9 ">
-            <div class="text-left">
-            <h2><i class="fa fa-file-o"></i> Result</h2>
-            <hr>
-            <!-- BEGIN SEARCH INPUT -->
-
-            <!-- <div class="input-group">
-              <input type="text" class="form-control" id="query">
-              <span class="input-group-btn">
-                <button class="btn btn-dark" type="button" v-on:click="display()"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-
-             -->
-            <!-- END SEARCH INPUT -->
-            <p id = "matched">Showing all results matching "Acting"</p>
-            
-            <div class="padding"></div>
-            
-            <div class="row">
-
-                <!-- BEGIN ORDER RESULT -->
-                
-                <div class="col-sm-6">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Sort by <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Experience</a></li>
-                    <li><a href="#">Rating</a></li>
-                    <li><a href="#">Price (low to high)</a></li>
-                    <li><a href="#">Price (high to low)</a></li>
-                  </ul>
-                </div>
-                </div>
-                <!-- END ORDER RESULT -->
-              
-                <div class="col-md-6 text-right">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default active"><i class="fa fa-list"></i></button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-th"></i></button>
-                </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">&nbsp; >10 years</label>
+                  </div>
               </div>
-              
-            </div>
-            
-            <!-- BEGIN TABLE RESULT -->
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <tbody id="tableBody">
-                
+    
+              <!-- <br>
+              <button class="btn btn-primary" type="submit">Apply Filters</button> -->
 
-<!--                 
-                <tr>
-                  <td class="number text-center">1</td>
-                  <td class="image"><img src="https://maximonline.com/wp-content/uploads/2019/12/Gal-Gadot-1.jpg" alt=""></td>
-                  <td class="product"><strong>Gal Gadot</strong><br><br>Qualification: Starred in Wonder Woman <br>Teaching Experience: 11 years</td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
-                  <td class="price text-right">$50</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">2</td>
-                  <td class="image"><img src="https://m.media-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_UY209_CR5,0,140,209_AL_.jpg" alt=""></td>
-                  <td class="product"><strong>Ryan Reynolds</strong><br><br>Qualification: Starred in Deadpool <br>Teaching Experience: 20 years </td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span></td>
-                  <td class="price text-right">$400</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">3</td>
-                  <td class="image"><img src="https://cdn.wealthygorilla.com/wp-content/uploads/2019/02/Hottest-Women-Kristen-Bell.jpg.webp" alt=""></td>
-                  <td class="product"><strong>Kristen Bell</strong><br><br>Qualification: Starred in The Good Place <br>Teaching Experience: 18 years </td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></span></td>
-                  <td class="price text-right">$150</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">4</td>
-                  <td class="image"><img src="https://m.media-amazon.com/images/M/MV5BMTUxNzY3NzYwOV5BMl5BanBnXkFtZTgwNzQ3Mzc4MTI@._V1_UX140_CR0,0,140,209_AL_.jpg" alt=""></td>
-                  <td class="product"><strong>Zac Efron</strong><br><br>Qualification: Starred in High School Musical trilogy <br>Teaching Experience: 13 years </td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span></td>
-                  <td class="price text-right">$300</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">5</td>
-                  <td class="image"><img src="https://cdn.wealthygorilla.com/wp-content/uploads/2019/02/Hottest-Women-Megan-Fox.jpg.webp" alt=""></td>
-                  <td class="product"><strong>Megan Fox</strong><br><br>Qualification: Starred in Transformers: Revenge of the Fallen <br>Teaching Experience: 16 years</td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></td>
-                  <td class="price text-right">$400</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">6</td>
-                  <td class="image"><img src="https://m.media-amazon.com/images/M/MV5BMTQzMjkwNTQ2OF5BMl5BanBnXkFtZTgwNTQ4MTQ4MTE@._V1_UY209_CR12,0,140,209_AL_.jpg" alt=""></td>
-                  <td class="product"><strong>Ryan Gosling</strong><br><br>Qualification: Starred in The Notebook <br>Teaching Experience: 17 years</td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
-                  <td class="price text-right">$200</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">7</td>
-                  <td class="image"><img src="https://cdn.wealthygorilla.com/wp-content/uploads/2019/02/Hottest-Women-Selena-Gomez.jpg.webp" alt=""></td>
-                  <td class="product"><strong>Selena Gomez</strong><br><br>Qualification: Starred in Spring Breakers <br>Teaching Experience: 11 years </td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span></td>
-                  <td class="price text-right">$10</td>
-                </tr>
-                <tr>
-                  <td class="number text-center">8</td>
-                  <td class="image"><img src="https://m.media-amazon.com/images/M/MV5BMTQ5ODI0MDc4M15BMl5BanBnXkFtZTgwNTM5MDk3MTE@._V1_UX140_CR0,0,140,209_AL_.jpg" alt=""></td>
-                  <td class="product"><strong>Liam Hemsworth</strong><br><br>Qualification: Starred in Thor <br>Teaching Experience: 16 years</td>
-                  <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
-                  <td class="price text-right">$350</td>
-                </tr> -->
-              </tbody></table>
             </div>
-            <!-- END TABLE RESULT -->
-            </div>
-            <!-- BEGIN PAGINATION -->
-            <div class="pagination">
-                <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-                </nav>
-                </div>
-            <!-- END PAGINATION -->
+            <!-- END FILTERS -->
+
+            <!-- BEGIN RESULT -->
+            <div class="col-md-9 ">
+              <div class="text-left">
+                <h2>Result</h2>
+                <hr>
+                <p id="matched">Showing all results matching "{{searchTerm}}"</p>              
+                <div class="padding"></div>
+                <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody"></ui-table>
+              </div>
+            <!-- END RESULT -->
           </div>
-          <!-- END RESULT -->
         </div>
-       
       </div>
     </div>
+    <!-- END SEARCH RESULT -->
+    </div>
   </div>
-  <!-- END SEARCH RESULT -->
-</div>
-</div>
+
+  </div>
+
 <BackToTop/>
 <Footer/>
 </template>
@@ -262,10 +73,16 @@ import firebaseApp from '../firebase.js';
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
+import { configureCompat } from 'vue';
+
+configureCompat({
+  COMPONENT_V_MODEL: false
+})
 
 const db = getFirestore(firebaseApp);
 
 export default {
+
   name: 'FilteredSearch',
 
   components: {
@@ -275,120 +92,128 @@ export default {
 	},
 
   data() {
-  return{
-    user:"",
+    return {
+      thead: ['Name','Rate/Hr', 'Experience',],
+      tbody: ['firstName', 'rate', 'yearsExperience'],
+      value1: 100,
+      entryList: [], // onMount: get data from database
+      searchTerm: this.$route.params.word, // This should be synced with your search input via v-model
+      budgetHigher: this.value1,
+      experience: 1, // Using enums: 1 = <5, 2 = 5 - 10, 3 = 10+
     }
-  }, 
+  },
 
   mounted() {
     const auth = getAuth(); 
     this.user = auth.currentUser.email;
-    this.initialSearch();
+    // this.initialSearch();
+    this.getList()
   },
-  
-  methods:{
-    // async display(){  
-    //   document.getElementById("tableBody").innerHTML = ""
-      
-    //   const profilesRef = collection(db, "profiles");
 
-    //   const searchQuery = document.getElementById("query").value
+  computed: {
+    currentFilteredPrice: function() {
+        return "Max Price $" + this.value1;
+      },
 
-    //   const q = query(profilesRef, where("subject", "==", searchQuery));
-      
-    //   const querySnapshot = await getDocs(q);
-    //   querySnapshot.forEach((doc) => {
-    //     let userInfo = doc.data()
-    //     var img = document.createElement("img")
-    //     var tr = document.createElement("tr")
-    //     var th = document.createElement("th")
-    //     var td1 = document.createElement("td")
-    //     var td2 = document.createElement("td")
-    //     var a = document.createElement("a")
-    //     var br = document.createElement("br")
-        
-    //     img.src = "https://www.w3schools.com/howto/img_avatar.png"
-    //     img.setAttribute("width", "100px")
-    //     td1.append(img)
+    shownEntryList: function() {
+      return this.entryList
+          .filter(this.searchFilter)
+          .filter(this.budgetFilter)
+          .filter(this.experienceFilter); // chain however many filters you need
+    },   
+  },
 
-    //     a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
-    //     a.href = "/profile/" + doc.id
-    //     a.style.fontSize = "20px"
-    //     th.append(a)
-        
-    //     td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
-    //     td2.style.fontSize = "15px"        
-
-    //     tr.append(td1)
-    //     tr.append(th)
-    //     tr.append(td2)
-    //     document.getElementById("tableBody").append(tr)
-    //     document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
-        
-    //     this.$router.push({ name: "search", params: { word: searchQuery } })
-    //   });
-    // },
-
-    async initialSearch() {
-      document.getElementById("tableBody").innerHTML = ""
-      
-      const profilesRef = collection(db, "profiles");
-
-      const searchQuery = this.$route.params.word
-
-      const q = query(profilesRef, where("subject", "==", searchQuery));
-      
-      const querySnapshot = await getDocs(q);
-
-      if (querySnapshot.size == 0) {
-        var tr = document.createElement("tr")
-        var td = document.createElement("td")
-        td.innerHTML = "No results found. Please try again!"
-        tr.append(td)
-        document.getElementById("tableBody").append(tr)
-        document.getElementById("matched").innerHTML = "Showing no results matching " + searchQuery
-      }
-
+  methods: {
+    async getList() {
+      const querySnapshot = await getDocs(collection(db, "profiles"));
       querySnapshot.forEach((doc) => {
-        let userInfo = doc.data()
-        var img = document.createElement("img")
-        var tr = document.createElement("tr")
-        var th = document.createElement("th")
-        var td1 = document.createElement("td")
-        var td2 = document.createElement("td")
-        var a = document.createElement("a")
-        var br = document.createElement("br")
-        
-        img.src = "https://www.w3schools.com/howto/img_avatar.png"
-        img.setAttribute("width", "100px")
-        td1.append(img)
-
-        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
-        a.href = "/profile/" + doc.id
-        a.style.fontSize = "20px"
-        th.append(a)
-        
-        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
-        td2.style.fontSize = "15px"        
-
-        tr.append(td1)
-        tr.append(th)
-        tr.append(td2)
-        document.getElementById("tableBody").append(tr)
-        document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
-        
-        this.$router.push({ name: "search", params: { word: searchQuery }})
+          // doc.data() is never undefined for query doc snapshots
+          // console.log(doc.id, " => ", doc.data());
+          this.entryList.push(doc.data())
       });
+    },
+    searchFilter: (entry) => {
+        return entry.subject.toLowerCase().includes(this.searchTerm.toLowerCase());
+    },
+    budgetFilter: (entry) => {
+        return entry.rate <= this.budgetHigher;
+    },
+    experienceFilter: (entry) => {
+        switch (this.experience) {
+            case 1:
+                return entry.yearsExperience < 5;
+            case 2:
+                return entry.yearsExperience < 10;
+            case 3:
+            default:
+                return entry.yearsExperience >= 10;
+        }
     }
   }
+
+  // data() {
+  //   return{
+  //     user:"",
+  //   }
+  // }, 
+
+
+  
+  // methods:{
+  //   async initialSearch() {
+  //     document.getElementById("tableBody").innerHTML = "" 
+  //     const profilesRef = collection(db, "profiles");
+  //     const searchQuery = this.$route.params.word
+  //     const q = query(profilesRef, where("subject", "==", searchQuery));
+  //     const querySnapshot = await getDocs(q);
+
+  //     if (querySnapshot.size == 0) {
+  //       var tr = document.createElement("tr")
+  //       var td = document.createElement("td")
+  //       td.innerHTML = "No results found. Please try again!"
+  //       tr.append(td)
+  //       document.getElementById("tableBody").append(tr)
+  //       document.getElementById("matched").innerHTML = "Showing no results matching " + searchQuery
+  //     }
+
+  //     querySnapshot.forEach((doc) => {
+  //       let userInfo = doc.data()
+  //       var img = document.createElement("img")
+  //       var tr = document.createElement("tr")
+  //       var th = document.createElement("th")
+  //       var td1 = document.createElement("td")
+  //       var td2 = document.createElement("td")
+  //       var a = document.createElement("a")
+  //       var br = document.createElement("br")
+        
+  //       img.src = "https://www.w3schools.com/howto/img_avatar.png"
+  //       img.setAttribute("width", "100px")
+  //       td1.append(img)
+
+  //       a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
+  //       a.href = "/profile/" + doc.id
+  //       a.style.fontSize = "20px"
+  //       th.append(a)
+        
+  //       td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
+  //       td2.style.fontSize = "15px"
+  //       td2.style.textAlign = "left"        
+
+  //       tr.append(td1)
+  //       tr.append(th)
+  //       tr.append(td2)
+  //       document.getElementById("tableBody").append(tr)
+  //       document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
+        
+  //       this.$router.push({ name: "search", params: { word: searchQuery } })
+  //     });
+  //   }
+  // }
 }
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
 @import 'https://unpkg.com/vue/dist/vue.min.js';
 @import 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js';
 
