@@ -6,7 +6,7 @@
 			<router-link to="/home"><img  src="../assets/HomePage/LogoBlack.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
       <input type="text" class="form-control form-input search text-center col-6" id="query" style="font-size: 15px; margin-left: 40px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
       <div class = "btnspace">
-      <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="$router.push('search')" >Search</a>
+      <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="search()" >Search</a>
 			</div>
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu
@@ -49,7 +49,7 @@
 
 <script>
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, reload } from "firebase/auth";
 import Logout from './Logout.vue'
 
 export default {
@@ -117,7 +117,12 @@ export default {
         tr.append(td2)
         document.getElementById("tableBody").append(tr)
       });
-    }
+    },
+
+    search() {
+		const searchQuery = document.getElementById("query").value
+		this.$router.push({ name: "search", params: { word: searchQuery } })
+	  }
   }
 }
 </script>

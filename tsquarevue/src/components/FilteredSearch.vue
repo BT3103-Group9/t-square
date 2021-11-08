@@ -285,6 +285,7 @@ export default {
   mounted() {
     const auth = getAuth(); 
     this.user = auth.currentUser.email;
+    this.initialSearch();
   },
   
   methods:{
@@ -293,7 +294,9 @@ export default {
       
       const profilesRef = collection(db, "profiles");
 
-      const q = query(profilesRef, where("subject", "==", document.getElementById("query").value));
+      const searchQuery = document.getElementById("query").value
+
+      const q = query(profilesRef, where("subject", "==", searchQuery));
       
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
@@ -322,7 +325,51 @@ export default {
         tr.append(th)
         tr.append(td2)
         document.getElementById("tableBody").append(tr)
-        document.getElementById("matched").innerHTML = "Showing all results matching " + document.getElementById("query").value
+        document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
+        
+        this.$router.push({ name: "search", params: { word: searchQuery } })
+      });
+    },
+
+    async initialSearch() {
+      document.getElementById("tableBody").innerHTML = ""
+      
+      const profilesRef = collection(db, "profiles");
+
+      const searchQuery = this.$route.params.word
+
+      const q = query(profilesRef, where("subject", "==", searchQuery));
+      
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        let userInfo = doc.data()
+        var img = document.createElement("img")
+        var tr = document.createElement("tr")
+        var th = document.createElement("th")
+        var td1 = document.createElement("td")
+        var td2 = document.createElement("td")
+        var a = document.createElement("a")
+        var br = document.createElement("br")
+        
+        img.src = "https://www.w3schools.com/howto/img_avatar.png"
+        img.setAttribute("width", "100px")
+        td1.append(img)
+
+        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
+        a.href = "/profile/" + doc.id
+        a.style.fontSize = "20px"
+        th.append(a)
+        
+        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
+        td2.style.fontSize = "15px"        
+
+        tr.append(td1)
+        tr.append(th)
+        tr.append(td2)
+        document.getElementById("tableBody").append(tr)
+        document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
+        
+        this.$router.push({ name: "search", params: { word: searchQuery } })
       });
     }
   }

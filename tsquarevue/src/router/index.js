@@ -40,9 +40,12 @@ const routes = [
 		component: CreateProfile
 	},
 	{
-		path: '/search',
+		path: '/search/:word',
 		name: 'search',
-		component: Search
+		component: Search,
+		meta: {
+			reload: true
+		}
 	},
 	{
 		path: '/chat',

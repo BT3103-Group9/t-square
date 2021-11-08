@@ -4,8 +4,8 @@
         <div class="container">
             <div class="masthead-heading text-uppercase">Welcome to T Square</div>
             <div class="masthead-subheading ">Where We Match You with Your Perfect Tutor</div>
-			<input type="text" class="form-control form-input search rounded-pill text-center col-7 mx-auto" style="font-size: 15px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
-			<a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="$router.push('search')" v-on:click="display()">Search</a>
+			<input id="query" type="text" class="form-control form-input search rounded-pill text-center col-7 mx-auto" style="font-size: 15px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
+			<a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="search()" v-on:click="display()">Search</a>
         </div>
     </header>
 	
@@ -179,6 +179,7 @@
 import NavBarHome from "../components/NavBarHome.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
+import { reload } from '@firebase/auth';
 
 export default {
 	name: "Home",
@@ -225,7 +226,12 @@ export default {
         tr.append(td2)
         document.getElementById("tableBody").append(tr)
       });
-    }
+    },
+
+	search() {
+		const searchQuery = document.getElementById("query").value
+		this.$router.push({ name: "search", params: { word: searchQuery } })
+	}
 	}
 
 	
