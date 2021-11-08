@@ -6,7 +6,7 @@
 			<router-link to="/home"><img  src="../assets/HomePage/LogoBlack.png" alt="" style="max-height: 60px; max-width: 60px;"></router-link>
       <input type="text" class="form-control form-input search text-center col-6" id="query" v-on:keyup.enter="search()" style="font-size: 15px; margin-left: 40px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
       <div class = "btnspace">
-      <a class="btn btn-dark btn-xl mt-2" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="search()" >Search</a>
+      <button class="btn btn-dark btn-xl mt-2 active" id = "searchBtn" style="font-size: 15px; padding: 7px; width: 100px; color: #ffffff; border-radius = 0px; background-color: #6c757d; border: 2px solid black" @click="search()" >Search</button>
 			</div>
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu
@@ -96,6 +96,8 @@ export default {
 @import "https://fonts.googleapis.com/css?family=Montserrat";
 @import "./css/demo.css";
 @import "./css/style.css";
+
+#searchBtn:hover {background-color: black}
 
 .btnspace{
   margin-left: -80px;

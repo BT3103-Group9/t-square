@@ -55,6 +55,8 @@ body {
     margin-left: 150px;
 }
 
+#profileBtn:hover {background-color: grey}
+
 #input-icons i {
     position: absolute;
     margin-top: -4px;

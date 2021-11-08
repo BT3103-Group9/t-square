@@ -5,7 +5,7 @@
             <div class="masthead-heading text-uppercase">Welcome to T Square</div>
             <div class="masthead-subheading ">Where We Match You with Your Perfect Tutor</div>
 			<input id="query" v-on:keyup.enter="search()" type="text" class="form-control form-input search rounded-pill text-center col-7 mx-auto" style="font-size: 15px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
-			<a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="search()">Search</a>
+			<a class="btn btn-dark btn-xl mt-2 rounded-pill active" id="searchBtn" style="font-size: 15px; padding: 8px; width: 100px" @click="search()">Search</a>
         </div>
     </header>
 	
@@ -53,12 +53,13 @@
 				<div class="col-lg-4 col-sm-6 mb-4">
 					<!-- Subject item 1-->
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+					     <button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchAcads()">
+						<!-- <a class="portfolio-link" data-bs-toggle="modal" href="/search/"> -->
 							<div class="portfolio-hover">
-								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+								<!-- <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div> -->
 							</div>
-							<img class="img-fluid" src="../assets/HomePage/acads.jpg" alt="..." />
-						</a>
+							<img class="img-fluid" src="../assets/HomePage/acads.jpg" alt="..." style="hieght: 220px; width: 500px"/>
+						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Academics</div>
 						</div>
@@ -67,12 +68,11 @@
 				<div class="col-lg-4 col-sm-6 mb-4">
 					<!-- Portfolio item 2-->
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+						 <button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchArts()">
 							<div class="portfolio-hover">
-								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="https://psmag.com/.image/t_share/MTI3NTgyNDI3Mzg3NTc4Mzc4/music-training-guitar.jpg" style="height: 277px !important" alt="..." />
-						</a>
+							<img class="img-fluid" src="https://psmag.com/.image/t_share/MTI3NTgyNDI3Mzg3NTc4Mzc4/music-training-guitar.jpg" alt="..." style="height: 260px; width: 500px"/>
+						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Performing Arts</div>
 						</div>
@@ -81,12 +81,11 @@
 				<div class="col-lg-4 col-sm-6 mb-4">
 					<!-- Portfolio item 3-->
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+						 <button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchSports()">
 							<div class="portfolio-hover">
-								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/HomePage/sports.jpg" alt="..." />
-						</a>
+							<img class="img-fluid" src="../assets/HomePage/sports.jpg" alt="..." style="hieght: 220px; width: 500px"/>
+						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Sports</div>
 						</div>
@@ -95,12 +94,11 @@
 				<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
 					<!-- Portfolio item 4-->
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+						<button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchCook()">
 							<div class="portfolio-hover">
-								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="https://www.healthista.com/wp-content/uploads/2017/12/Six-things-I-learnt-when-I-took-a-Michelin-star-cooking-masterclass-by-healthista-3.jpg" alt="..." style="height: 277px !important"/>
-						</a>
+							<img class="img-fluid" src="https://www.healthista.com/wp-content/uploads/2017/12/Six-things-I-learnt-when-I-took-a-Michelin-star-cooking-masterclass-by-healthista-3.jpg" alt="..." style="height: 260px; width: 500px"/>
+						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Cooking</div>
 						</div>
@@ -109,12 +107,11 @@
 				<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
 					<!-- Portfolio item 5-->
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+						<button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchProg()">
 							<div class="portfolio-hover">
-								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/HomePage/programming.jpg" alt="..." />
-						</a>
+							<img class="img-fluid" src="../assets/HomePage/programming.jpg" alt="..." style="hieght: 220px; width: 500px"/>
+						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Programming</div>
 						</div>
@@ -123,12 +120,11 @@
 				<div class="col-lg-4 col-sm-6">
 					<!-- Portfolio item 6-->
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+						<button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchOther()">
 							<div class="portfolio-hover">
-								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="../assets/HomePage/others.jpg" alt="..." />
-						</a>
+							<img class="img-fluid" src="../assets/HomePage/others.jpg" alt="..." style="hieght: 220px; width: 500px"/>
+						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Others</div>
 						</div>
@@ -146,6 +142,7 @@
 				<h2 class="section-heading text-uppercase">What people are saying...</h2>
 			</div>
 			<div class="row mt-5">
+				<!-- <Carousel/> -->
 				<div class="col-lg-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="../assets/HomePage/1.jpg" alt="..." />
@@ -180,6 +177,7 @@ import NavBarHome from "../components/NavBarHome.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
 import { reload } from '@firebase/auth';
+import Carousel from '../components/Carousel.vue';
 
 export default {
 	name: "Home",
@@ -187,14 +185,48 @@ export default {
 	components: {
 		NavBarHome,
 		Footer,
-		BackToTop
+		BackToTop,
+		Carousel
 	},
 
 	methods: {
 		search() {
 			const searchQuery = document.getElementById("query").value
 			this.$router.push({ name: "search", params: { word: searchQuery } })
-	}
+	},
+		searchAcads() {
+			const searchQuery = "Math"
+			this.$router.push({ name: "search", params: { word: searchQuery } })
+		},
+
+		
+		searchArts() {
+			const searchQuery = "Dancing"
+			this.$router.push({ name: "search", params: { word: searchQuery } })
+		},
+
+		searchSports() {
+			const searchQuery = "Soccer"
+			this.$router.push({ name: "search", params: { word: searchQuery } })
+		},
+
+		searchCook() {
+			const searchQuery = "Cooking"
+			this.$router.push({ name: "search", params: { word: searchQuery } })
+		},
+
+		searchProg() {
+			const searchQuery = "Programming"
+			this.$router.push({ name: "search", params: { word: searchQuery } })
+		},
+
+		searchOther() {
+			const searchQuery = "Photography"
+			this.$router.push({ name: "search", params: { word: searchQuery } })
+		},
+
+
+
 	}
 
 	
@@ -202,6 +234,7 @@ export default {
 </script>
 
 <style scoped>
+#searchBtn:hover {background-color: grey}
 
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
