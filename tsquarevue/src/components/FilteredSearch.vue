@@ -341,7 +341,6 @@ export default {
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.size == 0) {
-        console.log("running")
         var tr = document.createElement("tr")
         var td = document.createElement("td")
         td.innerHTML = "No results found. Please try again!"

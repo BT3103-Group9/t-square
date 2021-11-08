@@ -3,7 +3,7 @@
 		<div class="mt-5 mb-5 topdiv" style="text-align:center;">    
             <img src="../assets/HomePage/LogoWhite.png" style="max-height: 350px; max-width: 350px;"> 
 		</div>
-        <div id="firebaseui-auth-container" style="padding-bottom:5%;"></div>
+        <div id="firebaseui-auth-container"></div>
 
         <div class="about mt-5">
             <div data-aos="fade-in">
