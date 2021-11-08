@@ -40,10 +40,10 @@
               <div class="text-left">
                 <h2>Result</h2>
                 <hr>
-                <p id="matched">Showing all results matching "{{searchTerm}}"</p>              
+                <p id="matched">Showing all results matching "{{searchTerm}}"</p>       
+              </div>       
                 <div class="padding"></div>
                 <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody"></ui-table>
-              </div>
             <!-- END RESULT -->
           </div>
         </div>
@@ -87,8 +87,8 @@ export default {
   data() {
     return {
       experienceValue: 1,
-      thead: ['Name','Rate/ Hour', 'Experience',],
-      tbody: ['firstName', 'rate', 'yearsExperience'],
+      thead: ['Name','Rate/ Hour ($)', 'Experience (Years)', 'Action'],
+      tbody: ['username', 'rate', 'yearsExperience', "button"],
       tempList: [], // onMount: get data from database
       searchTerm: this.$route.params.word, // This should be synced with your search input via v-model
       budgetHigher: 100,
@@ -150,6 +150,7 @@ export default {
 <style scoped>
 @import 'https://unpkg.com/vue/dist/vue.min.js';
 @import 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js';
+
 
 .container{
     margin-top: 9%;
@@ -394,6 +395,18 @@ div[slider] > input[type=range]::-ms-tooltip {
 
 [slider]:hover > div > [sign] {
   opacity: 1;
+}
+
+.mdc-data-table{
+  width: 100%;
+}
+
+.mdc-data-table__header-cell{
+  margin: 0 auto;
+}
+
+.mdc-slider__thumb-knob{
+  background-color: black;
 }
 </style>
 

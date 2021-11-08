@@ -1,7 +1,7 @@
 <template>
 	<NavBar/>
 	<div v-if="isLoading" style="margin-top: 25%; height: 300px">
-		<h4>Fetching profile...</h4>
+		<ui-spinner active></ui-spinner>
 	</div>
 	<div v-else-if="hasProfile" style="margin-top: 100px; height: 600px">
 		<ProfileDisplay/>
