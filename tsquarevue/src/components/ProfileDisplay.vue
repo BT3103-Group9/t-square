@@ -21,7 +21,8 @@
                 
                 <div class="card-body" style="background-color: rgb(32, 29, 25);  text-align: center; color: white; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" v-if="!myProfile">
                   <p class="mb-0">
-                    <a href="chat.html"><strong class="pr-1" style="font-size: 20px; color: white; font-family: 'Montserrat';">Message Tutor</strong></a> 
+                    <a @click="messageTutor()"><strong class="pr-1" style="font-size: 20px; color: white; font-family: 'Montserrat';">Message Tutor</strong></a> 
+                    <router-link class="nav-link text-white" to="/faq" v-on:click.native="scrollToTop()">FAQ</router-link>
                     <span class="fa fa-comments" style="color: white"></span> 
                   </p>
                 </div>
@@ -99,6 +100,7 @@ import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore"
 import { getDoc, doc, deleteDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { roomsRef} from '../uifire.js'
 
 const db = getFirestore(firebaseApp);
 
@@ -117,7 +119,6 @@ export default {
   },
 
   methods: {
-
     async display() {    
       const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
@@ -154,6 +155,20 @@ export default {
 
     editProfile() {
       this.$router.push({ name: "editprofile" })
+    },
+
+    async messageTutor(){
+      const otherUserID = this.$route.params.username
+      console.log(otherUserID)
+
+      const current = getAuth().currentUser.email
+			const currentID = String(current).split("@")[0]
+			console.log('pushed into chatRoom: ' + otherUserID)
+			await roomsRef.add({
+				users: [otherUserID, currentID],
+				lastUpdated: new Date()
+			})
+      this.$router.push({ name: "chat"})
     }
   }
 }

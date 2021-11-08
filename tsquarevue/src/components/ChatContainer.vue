@@ -83,6 +83,7 @@ import {
 } from '../uifire.js'
 import { parseTimestamp, isSameDay } from './utils/dates'
 import ChatWindow from './chatsrc/lib/ChatWindow.vue'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 // import ChatWindow, { Rooms } from 'vue-advanced-chat'
 // import ChatWindow from 'vue-advanced-chat'
 // import 'vue-advanced-chat/dist/vue-advanced-chat.css'
@@ -103,6 +104,8 @@ export default {
 
 	data() {
 		return {
+			user: false,
+			currentUserId: '', 
 			roomsPerPage: 15,
 			rooms: [],
 			roomId: '',
@@ -156,11 +159,24 @@ export default {
 	},
 
 	mounted() {
+		const auth = getAuth(); 
+		onAuthStateChanged(auth, (user) => {
+        if (user) {
+            this.user = user;      
+            }
+        });
+		this.getID()
 		this.fetchRooms()
 		this.updateUserOnlineStatus()
 	},
 
 	methods: {
+		getID(){
+    		const currentUserEmail = getAuth().currentUser.email;
+			const currentID = String(currentUserEmail).split("@")[0]
+			this.currentUserId = currentID
+			console.log('my Current email ID: ' + currentID)
+		},
 		resetRooms() {
 			this.loadingRooms = true
 			this.loadingLastMessageByRoom = 0
@@ -240,21 +256,65 @@ export default {
 			})
 
 			const formattedRooms = []
+			// let userArray = await roomsRef
+			// 		.doc('WCQ81pcGM7zbvLIzba8n')
+			// 		.get()
+			// 		.then(user => user.data())
+			// console.log(userArray.users[0])
 
-			Object.keys(roomList).forEach(key => {
-				const room = roomList[key]
+			// var chatRooms = []
+			// var itemsProcessed = 0
+			// Object.keys(roomList).forEach(async (key) => {
+			// 	var row = []
+						
+			// 	let users = await roomsRef
+			// 		.doc(key)
+			// 		.get()
+			// 		.then(user => user.data())
 
+			// 	let userArray = await users.users
+
+			// 	row.push(key)
+			// 	row.push(userArray[0])
+			// 	row.push(userArray[1])
+			// 	chatRooms.push(row)
+			// 	itemsProcessed++
+			// })
+			// console.log(chatRooms)
+
+			//if (itemsProcessed == chatRooms.length) {
+			Object.keys(roomList).forEach((key) => {
+				const room = roomList[key]	
+				// var selectedChat = []
+				// selectedChat = chatRooms[0]
+
+				// for (let i = 0; i < chatRooms.length + 1; i++) {
+				// 	console.log("run")
+				// 	if (chatRooms[i][0] == key) {
+				// 		selectedChat = chatRooms[i]
+				// 	}
+				// }
+
+				//console.log("selected" + selectedChat)
+
+				// if (selectedChat[1] == this.currentUserId) {
+				// 	room.roomName = selectedChat[2]
+				// } else {
+				// 	room.roomName = selectedChat[1]
+				// }
+				//Original code
 				const roomContacts = room.users.filter(
 					user => user._id !== this.currentUserId
 				)
 
 				room.roomName =
-					roomContacts.map(user => user.username).join(', ') || 'Myself'
+					roomContacts.map(user => user.username).join(', ') || 'Student'
+				
+				//New attempt
 
-				const roomAvatar =
-					roomContacts.length === 1 && roomContacts[0].avatar
-						? roomContacts[0].avatar
-						: require('@/assets/HomePage/tutor.png')
+				//room.roomName = 'Myself'
+				
+				const roomAvatar = require('@/assets/HomePage/avatar.png')
 
 				formattedRooms.push({
 					...room,
@@ -262,7 +322,7 @@ export default {
 					avatar: roomAvatar,
 					index: room.lastUpdated.seconds,
 					lastMessage: {
-						content: 'Room created',
+						content: '',
 						timestamp: this.formatTimestamp(
 							new Date(room.lastUpdated.seconds),
 							room.lastUpdated

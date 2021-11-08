@@ -164,7 +164,7 @@ export default {
             courseOfStudy: "",
             company: "",
             role: "",       
-            yearActive: ""        
+            yearActive: "",
         }
     },
 
@@ -177,8 +177,8 @@ export default {
 
             if (!(this.firstName == "" || this.lastName == "" || this.rate == "" || this.yearsExperience == "" || this.subject == "" || this.bio == "" || this.school == "" || this.degree == "" || this.courseOfStudy == "" || this.company == "" || this.role == "" || this.yearActive == "")) {
                 try {
-                    const username = String(this.fbuser).split("@")[0]
-                    const docRef = await setDoc(doc(db, "profiles", username),{
+                    const email_username = String(this.fbuser).split("@")[0]
+                    const docRef = await setDoc(doc(db, "profiles", email_username),{
                         firstName: this.firstName,
                         lastName: this.lastName,
                         mobile: this.mobile,
@@ -195,10 +195,12 @@ export default {
                         courseOfStudy: this.courseOfStudy,
                         company: this.company,
                         role: this.role,       
-                        yearActive: this.yearActive
+                        yearActive: this.yearActive,
+                        username: this.firstName + ' ' + this.lastName,
+                        _id: email_username
                     })
                     console.log(docRef)
-                    this.$router.push({ name: "profile", params: { username: username } })
+                    this.$router.push({ name: "profile", params: { username: email_username } })
                     this.firstName = this.lastName = this.mobile = this.address = this.unitNum = this.postalCode = this.area = this.email = this.rate = this.yearsExperience = this.bio = this.school = this.degree = this.courseOfStudy = this.company = this.role = this.yearActive = ""
                     this.$emit("added")
                 }
