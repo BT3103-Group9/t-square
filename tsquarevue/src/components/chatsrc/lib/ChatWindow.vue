@@ -122,10 +122,10 @@ export default {
 			]
 		},
 		showSearch: { type: Boolean, default: true },
-		showAddRoom: { type: Boolean, default: true },
+		showAddRoom: { type: Boolean, default: false },
 		showSendIcon: { type: Boolean, default: true },
-		showFiles: { type: Boolean, default: true },
-		showAudio: { type: Boolean, default: true },
+		showFiles: { type: Boolean, default: false },
+		showAudio: { type: Boolean, default: false },
 		showEmojis: { type: Boolean, default: true },
 		showReactionEmojis: { type: Boolean, default: true },
 		showNewMessagesDivider: { type: Boolean, default: true },
