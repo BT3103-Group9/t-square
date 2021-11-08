@@ -1,70 +1,109 @@
 <template>
-	<NavBar/>
+<div class="container">
+  <ui-table
+    fullwidth
+    :data="shownEntryList"
+    :thead="thead"
+    :tbody="tbody"
+    >
+    <!-- <template #th-name></template>
+    <template #th-rate></template>
+    <template #th-experience></template>
+    <template #actions="{ tempList }">
+      <ui-icon><a href="/profile/" + tempList.username>face</a></ui-icon>
+    </template> -->
 
-	<div style="margin-top: 15%; height: 300px; position: relative;">
-		<img class="animated-gif" src="@/assets/cute-sad.gif" alt="">
-		
-		<h4>It seems like you have no tutor profile yet. <br><br> <a href="/createprofile">Click here to create your tutor profile now!</a></h4>
-		<br>
-	</div>
-  <Footer/>
+  </ui-table>
+
+</div>
+	
 </template>
 
 <script>
-
-import NavBar from '../components/NavBar.vue'
-import Footer from '../components/Footer.vue'
-import ProfileDisplay from '../components/ProfileDisplay.vue'
+import { collection, getFirestore, getDocs } from "firebase/firestore";
 import firebaseApp from '../firebase.js';
-import { getFirestore, doc, getDoc } from "firebase/firestore"
 import { getAuth } from "firebase/auth";
-import { FirebaseError } from '@firebase/util';
+import { configureCompat } from 'vue';
+
+configureCompat({
+  COMPONENT_V_MODEL: false
+})
 
 const db = getFirestore(firebaseApp);
 
 export default {
-	name: "Profile",
+  name: "Testing",
 
-	components: {
-		NavBar,
-		Footer,
-		ProfileDisplay
-	},
+  data() {
+    return {
+      experienceValue: 1,
+      tempList: [], // onMount: get data from database
+      searchTerm: '', // This should be synced with your search input via v-model
+      thead: [
+        {
+          value: 'Name',
+          sort: 'asc',
+          columnId: 'username'
+        },
+        {
+          value: 'Rate/ Hour ($)',
+          sort: 'asc',
+          columnId: 'rate'
+        },
+         {
+          value: 'Experience (Years)',
+          sort: 'asc',
+          columnId: 'yearsExperience'
+        },
 
-	data() {
-		return {
-			fbuser: "",
-			hasProfile: false,
-			myProfile: false,
-			isLoading: true
-		}
-	},
+        'Actions',
+      ],
+      tbody: [
+        'username',
+        'rate',
+        'yearsExperience',
+        {
+          slot:"actions"
+        }
+      ],
+    };
+  },
 
-	mounted() {
-		const auth = getAuth(); 
-		this.checkProfile();
-	},
+  mounted() {
+    const auth = getAuth(); 
+    // this.user = auth.currentUser.email;
+    this.user = auth.currentUser;
+    this.getList()
+  },
 
-	methods: {
-		async checkProfile() {
-			setTimeout(() => {
-				this.isLoading = false;
-			}, 1000);
-			const username = this.$route.params.username
-			let docs = await getDoc(doc(db, "profiles", username))
-			const current = getAuth().currentUser.email
-			const currentUsername = String(current).split("@")[0]
+  computed: {
+    currentFilteredPrice: function() {
+        return "Max Price $" + this.budgetHigher;
+      },
 
-			if (docs.exists()) {
-				this.hasProfile = true;
-			} else if (username.valueOf() == currentUsername.valueOf()) {
-				this.myProfile = true;
-			} else {
-				console.log("Profile does not exist")
-			}
-		}
-	}
-}
+    shownEntryList: function() {
+      const output = this.tempList
+        .filter(this.searchFilter)
+
+
+      return output;
+    },   
+  },
+
+  methods: {
+    async getList() {
+      const querySnapshot = await getDocs(collection(db, "profiles"));
+      querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          // console.log(doc.id, " => ", doc.data());
+          this.tempList.push(doc.data())
+      });
+    },
+    searchFilter(entry) {
+      return entry.subject.toLowerCase().includes(this.searchTerm.toLowerCase());
+    },
+  }
+};
 
 	
 </script>

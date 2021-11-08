@@ -42,8 +42,8 @@
                 <hr>
                 <p id="matched">Showing all results matching "{{searchTerm}}"</p>       
               </div>       
-                <div class="padding"></div>
-                <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody"></ui-table>
+              <div class="padding"></div>
+              <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody"></ui-table>
             <!-- END RESULT -->
           </div>
         </div>
@@ -87,8 +87,30 @@ export default {
   data() {
     return {
       experienceValue: 1,
-      thead: ['Name','Rate/ Hour ($)', 'Experience (Years)', 'Action'],
-      tbody: ['username', 'rate', 'yearsExperience', "button"],
+      thead: [
+        {
+          value: 'Name',
+          sort: 'asc',
+          columnId: 'username'
+        },
+        {
+          value: 'Rate/ Hour ($)',
+          sort: 'asc',
+          columnId: 'rate'
+        },
+         {
+          value: 'Experience (Years)',
+          sort: 'asc',
+          columnId: 'yearsExperience'
+        },
+        'Action'
+        ],
+      tbody: [
+        'username',
+        'rate',
+        'yearsExperience',
+        "button"
+      ],
       tempList: [], // onMount: get data from database
       searchTerm: this.$route.params.word, // This should be synced with your search input via v-model
       budgetHigher: 100,
