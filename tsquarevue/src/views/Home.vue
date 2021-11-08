@@ -5,7 +5,7 @@
             <div class="masthead-heading text-uppercase">Welcome to T Square</div>
             <div class="masthead-subheading ">Where We Match You with Your Perfect Tutor</div>
 			<input id="query" type="text" class="form-control form-input search rounded-pill text-center col-7 mx-auto" style="font-size: 15px; padding: 18px" placeholder="&#x1F50E;&#xFE0E; What do you like to learn today?"/>
-			<a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="search()" v-on:click="display()">Search</a>
+			<a class="btn btn-dark btn-xl mt-2 rounded-pill" style="font-size: 15px; padding: 8px; width: 100px" @click="search()">Search</a>
         </div>
     </header>
 	
@@ -191,46 +191,9 @@ export default {
 	},
 
 	methods: {
-	async display(){ 
-      const profilesRef = collection(db, "profiles");
-      const q = query(profilesRef, where("subject", "==", document.getElementById("query").value)); 
-      this.$router.push('/search'); 
-      document.getElementById("tableBody").innerHTML = ""
-      
-      
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        let userInfo = doc.data()
-        var img = document.createElement("img")
-        var tr = document.createElement("tr")
-        var th = document.createElement("th")
-        var td1 = document.createElement("td")
-        var td2 = document.createElement("td")
-        var a = document.createElement("a")
-        var br = document.createElement("br")
-        
-        img.src = "https://www.w3schools.com/howto/img_avatar.png"
-        img.setAttribute("width", "100px")
-        td1.append(img)
-
-        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
-        a.href = "/profile/" + doc.id
-        a.style.fontSize = "20px"
-        th.append(a)
-        
-        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
-        td2.style.fontSize = "15px"        
-
-        tr.append(td1)
-        tr.append(th)
-        tr.append(td2)
-        document.getElementById("tableBody").append(tr)
-      });
-    },
-
-	search() {
-		const searchQuery = document.getElementById("query").value
-		this.$router.push({ name: "search", params: { word: searchQuery } })
+		search() {
+			const searchQuery = document.getElementById("query").value
+			this.$router.push({ name: "search", params: { word: searchQuery } })
 	}
 	}
 

@@ -80,44 +80,6 @@ export default {
       const username = String(this.fbuser).split("@")[0]
       this.$router.push({ name: "profile", params: { username: username } })
     },
-    
-
-    async display(){ 
-      const profilesRef = collection(db, "profiles");
-      const q = query(profilesRef, where("subject", "==", document.getElementById("query").value)); 
-      this.$router.push('/search'); 
-      document.getElementById("tableBody").innerHTML = ""
-      
-      
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        let userInfo = doc.data()
-        var img = document.createElement("img")
-        var tr = document.createElement("tr")
-        var th = document.createElement("th")
-        var td1 = document.createElement("td")
-        var td2 = document.createElement("td")
-        var a = document.createElement("a")
-        var br = document.createElement("br")
-        
-        img.src = "https://www.w3schools.com/howto/img_avatar.png"
-        img.setAttribute("width", "100px")
-        td1.append(img)
-
-        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
-        a.href = "/profile/" + doc.id
-        a.style.fontSize = "20px"
-        th.append(a)
-        
-        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
-        td2.style.fontSize = "15px"        
-
-        tr.append(td1)
-        tr.append(th)
-        tr.append(td2)
-        document.getElementById("tableBody").append(tr)
-      });
-    },
 
     search() {
 		const searchQuery = document.getElementById("query").value

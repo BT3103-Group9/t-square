@@ -118,17 +118,15 @@
             <h2><i class="fa fa-file-o"></i> Result</h2>
             <hr>
             <!-- BEGIN SEARCH INPUT -->
-            <!-- <b-field label="Filter">
-              <b-input placeholder="Search Product" v-model="filterName" />
-            </b-field> -->
-            <div class="input-group">
+
+            <!-- <div class="input-group">
               <input type="text" class="form-control" id="query">
               <span class="input-group-btn">
                 <button class="btn btn-dark" type="button" v-on:click="display()"><i class="fa fa-search"></i></button>
               </span>
             </div>
 
-            
+             -->
             <!-- END SEARCH INPUT -->
             <p id = "matched">Showing all results matching "Acting"</p>
             
@@ -289,47 +287,47 @@ export default {
   },
   
   methods:{
-    async display(){  
-      document.getElementById("tableBody").innerHTML = ""
+    // async display(){  
+    //   document.getElementById("tableBody").innerHTML = ""
       
-      const profilesRef = collection(db, "profiles");
+    //   const profilesRef = collection(db, "profiles");
 
-      const searchQuery = document.getElementById("query").value
+    //   const searchQuery = document.getElementById("query").value
 
-      const q = query(profilesRef, where("subject", "==", searchQuery));
+    //   const q = query(profilesRef, where("subject", "==", searchQuery));
       
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        let userInfo = doc.data()
-        var img = document.createElement("img")
-        var tr = document.createElement("tr")
-        var th = document.createElement("th")
-        var td1 = document.createElement("td")
-        var td2 = document.createElement("td")
-        var a = document.createElement("a")
-        var br = document.createElement("br")
+    //   const querySnapshot = await getDocs(q);
+    //   querySnapshot.forEach((doc) => {
+    //     let userInfo = doc.data()
+    //     var img = document.createElement("img")
+    //     var tr = document.createElement("tr")
+    //     var th = document.createElement("th")
+    //     var td1 = document.createElement("td")
+    //     var td2 = document.createElement("td")
+    //     var a = document.createElement("a")
+    //     var br = document.createElement("br")
         
-        img.src = "https://www.w3schools.com/howto/img_avatar.png"
-        img.setAttribute("width", "100px")
-        td1.append(img)
+    //     img.src = "https://www.w3schools.com/howto/img_avatar.png"
+    //     img.setAttribute("width", "100px")
+    //     td1.append(img)
 
-        a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
-        a.href = "/profile/" + doc.id
-        a.style.fontSize = "20px"
-        th.append(a)
+    //     a.innerHTML = "<br>" + userInfo.firstName + " " + userInfo.lastName
+    //     a.href = "/profile/" + doc.id
+    //     a.style.fontSize = "20px"
+    //     th.append(a)
         
-        td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
-        td2.style.fontSize = "15px"        
+    //     td2.innerHTML = "Subject: " + userInfo.subject + "<br>" + "Hourly Rate: " + userInfo.rate + " SGD <br>" + "Teaching Experience: " + userInfo.yearsExperience + " year(s)" + "<br>" + "Highest Education: " + userInfo.degree;
+    //     td2.style.fontSize = "15px"        
 
-        tr.append(td1)
-        tr.append(th)
-        tr.append(td2)
-        document.getElementById("tableBody").append(tr)
-        document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
+    //     tr.append(td1)
+    //     tr.append(th)
+    //     tr.append(td2)
+    //     document.getElementById("tableBody").append(tr)
+    //     document.getElementById("matched").innerHTML = "Showing all results matching " + searchQuery
         
-        this.$router.push({ name: "search", params: { word: searchQuery } })
-      });
-    },
+    //     this.$router.push({ name: "search", params: { word: searchQuery } })
+    //   });
+    // },
 
     async initialSearch() {
       document.getElementById("tableBody").innerHTML = ""
