@@ -3,7 +3,7 @@
 	<div v-if="isLoading" style="margin-top: 25%; height: 300px">
 		<ui-spinner active></ui-spinner>
 	</div>
-	<div v-else-if="hasProfile" style="margin-top: 100px; height: 600px">
+	<div v-else-if="hasProfile" style="margin-top: 100px; height: 700px">
 		<ProfileDisplay/>
 	</div>
 	<div v-else-if="myProfile" style="margin-top: 25%; height: 300px">
@@ -55,7 +55,7 @@ export default {
 		async checkProfile() {
 			setTimeout(() => {
 				this.isLoading = false;
-			}, 1000);
+			}, 2000);
 			const username = this.$route.params.username
 			let docs = await getDoc(doc(db, "profiles", username))
 			const current = getAuth().currentUser.email

@@ -8,7 +8,7 @@
             <div class="col-lg-4">
               <div class="card shadow-sm">
                 <div class="card-header bg-transparent text-center">
-                  <img class="profile_img" src="../assets/HomePage/avatar.png" alt="Tutor dp">
+                  <img class="profile_img" src="https://cadcamacademy.co.in/wp-content/uploads/2017/05/facebook-profile-picture-no-pic-avatar.jpg" alt="Tutor dp">
                   <h3 id="name"></h3>
                 </div>
 
