@@ -6,7 +6,7 @@
 	<div v-else-if="hasProfile" style="margin-top: 100px; height: 700px">
 		<ProfileDisplay/>
 	</div>
-	<div v-else-if="myProfile" style="margin-top: 25%; height: 300px">
+	<div v-else-if="myProfile" style="margin-top: 15%; height: 500px">
 		<img class="animated-gif" src="@/assets/cute-sad.gif" alt="">
 		<h4>It seems like you have no tutor profile yet. <br><br> <a href="/createprofile">Click here to create your tutor profile now!</a></h4>
 		<br>
