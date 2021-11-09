@@ -7,6 +7,7 @@
 		<ProfileDisplay/>
 	</div>
 	<div v-else-if="myProfile" style="margin-top: 25%; height: 300px">
+		<img class="animated-gif" src="@/assets/cute-sad.gif" alt="">
 		<h4>It seems like you have no tutor profile yet. <br><br> <a href="/createprofile">Click here to create your tutor profile now!</a></h4>
 		<br>
 	</div>
@@ -76,6 +77,13 @@ export default {
 </script>
 
 <style scoped>
+img.animated-gif{
+  width: 200px;
+  height: auto;
+  
+}
+
+
 #bg { 
     display: block;
     margin-left: auto;
