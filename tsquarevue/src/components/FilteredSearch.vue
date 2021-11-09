@@ -43,7 +43,11 @@
                 <p id="matched">Showing all results matching "{{searchTerm}}"</p>       
               </div>       
               <div class="padding"></div>
-              <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody"></ui-table>
+              <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody">
+                <template #actions="{ data }">
+                  <ui-button @click="showEntry(data)">Profile</ui-button>
+                </template>
+              </ui-table>
             <!-- END RESULT -->
           </div>
         </div>
@@ -66,11 +70,11 @@ import { getAuth } from "firebase/auth";
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
-import { configureCompat } from 'vue';
+// import { configureCompat } from 'vue';
 
-configureCompat({
-  COMPONENT_V_MODEL: false
-})
+// configureCompat({
+//   COMPONENT_V_MODEL: false
+// })
 
 const db = getFirestore(firebaseApp);
 
@@ -104,12 +108,12 @@ export default {
           columnId: 'yearsExperience'
         },
         'Action'
-        ],
+      ],
       tbody: [
         'username',
         'rate',
         'yearsExperience',
-        "button"
+        { slot: 'actions' }
       ],
       tempList: [], // onMount: get data from database
       searchTerm: this.$route.params.word, // This should be synced with your search input via v-model
@@ -155,7 +159,6 @@ export default {
       return entry.rate <= this.budgetHigher;
     },
     experienceFilter(entry) {
-
       if (this.experienceValue == 1) {
         return entry.yearsExperience < 5;
       } else if (this.experienceValue == 2) {
@@ -163,16 +166,11 @@ export default {
       } else {
         return entry.yearsExperience > 10; 
       }
-      // switch (this.experienceValue) {
-      //   case 1:
-      //     console.log(1)
-      //     return entry.yearsExperience < 5;
-      //   case 2:
-      //   console.log(2)
-      //     return entry.yearsExperience <= 10 && entry.yearsExperience >= 5;
-      //   case 3:
-      //     return entry.yearsExperience > 10;
-      // }
+    },
+      showEntry(value) {
+        const profile = value._id;
+        // console.log(profile)
+        this.$router.push({name:"profile", params: {username: profile}})
     }
   }
 }

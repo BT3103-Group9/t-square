@@ -1,133 +1,76 @@
 <template>
-<div class="container">
-  <ui-table
-    fullwidth
-    :data="shownEntryList"
-    :thead="thead"
-    :tbody="tbody"
-    >
-    <!-- <template #th-name></template>
-    <template #th-rate></template>
-    <template #th-experience></template>
-    <template #actions="{ tempList }">
-      <ui-icon><a href="/profile/" + tempList.username>face</a></ui-icon>
-    </template> -->
-
-  </ui-table>
-
-</div>
-	
+    <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody">
+      <template #actions="{ data }">
+        <ui-button @click="showEntry(data)">Show</ui-button>
+      </template>
+    </ui-table>
 </template>
 
 <script>
 import { collection, getFirestore, getDocs } from "firebase/firestore";
 import firebaseApp from '../firebase.js';
-import { getAuth } from "firebase/auth";
-import { configureCompat } from 'vue';
-
-configureCompat({
-  COMPONENT_V_MODEL: false
-})
 
 const db = getFirestore(firebaseApp);
 
 export default {
-  name: "Testing",
-
   data() {
     return {
-      experienceValue: 1,
-      tempList: [], // onMount: get data from database
-      searchTerm: '', // This should be synced with your search input via v-model
+      tempList: [],
       thead: [
-        {
-          value: 'Name',
-          sort: 'asc',
-          columnId: 'username'
-        },
-        {
-          value: 'Rate/ Hour ($)',
-          sort: 'asc',
-          columnId: 'rate'
-        },
-         {
-          value: 'Experience (Years)',
-          sort: 'asc',
-          columnId: 'yearsExperience'
-        },
-
-        'Actions',
+        'Name',
+        'Rate/Hr',
+        'Experience',
+        'Actions'
       ],
-      tbody: [
-        'username',
-        'rate',
-        'yearsExperience',
-        {
-          slot:"actions"
-        }
-      ],
+      tbody: ['firstName', 'rate', 'yearsExperience', { slot: 'actions' }],
+      searchTerm: '',
+      budgetHigher: 1000,
+      experience: 1
     };
   },
-
   mounted() {
-    const auth = getAuth(); 
-    // this.user = auth.currentUser.email;
-    this.user = auth.currentUser;
-    this.getList()
+    this.getList();
   },
-
   computed: {
     currentFilteredPrice: function() {
-        return "Max Price $" + this.budgetHigher;
-      },
-
+      return "Max Price $" + this.value1;
+    },
     shownEntryList: function() {
-      const output = this.tempList
+      return this.tempList
         .filter(this.searchFilter)
-
-
-      return output;
+        .filter(this.budgetFilter)
+        .filter(this.experienceFilter); // chain however many filters you need
     },   
   },
-
   methods: {
-    async getList() {
+    async getList () {
       const querySnapshot = await getDocs(collection(db, "profiles"));
       querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          // console.log(doc.id, " => ", doc.data());
-          this.tempList.push(doc.data())
+        this.tempList.push(doc.data())
       });
     },
-    searchFilter(entry) {
-      return entry.subject.toLowerCase().includes(this.searchTerm.toLowerCase());
+    searchFilter (entry) {
+      return entry.firstName.toLowerCase().includes(this.searchTerm.toLowerCase());
     },
+    budgetFilter (entry) {
+      return entry.rate <= this.budgetHigher;
+    },
+    experienceFilter (entry) {
+      switch (this.experience) {
+        case 1:
+          return entry.yearsExperience < 5;
+        case 2:
+          return entry.yearsExperience < 10;
+        case 3:
+        default:
+          return entry.yearsExperience >= 10;
+      }
+    },
+    showEntry(value) {
+      const profile = value.username;
+      this.$router.push({name:"profile", params: {word: profile}})
+    }
   }
+
 };
-
-	
 </script>
-
-<style scoped>
-#bg { 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-}
-
-/* Footer {
-	position: absolute;
-	bottom:0;
-	left:0;
-	width:100%;
-	height:300px;
-} */
-
-img.animated-gif{
-  width: 200px;
-  height: auto;
-  
-}
-
-</style>
