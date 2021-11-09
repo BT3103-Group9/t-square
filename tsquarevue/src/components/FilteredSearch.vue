@@ -70,11 +70,11 @@ import { getAuth } from "firebase/auth";
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import BackToTop from "../components/BackToTop.vue";
-// import { configureCompat } from 'vue';
+import { configureCompat } from 'vue';
 
-// configureCompat({
-//   COMPONENT_V_MODEL: false
-// })
+configureCompat({
+  COMPONENT_V_MODEL: false
+})
 
 const db = getFirestore(firebaseApp);
 
@@ -116,7 +116,7 @@ export default {
         { slot: 'actions' }
       ],
       tempList: [], // onMount: get data from database
-      searchTerm: this.$route.params.word, // This should be synced with your search input via v-model
+      searchTerm: this.$route.params.word, 
       budgetHigher: 100,
     }
   },
@@ -162,14 +162,13 @@ export default {
       if (this.experienceValue == 1) {
         return entry.yearsExperience < 5;
       } else if (this.experienceValue == 2) {
-        return entry.yearsExperience <= 10 && entry.yearsExperience >= 5;
+        return entry.yearsExperience <= 10 ;
       } else {
         return entry.yearsExperience > 10; 
       }
     },
-      showEntry(value) {
-        const profile = value._id;
-        // console.log(profile)
+      showEntry(entry) {
+        const profile = entry._id;
         this.$router.push({name:"profile", params: {username: profile}})
     }
   }

@@ -1,9 +1,20 @@
 <template>
-    <ui-table :data="shownEntryList" :thead="thead" :tbody="tbody">
-      <template #actions="{ data }">
-        <ui-button @click="showEntry(data)">Show</ui-button>
-      </template>
-    </ui-table>
+                  <div class="experience">
+                <h5>Experience</h5>
+                <ui-form-field>
+                    <ui-radio v-model="experienceValue" input-id="1" value="1"></ui-radio>
+                    <label for="1" class="ml-1">&nbsp; &#60; 5 years</label>
+                </ui-form-field> <br>
+                <ui-form-field>
+                    <ui-radio v-model="experienceValue" input-id="2" value="2"></ui-radio>
+                    <label for="2" class="ml-1">5-10 years</label>
+                </ui-form-field> <br>
+                <ui-form-field>
+                    <ui-radio v-model="experienceValue" input-id="3" value="3"></ui-radio>
+                    <label for="3">&nbsp; &#62; 10 years</label>
+                </ui-form-field>
+                <p>test: {{experienceValue}}</p>
+              </div>
 </template>
 
 <script>
