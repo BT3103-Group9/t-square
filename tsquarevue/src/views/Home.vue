@@ -61,7 +61,7 @@
 							<img class="img-fluid" src="../assets/HomePage/acads.jpg" alt="..." style="hieght: 220px; width: 500px"/>
 						</button>
 						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Academics</div>
+							<div class="portfolio-caption-heading">Math</div>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 							<img class="img-fluid" src="https://psmag.com/.image/t_share/MTI3NTgyNDI3Mzg3NTc4Mzc4/music-training-guitar.jpg" alt="..." style="height: 260px; width: 500px"/>
 						</button>
 						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Performing Arts</div>
+							<div class="portfolio-caption-heading">Guitar</div>
 						</div>
 					</div>
 				</div>
@@ -87,7 +87,7 @@
 							<img class="img-fluid" src="../assets/HomePage/sports.jpg" alt="..." style="hieght: 220px; width: 500px"/>
 						</button>
 						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Sports</div>
+							<div class="portfolio-caption-heading">Basketball</div>
 						</div>
 					</div>
 				</div>
@@ -126,7 +126,7 @@
 							<img class="img-fluid" src="../assets/HomePage/others.jpg" alt="..." style="hieght: 220px; width: 500px"/>
 						</button>
 						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Others</div>
+							<div class="portfolio-caption-heading">Art</div>
 						</div>
 					</div>
 				</div>
@@ -201,12 +201,12 @@ export default {
 
 		
 		searchArts() {
-			const searchQuery = "Dancing"
+			const searchQuery = "Guitar"
 			this.$router.push({ name: "search", params: { word: searchQuery } })
 		},
 
 		searchSports() {
-			const searchQuery = "Soccer"
+			const searchQuery = "Basketball"
 			this.$router.push({ name: "search", params: { word: searchQuery } })
 		},
 
@@ -221,7 +221,7 @@ export default {
 		},
 
 		searchOther() {
-			const searchQuery = "Photography"
+			const searchQuery = "Art"
 			this.$router.push({ name: "search", params: { word: searchQuery } })
 		},
 
