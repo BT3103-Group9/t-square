@@ -162,11 +162,12 @@ export default {
       if (this.experienceValue == 1) {
         return entry.yearsExperience < 5;
       } else if (this.experienceValue == 2) {
-        return entry.yearsExperience <= 10 ;
-      } else {
+        return entry.yearsExperience >= 5 && entry.yearsExperience <= 10 ;
+      } else if (this.experienceValue == 3) {
         return entry.yearsExperience > 10; 
       }
     },
+
       showEntry(entry) {
         const profile = entry._id;
         this.$router.push({name:"profile", params: {username: profile}})
