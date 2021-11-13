@@ -20,7 +20,7 @@
 			<!-- Second Column -->
 			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 				<h4 class="headers">CUSTOMER SERVICE</h4>
-				<p style="font-size: 15px; text-align:left;"><router-link class="nav-link text-white pl-0" to="/faq" @click="scrollToTop()">FAQ</router-link></p> 
+				<p style="font-size: 15px; text-align:left;"><router-link class="nav-link text-white pl-0" to="/faq" v-on:click.native="scrollToTop()">FAQ</router-link></p> 
 				<br>
 				<p style="font-size: 12px">
 					<b>Need Help:</b> <br>
