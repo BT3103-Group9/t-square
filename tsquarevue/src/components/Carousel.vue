@@ -30,8 +30,8 @@
         <div class="carousel__item">
           <!-- Change img src, remove comment once done -->
             <img class="mb-3" src="@/assets/HomePage/4.webp" alt="">
-            <h4>Insert Name</h4>
-            <p class="text-muted px-4">Insert Feedback</p>
+            <h4>Jimmy James</h4>
+            <p class="text-muted px-4">"This is way better than a university degree. Period."</p>
         </div>
     </Slide>
 
@@ -39,8 +39,8 @@
         <div class="carousel__item">
           <!-- Change img src, remove comment once done -->
             <img class="mb-3" src="@/assets/HomePage/5.webp" alt="">
-            <h4>Insert Name</h4>
-            <p class="text-muted px-4">Insert Feedback</p>
+            <h4>Kimmy Faris</h4>
+            <p class="text-muted px-4">"This app has opened so many new opportunities for me! Am eternally grateful."</p>
         </div>
     </Slide>
 
