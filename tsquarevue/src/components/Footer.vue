@@ -45,7 +45,7 @@
 				</div>
 		
 				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="font-size: 12px">
+				<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="font-size: 12px; float: left;">
 				Subscribe
 				</button> <br><br>
 
@@ -108,6 +108,10 @@ export default {
 }
 a.white{
   color:white;
+}
+
+h4, a, p {
+	text-align: left;
 }
 
 </style>
