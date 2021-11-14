@@ -29,6 +29,7 @@
     "vue-advanced-chat": "https://github.com/antoine92190/vue-advanced-chat/tarball/next",
     "vue-infinite-loading": "^2.4.5",
     "vue-router": "^4.0.12",
+    "vue3-carousel": "^0.1.30",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

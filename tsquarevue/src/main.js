@@ -12,13 +12,12 @@ import BalmUIPlus from 'balm-ui-plus'; // BalmJS Team Material Components
 import 'balm-ui-css';
 
 
-// createApp(App).use(router, AOS.init(), BalmUI, BalmUIPlus).mount('#app')
 const app = createApp(App);
 
 app.use(router);
 app.use(AOS.init());
-// app.use(ElementPlus);
 app.use(BalmUI);
 app.use(BalmUIPlus);
+
 
 app.mount('#app');

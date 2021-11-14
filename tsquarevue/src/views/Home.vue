@@ -84,7 +84,7 @@
 						 <button type="button" class="btn btn-dark btn-square-md active" data-bs-toggle="modal" @click="searchSports()">
 							<div class="portfolio-hover">
 							</div>
-							<img class="img-fluid" src="../assets/HomePage/sports.jpg" alt="..." style="height: 260px; width: 500px"/>
+							<img class="img-fluid" src="../assets/HomePage/Basketball.jpeg" alt="..." style="height: 260px; width: 500px"/>
 						</button>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">Basketball</div>
@@ -142,8 +142,8 @@
 				<h2 class="section-heading text-uppercase">What people are saying...</h2>
 			</div>
 			<div class="row mt-5">
-				<!-- <Carousel/> -->
-				<div class="col-lg-4">
+				<Carousel/>
+				<!-- <div class="col-lg-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="../assets/HomePage/1.jpg" alt="..." />
 						<h4>Parveen Anand</h4>
@@ -163,7 +163,7 @@
 						<h4>Larry Parker</h4>
 						<p class="text-muted">"Revolutionary App! This should be the way how tutors and tutees should connect from now on!"</p>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>

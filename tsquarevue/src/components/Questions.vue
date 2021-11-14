@@ -1,11 +1,11 @@
 <template>
 <div class="container my-5">
-	<h1 class="text-left">General FAQ</h1>
+	<h1 class="text-left">General Frequently Asked Questions</h1>
 	<div class="accordion" id="accordionExample">
 		<!-- Item 1-->
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingOne">
-				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 				How do I sign up for an account?
 				</button>
 			</h2>
