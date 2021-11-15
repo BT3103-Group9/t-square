@@ -1,0 +1,47 @@
+[debug] [2021-11-15T09:24:46.898Z] ----------------------------------------------------------------------
+[debug] [2021-11-15T09:24:46.900Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\qinda\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2021-11-15T09:24:46.901Z] CLI Version:   9.22.0
+[debug] [2021-11-15T09:24:46.901Z] Platform:      win32
+[debug] [2021-11-15T09:24:46.901Z] Node Version:  v14.17.6
+[debug] [2021-11-15T09:24:46.902Z] Time:          Mon Nov 15 2021 17:24:46 GMT+0800 (Singapore Standard Time)
+[debug] [2021-11-15T09:24:46.902Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-15T09:24:46.953Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-15T09:24:46.954Z] > authorizing via signed-in user (qindalim@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\qinda\t-square\tsquarevue
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using bt3103-final-project-bc034. 
+[debug] [2021-11-15T09:24:50.549Z] > refreshing access token with scopes: []
+[debug] [2021-11-15T09:24:50.549Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-15T09:24:50.622Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Mon, 15 Nov 2021 09:24:49 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"clear","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-15T09:24:50.634Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/bt3103-final-project-bc034 [none]
+[debug] [2021-11-15T09:24:50.922Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/bt3103-final-project-bc034 200
+[debug] [2021-11-15T09:24:50.922Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/bt3103-final-project-bc034 {"projectId":"bt3103-final-project-bc034","projectNumber":"726547598812","displayName":"BT3103 Group 9 Final Project","name":"projects/bt3103-final-project-bc034","resources":{"hostingSite":"bt3103-final-project-bc034","realtimeDatabaseInstance":"bt3103-final-project-bc034-default-rtdb","storageBucket":"bt3103-final-project-bc034.appspot.com","locationId":"asia-south1"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

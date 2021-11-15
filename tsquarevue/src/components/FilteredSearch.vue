@@ -181,13 +181,13 @@ export default {
 @import 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js';
 
 
-Footer {
+/* Footer {
 	position:fixed;
 	bottom:0;
-	/* left:0; */
+	left:0;
 	width:100%;
-	/* height:300px; */
-}
+	height:300px;
+} */
 
 .container{
     margin-top: 9%;
